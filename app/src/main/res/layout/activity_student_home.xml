@@ -35,6 +35,15 @@
         android:layout_gravity="center_horizontal"/>
 
     <Button
+        android:id="@+id/programButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PoST"
+        android:onClick="programButtonClick"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
         android:id="@+id/eventsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,7 +56,7 @@
         android:id="@+id/greetingTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello, Admin!"
+        android:text="Hello, Student!"
         android:textSize="18sp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
