@@ -1,4 +1,8 @@
 <resources>
+    <string name="view">View</string>
+    <string name="subject">Subject</string>
+    <string name="submit">Submit</string>
+    <string name="complaints">type here</string>
     <string name="app_name">B07project</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
