@@ -17,29 +17,38 @@
         android:src="@drawable/twilight_wave" />
 
     <Button
-        android:id="@+id/adminComplaintsButton"
+        android:id="@+id/studentComplaintsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Complaints"
-        android:onClick="onAdminComplaintsButtonClick"
+        android:onClick="onStudentComplaintsButtonClick"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center_horizontal"/>
 
     <Button
-        android:id="@+id/adminAnnouncementsButton"
+        android:id="@+id/studentAnnouncementsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Announcements"
-        android:onClick="onAdminAnnouncementsButtonClick"
+        android:onClick="onStudentAnnouncementsButtonClick"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center_horizontal"/>
 
     <Button
-        android:id="@+id/adminEventsButton"
+        android:id="@+id/programButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PoST"
+        android:onClick="programButtonClick"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/studentEventsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Events"
-        android:onClick="onAdminEventsButtonClick"
+        android:onClick="onStudentEventsButtonClick"
         android:layout_marginBottom="38dp"
         android:layout_gravity="center_horizontal"/>
 
@@ -47,7 +56,7 @@
         android:id="@+id/greetingTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello, Admin!"
+        android:text="Hello, Student!"
         android:textSize="18sp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"

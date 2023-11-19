@@ -6,4 +6,36 @@
     android:padding="0dp"
     android:background="#FFF1D0">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:background="#086788"
+        android:gravity="center"
+        android:paddingBottom="0dp"
+        android:text="Announcements"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="604dp"
+        android:padding="16dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#086788">
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Back" />
+    </RelativeLayout>
 </LinearLayout>
