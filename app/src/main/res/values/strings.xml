@@ -47,10 +47,13 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="login">Login</string>
-    <string name="email">email</string>
-    <string name="password">password</string>
-    <string name="Login">LOGIN</string>
+    <string name="login">Login to your account!</string>
+    <string name="utorid">UTORid</string>
+    <string name="email">Enter your UTORid here...</string>
+    <string name="enter_password">Password</string>
+    <string name="password">Enter your password here...</string>
+    <string name="forgot_password">Did you forget your password?</string>
+    <string name="Login">Login</string>
     <string name="register">Register</string>
     <string name="Register">REGISTER</string>
     <string name="click_to_login">Click to login</string>
