@@ -1,27 +1,23 @@
 package com.example.b07project;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
+import android.content.Intent;
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
-import androidx.core.view.WindowCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.b07project.databinding.ActivityMainBinding;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -30,15 +26,28 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
+    private FirebaseAuth.AuthStateListener authStateListener;
+
     FirebaseAuth auth;
     Button button;
     TextView textView;
     FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        // submit tab
+        Button submitComplaintsButton = findViewById(R.id.Complaints);
+        submitComplaintsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Navigate to the SubmitComplaints activity
+                Intent intent = new Intent(MainActivity.this, SubmitComplaints.class);
+                startActivity(intent);
+            }
+        });
+        /*
         auth = FirebaseAuth.getInstance();
         button = findViewById(R.id.logout);
         textView = findViewById(R.id.user_details);
@@ -61,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        });
+        });*/
 
 
     }
