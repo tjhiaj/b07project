@@ -17,20 +17,20 @@
         android:src="@drawable/twilight_wave" />
 
     <Button
-        android:id="@+id/complaintsButton"
+        android:id="@+id/studentComplaintsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Complaints"
-        android:onClick="onComplaintsButtonClick"
+        android:onClick="onStudentComplaintsButtonClick"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center_horizontal"/>
 
     <Button
-        android:id="@+id/announcementsButton"
+        android:id="@+id/studentAnnouncementsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Announcements"
-        android:onClick="onAnnouncementsButtonClick"
+        android:onClick="onStudentAnnouncementsButtonClick"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center_horizontal"/>
 
@@ -44,11 +44,11 @@
         android:layout_gravity="center_horizontal"/>
 
     <Button
-        android:id="@+id/eventsButton"
+        android:id="@+id/studentEventsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Events"
-        android:onClick="onEventsButtonClick"
+        android:onClick="onStudentEventsButtonClick"
         android:layout_marginBottom="38dp"
         android:layout_gravity="center_horizontal"/>
 
