@@ -47,17 +47,19 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="login">Login to your account!</string>
-    <string name="utorid">UTORid</string>
-    <string name="email">Enter your UTORid here...</string>
-    <string name="enter_password">Password</string>
-    <string name="password">Enter your password here...</string>
+    <string name="login_heading">Login to your account!</string>
+    <string name="utorid_label">UTORid</string>
+    <string name="enter_utorid">Enter your UTORid here...</string>
+    <string name="password_label">Password</string>
+    <string name="enter_password">Enter your password here...</string>
     <string name="forgot_password">Did you forget your password?</string>
     <string name="Login">Login</string>
     <string name="Signup">Sign up</string>
     <string name="register">Register</string>
     <string name="Register">REGISTER</string>
-    <string name="click_to_login">Click to login</string>
-    <string name="click_to_register">If you have no account on this app, click this:</string>
+    <string name="register_heading">Register an account!</string>
+    <string name="click_to_login">Click this text to go back to the login page.</string>
+    <string name="click_to_register">Click this text if you need to register.</string>
     <string name="logout">LOGOUT</string>
+    <string name="general_image_description">cool image!</string>
 </resources>
