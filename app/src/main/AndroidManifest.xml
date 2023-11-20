@@ -20,6 +20,10 @@
         <activity
             android:name=".Login"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
+            android:exported="true" />
+        <activity
+            android:name=".AdminOrStudentActivity"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,9 +43,11 @@
         </activity>
         <activity
             android:name=".AdminAnnouncementsActivity"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="true"/>
         <activity
             android:name=".StudentAnnouncementsActivity"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="true"/>
     </application>
 
