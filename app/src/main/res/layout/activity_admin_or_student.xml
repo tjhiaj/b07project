@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="80dp"
+    android:background="#FFF1D0"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="144dp"
+        android:layout_height="136dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="28dp"
+        android:src="@drawable/twilight_wave" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logoImageView"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <!-- Admin Button -->
+        <Button
+            android:id="@+id/adminButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Admin"
+            android:layout_marginEnd="8dp"
+            android:onClick="OnAdminButtonClick"
+            />
+
+        <!-- Student Button -->
+        <Button
+            android:id="@+id/studentButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Student"
+            android:onClick="OnStudentButtonClick"
+            />
+    </LinearLayout>
+</LinearLayout>
