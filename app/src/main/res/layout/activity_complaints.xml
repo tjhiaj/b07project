@@ -52,23 +52,14 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="246dp"
-        android:layout_height="44dp"
-        android:text="@string/view"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/subjects"
         android:layout_width="314dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="40dp"
         android:hint="@string/subject"
         app:layout_constraintBottom_toTopOf="@+id/editComplaints"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

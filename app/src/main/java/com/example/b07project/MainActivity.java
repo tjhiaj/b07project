@@ -39,12 +39,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // submit tab
         Button submitComplaintsButton = findViewById(R.id.Complaints);
+        Button ViewButton = findViewById(R.id.ViewButton);
         submitComplaintsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Navigate to the SubmitComplaints activity
                 Intent intent = new Intent(MainActivity.this, SubmitComplaints.class);
                 startActivity(intent);
+            }
+        });
+       ViewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(MainActivity.this, ViewComplaints.class);
+                startActivity(intent1);
             }
         });
         /*
