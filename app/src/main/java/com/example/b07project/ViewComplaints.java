@@ -6,17 +6,12 @@ import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-
-import java.util.LinkedList;
 
 public class ViewComplaints extends AppCompatActivity {
     FirebaseDatabase database;
@@ -27,21 +22,26 @@ public class ViewComplaints extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
-        subjects = findViewById(R.id.viewSubjects);
-        details = findViewById(R.id.details);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
+        subjects = findViewById(R.id.subject1);
+        details = findViewById(R.id.details3);
         complaintsLayout = findViewById(R.id.viewLayout);
+
         LayoutTransition layoutTransition = new LayoutTransition();
 
         layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
         complaintsLayout.setLayoutTransition(layoutTransition);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
         if (database == null) return;
     }
     public void expand(View view){
-        int visible = (details.getVisibility()==View.GONE)?View.VISIBLE:View.GONE;
+        ScrollView detail = findViewById(R.id.scroll3);
+        int visible = detail.getVisibility();
+        if (visible == View.GONE) visible = View.VISIBLE;
+        else visible = View.GONE;
+
         TransitionManager.beginDelayedTransition(complaintsLayout,new AutoTransition());
-        details.setVisibility(visible);
+        detail.setVisibility(visible);
     }
 
 }

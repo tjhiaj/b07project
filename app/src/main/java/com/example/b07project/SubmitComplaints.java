@@ -17,27 +17,30 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
-
+import java.util.Map;
 
 
 public class SubmitComplaints extends AppCompatActivity {
     FirebaseDatabase database;
     Button submit;
-
-
-    LinkedList<String> complaintList;
+    Map<String,Object>  complaintList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaints);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
         submit = findViewById(R.id.submitButton);
-        complaintList = new LinkedList<>();
+        complaintList = new HashMap<>();
         if(database == null) return;
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,11 +50,37 @@ public class SubmitComplaints extends AppCompatActivity {
                 EditText subjectContent = findViewById(R.id.subjects);
                 String complaints = complaintContent.getText().toString();
                 String subjects = subjectContent.getText().toString();
-
                 if (!subjects.isEmpty()) {
-                    DatabaseReference subjectRef = ref.child(subjects);
-                    complaintList.addFirst(complaints);
-                    subjectRef.setValue(complaints).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            if(complaintList.containsKey(subjects)){
+                                LinkedList<String> current = (LinkedList<String>) (complaintList.get(subjects));
+                                current.addFirst(complaints);
+                                Log.d(TAG, "Data does exist");
+                            } else{
+                                if (dataSnapshot.hasChild(subjects)) {
+                                    Map<String,LinkedList<String>> original = (Map<String,LinkedList<String>>)dataSnapshot.getValue();
+                                    LinkedList<String> curList = new LinkedList<String>(original.get(subjects));
+                                    curList.addFirst(complaints);
+                                    ref.child(subjects).setValue(curList);
+                                    Log.d(TAG, "Data does exist" +  curList);
+
+                                } else {
+                                    complaintList.put(subjects,new LinkedList<String>(Arrays.asList(complaints)));
+                                    Log.d(TAG, "Data does not exist");
+                                }
+
+                            }
+
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            Log.e(TAG, "Error reading data: " + databaseError.getMessage(), databaseError.toException());
+                        }
+                    });
+                    ref.updateChildren(complaintList).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 
