@@ -9,11 +9,13 @@
     tools:context=".Login">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="123dp"
         android:background="@color/secondaryColor">
 
         <TextView
+            android:id="@+id/login_heading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30sp"
@@ -31,6 +33,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        android:id="@+id/UTORid label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="30sp"
@@ -58,7 +61,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/Passwordlabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="30sp"
@@ -85,6 +88,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/Forgot_password_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="30sp"
@@ -144,7 +148,7 @@
         android:paddingTop="30sp">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/cool_symbol"
             android:layout_width="match_parent"
             android:layout_height="200sp"
             android:contentDescription="@string/general_image_description"

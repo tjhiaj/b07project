@@ -9,6 +9,7 @@
     tools:context=".Register">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="123dp"
         android:background="@color/secondaryColor">
@@ -128,7 +129,7 @@
         android:paddingTop="30sp">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/cool_symbol"
             android:layout_width="match_parent"
             android:layout_height="200sp"
             android:contentDescription="@string/general_image_description"

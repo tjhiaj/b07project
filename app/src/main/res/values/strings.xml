@@ -62,4 +62,31 @@
     <string name="click_to_register">Click this text if you need to register.</string>
     <string name="logout">LOGOUT</string>
     <string name="general_image_description">cool image!</string>
+
+    <!-- the following strings are used in the post requirement views. -->
+    <string name="do_I_qualify_heading">Do I qualify for POSt?</string>
+    <string name="do_I_qualify_CS_heading">Do I qualify for CS POSt?</string>
+    <string name="please_select_heading">Please select the category you are interested in.</string>
+    <string name="please_answer_heading">Please answer the following.</string>
+    <string name="computer_science_post">Computer Science (Both Specialist and Major)</string>
+    <string name="math_major_post">Mathematics Major</string>
+    <string name="math_specialist_post">Mathematics Specialist</string>
+    <string name="stats_post">Statistics (Both Specialist and Major)</string>
+    <string name="go_back_button_text">Go Back</string>
+
+    <string name="cs_first_question">
+        Do you have at least a GPA of 2.5 over the following courses?\n
+        (Basically an average grade of 70% and above in terms of UTSC grading.)\n
+        Introduction to Computer Science II\n
+        Discrete Mathematics\n
+        Linear Algebra I for Mathematical Sciences\n
+        Calculus I for Mathematical Sciences\n
+        Calculus II for Mathematical Sciences</string>
+    <string name="cs_second_question">
+        Do you have a minimum grade of B (73-76%) in Introduction to Computer Science II?</string>
+    <string name="cs_third_question">
+        Do you have a minimum grade of C- (60-62%) in at least two of these courses?\n
+        Discrete Mathematics\n
+        Linear Algebra I for Mathematical Sciences\n
+        Calculus II for Mathematical Sciences</string>
 </resources>
