@@ -6,20 +6,38 @@
     android:layout_height="match_parent"
     android:background="@color/lightBlue">
 
+    <TextView
+        android:id="@+id/subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:text="@string/subject"
+        android:textColor="@color/textBlue"
+        android:textStyle="bold"
+        android:layout_marginBottom="15dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintBottom_toTopOf="@id/subjects"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </TextView>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
-        android:layout_width="409dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:gravity="center"
         android:text="@string/subject"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/subjects"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        android:paddingBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
+        app:layout_constraintEnd_toEndOf="@+id/subjects"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/subjects"
+        app:layout_constraintTop_toTopOf="@+id/subjects"
+        app:layout_constraintVertical_bias="0.0">
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -31,10 +49,10 @@
         android:background="@drawable/rounded_submit_button"
         android:text="@string/submit"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textViewBottom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editComplaints"
@@ -50,15 +68,34 @@
         app:layout_constraintBottom_toTopOf="@+id/submitButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:text="@string/message"
+        android:textColor="@color/textBlue"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintBottom_toBottomOf="@id/textInputLayout2"
+        app:layout_constraintBottom_toTopOf="@id/textInputLayout2">
+
+    </TextView>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
-        android:layout_width="409dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="213dp"
         android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@id/editComplaints"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/editComplaints"
+        app:layout_constraintStart_toStartOf="@id/editComplaints">
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,7 +110,7 @@
         android:textSize="30sp"
         android:textAlignment="center"
         android:gravity="center"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -88,6 +125,9 @@
         android:background="@drawable/rounded_edittext"
         android:hint="@string/subject"
         android:paddingStart="15dp"
+        android:paddingEnd="0dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -95,27 +135,29 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.779" />
 
-    <View
-        android:id="@+id/textViewBottom"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:background="@color/navyBlue"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_alignParentBottom="true"/>
-
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="6dp"
-        android:background="@drawable/rounded_button"
-        android:gravity="start"
-        android:text="@string/backButton"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewBottom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="@+id/textViewBottom" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu"/>
+
+<!--    <Button-->
+<!--        android:id="@+id/backButton"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginEnd="6dp"-->
+<!--        android:layout_marginBottom="6dp"-->
+<!--        android:background="@drawable/rounded_button"-->
+<!--        android:gravity="start"-->
+<!--        android:text="@string/backButton"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/textViewBottom"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.045"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/textViewBottom" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

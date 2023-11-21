@@ -58,21 +58,6 @@
         android:layout_height="62dp"
         android:background="@color/navyBlue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_alignParentBottom="true"/>
-
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="6dp"
-        android:background="@drawable/rounded_button"
-        android:gravity="left"
-        android:text="@string/backButton"
-        app:layout_constraintBottom_toBottomOf="@+id/ViewBottom2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="@+id/ViewBottom2" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
