@@ -15,7 +15,7 @@ public class UserInfo {
     }
 
     public void setRole(RoleType roleType) {
-        this.role = role;
+        this.role = roleType;
     }
 
     public static UserInfo getInstance()

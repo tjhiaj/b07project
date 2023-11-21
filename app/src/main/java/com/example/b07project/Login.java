@@ -34,7 +34,7 @@ public class Login extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
 //        FirebaseUser currentUser = mAuth.getCurrentUser();
 //        if(currentUser != null){
-            Log.i("PAAAA","PAAA");
+
 //            if ( UserInfo.getInstance().getRole()== UserInfo.RoleType.Student){
 //                Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
 //                startActivity(intent);
@@ -46,7 +46,7 @@ public class Login extends AppCompatActivity {
 //                startActivity(intent);
 //                finish();
 //            }
-            Log.i("BAAAA","BAAA");
+
 
 //            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 //            startActivity(intent);
@@ -92,7 +92,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Enter password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Log.i("Ugly", "AAAAAA");
+
 
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {

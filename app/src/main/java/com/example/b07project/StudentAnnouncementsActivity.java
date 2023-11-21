@@ -35,16 +35,16 @@ public class StudentAnnouncementsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_announcements_student);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
+        databaseReference = firebaseDatabase.getReference("announcements");
 
 
 
 
         // Dummy data for testing
 
-        announcementList.add(new Announcement("Announcement 1", "This is the message for announcement 1."));
-        announcementList.add(new Announcement("Announcement 2", "This is the message for announcement 2."));
-        announcementList.add(new Announcement("Announcement 3", "This is the message for announcement 3."));
+//        announcementList.add(new Announcement("Announcement 1", "This is the message for announcement 1."));
+//        announcementList.add(new Announcement("Announcement 2", "This is the message for announcement 2."));
+//        announcementList.add(new Announcement("Announcement 3", "This is the message for announcement 3."));
 
         // Set up RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
