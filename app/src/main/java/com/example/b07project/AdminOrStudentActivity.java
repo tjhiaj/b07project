@@ -13,11 +13,13 @@ public class AdminOrStudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_or_student);
     }
     public void OnAdminButtonClick(View view) {
+        UserInfo.getInstance().setRole(UserInfo.RoleType.Admin);
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
 
     public void OnStudentButtonClick(View view) {
+        UserInfo.getInstance().setRole(UserInfo.RoleType.Student);
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }

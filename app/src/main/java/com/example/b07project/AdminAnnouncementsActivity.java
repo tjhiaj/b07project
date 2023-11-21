@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,7 +25,6 @@ import java.util.LinkedList;
 
 public class AdminAnnouncementsActivity extends AppCompatActivity {
     FirebaseDatabase database;
-    TextView textView ;
     Button post;
 
 

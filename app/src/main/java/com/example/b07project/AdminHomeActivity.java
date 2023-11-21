@@ -16,4 +16,5 @@ public class AdminHomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AdminAnnouncementsActivity.class);
         startActivity(intent);
     }
+
 }

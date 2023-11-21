@@ -32,13 +32,27 @@ public class Login extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if(currentUser != null){
+            Log.i("PAAAA","PAAA");
+//            if ( UserInfo.getInstance().getRole()== UserInfo.RoleType.Student){
+//                Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//
+//            if ( UserInfo.getInstance().getRole()== UserInfo.RoleType.Admin){
+//                Intent intent = new Intent(getApplicationContext(), AdminHomeActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+            Log.i("BAAAA","BAAA");
 
-        }
+//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//            startActivity(intent);
+//            finish();
+
+//        }
     }
 
     @Override
@@ -78,6 +92,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Enter password", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                Log.i("Ugly", "AAAAAA");
 
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -89,9 +104,22 @@ public class Login extends AppCompatActivity {
 
                                     Toast.makeText(getApplicationContext(), "Login Successful.",
                                             Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                                    //if admin vs if student
+                                    Log.i("things", "things");
+                                    Log.i(UserInfo.getInstance().getRole().toString(), "things");
+                                    if ( UserInfo.getInstance().getRole()== UserInfo.RoleType.Student){
+                                        Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+
+                                    if ( UserInfo.getInstance().getRole()== UserInfo.RoleType.Admin){
+                                        Intent intent = new Intent(getApplicationContext(), AdminHomeActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+
+
 
 
                                 } else {
