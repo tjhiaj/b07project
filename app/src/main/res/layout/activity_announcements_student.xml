@@ -29,13 +29,14 @@
         android:background="#086788">
 
         <Button
-            android:id="@+id/backButton"
+            android:id="@+id/studentAnnouncementsBackButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Back" />
+            android:text="Back"
+            android:onClick="OnStudentAnnouncementsBackButtonClick"/>
     </RelativeLayout>
 </LinearLayout>

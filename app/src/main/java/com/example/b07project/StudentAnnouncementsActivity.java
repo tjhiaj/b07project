@@ -1,4 +1,5 @@
 package com.example.b07project;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,5 +33,10 @@ public class StudentAnnouncementsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+    public void OnStudentAnnouncementsBackButtonClick(View view) {
+        Intent intent = new Intent(this, StudentHomeActivity.class);
+        startActivity(intent);
+    }
+
 }
 
