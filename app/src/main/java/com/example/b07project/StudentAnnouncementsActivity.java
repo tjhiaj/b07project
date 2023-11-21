@@ -1,4 +1,5 @@
 package com.example.b07project;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,6 +57,10 @@ public class StudentAnnouncementsActivity extends AppCompatActivity {
 
     }
 
+    public void OnStudentAnnouncementsBackButtonClick(View view) {
+        Intent intent = new Intent(this, StudentHomeActivity.class);
+        startActivity(intent);
+    }
 
     private void getdata() {
 
@@ -90,7 +95,7 @@ public class StudentAnnouncementsActivity extends AppCompatActivity {
                 Toast.makeText(StudentAnnouncementsActivity.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
             }
         });
-
-
+      
+      
     }}
 

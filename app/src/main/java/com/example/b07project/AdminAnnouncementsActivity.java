@@ -108,6 +108,8 @@ public class AdminAnnouncementsActivity extends AppCompatActivity {
 
         }
 
-
+        public void OnAdminAnnouncementsBackButtonClick(View view) {
+                Intent intent = new Intent(this, AdminHomeActivity.class);
+                startActivity(intent);
+            }
     }
-
