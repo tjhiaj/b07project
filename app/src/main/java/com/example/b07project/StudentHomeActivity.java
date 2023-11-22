@@ -17,6 +17,11 @@ public class StudentHomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onStudentEventsButtonClick(View view) {
+        Intent intent = new Intent(this, EventViewActivity.class);
+        startActivity(intent);
+    } 
+
     public void onStudentComplaintsButtonClick(View view) {
         Intent intent = new Intent(this, SubmitComplaints.class);
         startActivity(intent);
