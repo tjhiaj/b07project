@@ -1,12 +1,12 @@
 package com.example.b07project;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
-public class ViewModel {
+public class Complaints {
     private String subject;
     private ArrayList<String> complaints;
-    public ViewModel(String subject,ArrayList<String> complaints) {
+
+    public Complaints(String subject, ArrayList<String> complaints) {
         this.complaints = complaints;
         this.subject = subject;
     }

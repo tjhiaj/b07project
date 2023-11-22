@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class ViewComplaints extends AppCompatActivity{
     FirebaseDatabase database;
-    ArrayList<ViewModel> viewModels;
+    ArrayList<Complaints> complaints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class ViewComplaints extends AppCompatActivity{
         //LayoutTransition layoutTransition = new LayoutTransition();
         //layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
-        viewModels = new ArrayList<com.example.b07project.ViewModel>();
+        complaints = new ArrayList<com.example.b07project.Complaints>();
         setupViewModel();
         if (database == null) return;
 
@@ -45,16 +45,16 @@ public class ViewComplaints extends AppCompatActivity{
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    Log.d(TAG, viewModels.toString());
+                    Log.d(TAG, complaints.toString());
                     Map<String, ArrayList<String>> dataMap = (Map<String,ArrayList<String>>)dataSnapshot.getValue();
-                    for(String subject: dataMap.keySet()){
-                        viewModels.add(new com.example.b07project.ViewModel(subject,dataMap.get(subject)));
-                        Log.d(TAG, "Data: "+viewModels.toString());
+                    for(String subject: dataMap.keySet()) {
+                        complaints.add(new Complaints(subject, dataMap.get(subject)));
+                        Log.d(TAG, "Data: " + complaints.toString());
                     }
                     if(!isDestroyed()){
                         RecyclerView recyclerView = findViewById(R.id.complaintsRecyclerView);
                         Log.d(TAG,"set new adapter");
-                        ViewReclyerAdapter adapter = new ViewReclyerAdapter(ViewComplaints.this, viewModels);
+                        ComplaintsAdapter adapter = new ComplaintsAdapter(ViewComplaints.this, complaints);
                         recyclerView.setAdapter(adapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(ViewComplaints.this));
                         adapter.notifyDataSetChanged();
