@@ -16,18 +16,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/do_I_qualify_CS_heading"
-            android:layout_width="match_parent"
+            android:id="@+id/do_I_qualify_math_specialist_heading"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
-            android:text="@string/do_I_qualify_CS_heading"
+            android:text="@string/do_I_qualify_math_specialist_heading"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,7 +45,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/do_I_qualify_CS_heading" />
+            app:layout_constraintTop_toBottomOf="@+id/do_I_qualify_math_specialist_heading" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
@@ -56,17 +55,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/CS_first_question"
+                android:id="@+id/math_specialist_first_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
                 android:lineSpacingExtra="1sp"
-                android:text="@string/cs_first_question"
+                android:text="@string/math_specialist_first_question"
                 android:textColor="@color/navyBlue"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -75,7 +74,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/heading" />
 
             <CheckBox
-                android:id="@+id/CS_minimum_gpa_box"
+                android:id="@+id/math_specialist_minimum_gpa_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -83,14 +82,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/cs_first_question" />
 
             <TextView
-                android:id="@+id/CS_second_question"
+                android:id="@+id/math_specialist_second_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
                 android:lineSpacingExtra="1sp"
-                android:text="@string/cs_second_question"
+                android:text="@string/math_specialist_second_question"
                 android:textAlignment="textStart"
                 android:textColor="@color/navyBlue"
                 android:textSize="18sp"
@@ -100,36 +99,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/cs_minimum_gpa_box" />
 
             <CheckBox
-                android:id="@+id/CS_minimum_grade_box"
+                android:id="@+id/math_minimum_2_grade_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cs_second_question" />
-
-            <TextView
-                android:id="@+id/cs_third_question2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"
-                android:lineSpacingExtra="1sp"
-                android:text="@string/cs_third_question"
-                android:textColor="@color/navyBlue"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cs_minimum_A48_grade_box" />
-
-            <CheckBox
-                android:id="@+id/CS_minimum_2_grades_box"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cs_third_question" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

@@ -66,6 +66,9 @@
     <!-- the following strings are used in the post requirement views. -->
     <string name="do_I_qualify_heading">Do I qualify for POSt?</string>
     <string name="do_I_qualify_CS_heading">Do I qualify for CS POSt?</string>
+    <string name="do_I_qualify_math_major_heading">Do I qualify for Math Major POSt?</string>
+    <string name="do_I_qualify_math_specialist_heading">Do I qualify for Math Specialist POSt?</string>
+    <string name="do_I_qualify_stats_heading">Do I qualify for Statistics POSt?</string>
     <string name="please_select_heading">Please select the category you are interested in.</string>
     <string name="please_answer_heading">Please answer the following.</string>
     <string name="computer_science_post">Computer Science (Both Specialist and Major)</string>
@@ -89,4 +92,41 @@
         Discrete Mathematics\n
         Linear Algebra I for Mathematical Sciences\n
         Calculus II for Mathematical Sciences</string>
+
+    <string name="math_major_first_question">
+        Do you have at least a GPA of 2.0 over the following courses?\n
+        (Basically an average grade of 63% and above in terms of UTSC grading.)\n
+        Discrete Mathematics\n
+        Linear Algebra I for Mathematical Sciences\n
+        Calculus I for Mathematical Sciences\n
+        Calculus II for Mathematical Sciences</string>
+    <string name="math_major_second_question">
+        Do you have a minimum grade of B (73-76%) in at least one of the following?:\n
+        Discrete Mathematics\n
+        Linear Algebra I for Mathematical Sciences\n
+        Calculus II for Mathematical Sciences</string>
+
+    <string name="math_specialist_first_question">
+        Do you have at least a GPA of 2.5 over the following courses?\n
+        (Basically an average grade of 70% and above in terms of UTSC grading.)\n
+        Discrete Mathematics\n
+        Linear Algebra I for Mathematical Sciences\n
+        Calculus I for Mathematical Sciences\n
+        Calculus II for Mathematical Sciences</string>
+    <string name="math_specialist_second_question">
+        Do you have a minimum grade of B (73-76%) in at least two of the following?:\n
+        Discrete Mathematics\n
+        Linear Algebra I for Mathematical Sciences\n
+        Calculus II for Mathematical Sciences</string>
+
+    <string name="stats_first_question">
+        Do you have at least a GPA of 2.3 over the following courses?\n
+        (Basically an average grade of 67% and above in terms of UTSC grading.)\n
+        Introduction to Computer Science I OR Introduction to Programming\n
+        \n
+        Linear Algebra I for Mathematical Sciences\n
+        \n
+        Calculus I for Mathematical Sciences OR for Physical Sciences\n
+        \n
+        Calculus II for Mathematical Sciences OR for Physical Sciences</string>
 </resources>
