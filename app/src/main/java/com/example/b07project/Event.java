@@ -2,6 +2,17 @@ package com.example.b07project;
 
 public class Event {
     private String eventName;
+
+    private int participantLimit;
+
+    // Required default constructor for Firebase
+
+    public Event(String eventName, int participantLimit) {
+        this.eventName = eventName;
+        this.participantLimit = participantLimit;
+    }
+
+    // Getter methods
     private String eventDescription;
     private int imageResourceId;
 
@@ -11,8 +22,14 @@ public class Event {
         this.imageResourceId = imageResourceId;
     }
 
+
     public String getEventName() {
         return eventName;
+    }
+
+
+    public int getParticipantLimit() {
+        return participantLimit;
     }
 
     public String getEventDescription() {
@@ -20,4 +37,5 @@ public class Event {
     }
 
     public int getImageResourceId(){return imageResourceId;}
+
 }
