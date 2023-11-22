@@ -99,6 +99,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -118,11 +119,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.004" />
 
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/subjects"
         android:layout_width="318dp"
         android:layout_height="48dp"
         android:background="@drawable/rounded_edittext"
+        android:layout_marginBottom="40dp"
         android:hint="@string/subject"
         android:paddingStart="15dp"
         android:paddingEnd="0dp"
