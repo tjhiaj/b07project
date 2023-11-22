@@ -17,10 +17,10 @@ public class AdminHomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onAdminComplaintsButtonClick(View view) {
-        Intent intent = new Intent(this, ViewComplaints.class);
-        startActivity(intent);
-    }
+//    public void onAdminComplaintsButtonClick(View view) {
+//        Intent intent = new Intent(this, ViewComplaints.class);
+//        startActivity(intent);
+//    }
 
 
 
