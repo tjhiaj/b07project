@@ -38,10 +38,10 @@
         android:id="@+id/programButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PoST"
-        android:onClick="programButtonClick"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
-        android:layout_gravity="center_horizontal"/>
+        android:onClick="onProgramButtonClick"
+        android:text="PoST" />
 
     <Button
         android:id="@+id/studentEventsButton"
