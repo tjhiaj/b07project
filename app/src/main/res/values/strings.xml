@@ -1,10 +1,4 @@
 <resources>
-    <string name= "viewComplaints">details a malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
-        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
-        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
-        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
-        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras</string>
-    <string name="expand">expand</string>
     <string name="viewSubject"> subject </string>
     <string name="view">View</string>
     <string name="subject">Subject</string>
