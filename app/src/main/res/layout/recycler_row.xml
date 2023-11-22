@@ -1,52 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardDisplay"
-        android:layout_width="332dp"
-        android:layout_height="50dp"
-        android:onClick="expand"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.724"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.397">
+        android:id="@+id/card3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="expand">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="309dp"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/horizontalLayout"
-                android:layout_width="312dp"
-                android:layout_height="45dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:id="@+id/subject3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1234567890asdfghjdfgh .                               " />
 
-                <TextView
-                    android:id="@+id/subjectView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="subject1 .                  " />
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="123dp"
+                android:layout_height="wrap_content"
+                android:onClick="expand"
+                android:text="@string/expand" />
 
-                <Button
-                    android:id="@+id/expandButton"
-                    android:layout_width="123dp"
-                    android:layout_height="wrap_content"
-                    android:onClick="expand"
-                    android:text="@string/expand" />
-
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -60,9 +43,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardDisplay"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/text1"
