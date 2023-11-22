@@ -19,10 +19,13 @@ public class EventViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_events);
 
         // Dummy data for testing
-
-        eventList.add(new Event("Event 1", "This is the description for event 1.", R.drawable.default_event));
-        eventList.add(new Event("Event 2", "This is the description for event 2.", R.drawable.default_event));
-        eventList.add(new Event("Event 3", "This is the description for event 3.", R.drawable.default_event));
+        List<String> L1 = new ArrayList<>();
+        L1.add("ab");
+        L1.add("cd");
+        int [] L2 = new int[]{2,0,0,3, 4};
+        eventList.add(new Event("Event 1", "This is the description for event 1.", R.drawable.default_event, 3, L1, L2));
+        eventList.add(new Event("Event 2", "This is the description for event 2.", R.drawable.default_event, 2, L1, L2));
+        eventList.add(new Event("Event 3", "This is the description for event 3.", R.drawable.default_event, 4, L1, L2));
 
         // Set up RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerView);

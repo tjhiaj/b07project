@@ -1,6 +1,7 @@
 package com.example.b07project;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,15 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.eventNameTextView.setText(event.getEventName());
         holder.eventDescriptionTextView.setText(event.getEventDescription());
         holder.eventImageView.setImageResource(event.getImageResourceId());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Handle item click, e.g., navigate to details activity
+                Intent intent = new Intent(context, AdminEventDetailsActivity.class);
+                intent.putExtra("EVENT", event);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

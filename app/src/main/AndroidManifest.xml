@@ -34,10 +34,10 @@
             android:name=".SubmitComplaints"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="true"/>
-        <activity
-            android:name=".ViewComplaints"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:exported="true"/>
+<!--        <activity-->
+<!--            android:name=".ViewComplaints"-->
+<!--            android:theme="@style/Theme.Material3.Light.NoActionBar"-->
+<!--            android:exported="true"/>-->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -70,6 +70,10 @@
 
         <activity
             android:name="ScheduleOrViewActivity"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
+            android:exported="true"/>
+        <activity
+            android:name=".AdminEventDetailsActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="true"/>
 
