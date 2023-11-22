@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
        ViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
-        /*
-        auth = FirebaseAuth.getInstance();
+        
+      /*  auth = FirebaseAuth.getInstance();
         button = findViewById(R.id.logout);
-        textView = findViewById(R.id.user_details);
+//        textView = findViewById(R.id.user_details);
         user = auth.getCurrentUser();
         if (user==null){
             Intent intent = new Intent(getApplicationContext(), Login.class);
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         else{
-            textView.setText(user.getEmail());
+//           textView.setText(user.getEmail());
         }
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -78,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        });*/
+        });
 
 
     }
-
+*/
 
 
     @Override
