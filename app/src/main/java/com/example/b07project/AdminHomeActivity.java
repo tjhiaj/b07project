@@ -17,6 +17,11 @@ public class AdminHomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onAdminEventsButtonClick(View view) {
+        Intent intent = new Intent(this, ScheduleOrViewActivity.class);
+        startActivity(intent);
+    }
+
 
 
 
