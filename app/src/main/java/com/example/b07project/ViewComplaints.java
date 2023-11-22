@@ -52,7 +52,7 @@ public class ViewComplaints extends AppCompatActivity{
                         Log.d(TAG, "Data: "+viewModels.toString());
                     }
                     if(!isDestroyed()){
-                        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+                        RecyclerView recyclerView = findViewById(R.id.complaintsRecyclerView);
                         Log.d(TAG,"set new adapter");
                         ViewReclyerAdapter adapter = new ViewReclyerAdapter(ViewComplaints.this, viewModels);
                         recyclerView.setAdapter(adapter);
