@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // submit tab
         Button submitComplaintsButton = findViewById(R.id.Complaints);
+        Button ViewButton = findViewById(R.id.ViewButton);
         submitComplaintsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,7 +49,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        auth = FirebaseAuth.getInstance();
+        ViewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(MainActivity.this, ViewComplaints.class);
+                startActivity(intent1);
+            }
+        });
+    }
+        
+      /*  auth = FirebaseAuth.getInstance();
         button = findViewById(R.id.logout);
 //        textView = findViewById(R.id.user_details);
         user = auth.getCurrentUser();
@@ -59,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         else{
-//            textView.setText(user.getEmail());
+//           textView.setText(user.getEmail());
         }
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+*/
 
 
     @Override

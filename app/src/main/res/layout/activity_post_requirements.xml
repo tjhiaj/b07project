@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightBlue"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/navyBlue"
+        app:layout_constraintBottom_toTopOf="@+id/computer_science_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.49">
+
+        <TextView
+            android:id="@+id/do_I_qualify_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/do_I_qualify_heading"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.55"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/please_select_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingStart="30sp"
+            android:paddingEnd="30sp"
+            android:paddingBottom="20sp"
+            android:text="@string/please_select_heading"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/do_I_qualify_heading"
+            app:layout_constraintVertical_bias="0.238" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/computer_science_button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30sp"
+                android:layout_marginTop="50sp"
+                android:layout_marginEnd="30sp"
+                android:backgroundTint="@color/navyBlue"
+                android:text="@string/computer_science_post"
+                app:layout_constraintBottom_toTopOf="@+id/math_major_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/heading" />
+
+            <Button
+                android:id="@+id/math_major_button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30sp"
+                android:layout_marginTop="30sp"
+                android:layout_marginEnd="30sp"
+                android:backgroundTint="@color/navyBlue"
+                android:text="@string/math_major_post"
+                app:layout_constraintBottom_toTopOf="@+id/math_specialist_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/computer_science_button" />
+
+            <Button
+                android:id="@+id/math_specialist_button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30sp"
+                android:layout_marginTop="30sp"
+                android:layout_marginEnd="30sp"
+                android:backgroundTint="@color/navyBlue"
+                android:text="@string/math_specialist_post"
+                app:layout_constraintBottom_toTopOf="@+id/stats_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/math_major_button" />
+
+            <Button
+                android:id="@+id/stats_button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30sp"
+                android:layout_marginTop="30sp"
+                android:layout_marginEnd="30sp"
+                android:backgroundTint="@color/navyBlue"
+                android:text="@string/stats_post"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/math_specialist_button" />
+
+            <Button
+                android:id="@+id/go_back_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="@color/navyBlue"
+                android:text="@string/go_back_button_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
