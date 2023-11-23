@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,54 +15,56 @@
         android:theme="@style/Theme.Material3.Light"
         tools:targetApi="31">
         <activity
+            android:name=".ScheduleEvents"
+            android:exported="false"
+            android:label="@string/title_activity_schedule_events"
+            android:theme="@style/Theme.Material3.Light" />
+        <activity
             android:name=".Register"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".Login"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".AdminOrStudentActivity"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".SubmitComplaints"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:exported="true"/>
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
 <!--        <activity-->
 <!--            android:name=".ViewComplaints"-->
-<!--            android:theme="@style/Theme.Material3.Light.NoActionBar"-->
-<!--            android:exported="true"/>-->
+<!--            android:exported="true"-->
+<!--            android:theme="@style/Theme.Material3.Light.NoActionBar" />-->
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.B07project">
-
-        </activity>
+            android:theme="@style/Theme.B07project"></activity>
         <activity
             android:name=".AdminAnnouncementsActivity"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:exported="true"/>
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".StudentAnnouncementsActivity"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:exported="true"/>
-
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name="AdminHomeActivity"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:exported="true"/>
-
+            android:name=".AdminHomeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name="StudentHomeActivity"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:exported="true"/>
+            android:name=".StudentHomeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
 
         <activity
             android:name="EventViewActivity"
@@ -76,7 +79,6 @@
             android:name=".AdminEventDetailsActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="true"/>
-
 
     </application>
 
