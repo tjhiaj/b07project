@@ -42,11 +42,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             public void onClick(View view) {
                 // If Student
                 Intent intent = new Intent(context, StudentEventRsvpActivity.class);
-                context.startActivity(intent);
                 // If Admin - DO NOT DELETE
 //                Intent intent = new Intent(context, AdminEventDetailsActivity.class);
-//                intent.putExtra("EVENT", event);
-//                context.startActivity(intent);
+                intent.putExtra("EVENT", event);
+                context.startActivity(intent);
             }
         });
     }
