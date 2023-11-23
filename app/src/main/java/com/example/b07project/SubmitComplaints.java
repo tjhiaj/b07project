@@ -2,18 +2,16 @@ package com.example.b07project;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,6 +31,7 @@ public class SubmitComplaints extends AppCompatActivity {
     FirebaseDatabase database;
     Button submit;
     Map<String,Object>  complaintList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FirebaseDatabase.getInstance().setPersistenceEnabled(false);
@@ -41,7 +40,7 @@ public class SubmitComplaints extends AppCompatActivity {
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
         submit = findViewById(R.id.submitButton);
         complaintList = new HashMap<>();
-        if(database == null) return;
+        if (database == null) return;
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,26 +54,27 @@ public class SubmitComplaints extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                            if(complaintList.containsKey(subjects)){
+                            if (complaintList.containsKey(subjects)) {
                                 LinkedList<String> current = (LinkedList<String>) (complaintList.get(subjects));
                                 current.addFirst(complaints);
                                 Log.d(TAG, "Data does exist");
-                            } else{
+                            } else {
                                 if (dataSnapshot.hasChild(subjects)) {
-                                    Map<String,LinkedList<String>> original = (Map<String,LinkedList<String>>)dataSnapshot.getValue();
+                                    Map<String, LinkedList<String>> original = (Map<String, LinkedList<String>>) dataSnapshot.getValue();
                                     LinkedList<String> curList = new LinkedList<String>(original.get(subjects));
                                     curList.addFirst(complaints);
                                     ref.child(subjects).setValue(curList);
-                                    Log.d(TAG, "Data does exist" +  curList);
+                                    Log.d(TAG, "Data does exist" + curList);
 
                                 } else {
-                                    complaintList.put(subjects,new LinkedList<String>(Arrays.asList(complaints)));
+                                    complaintList.put(subjects, new LinkedList<String>(Arrays.asList(complaints)));
                                     Log.d(TAG, "Data does not exist");
                                 }
 
                             }
 
                         }
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                             Log.e(TAG, "Error reading data: " + databaseError.getMessage(), databaseError.toException());
@@ -100,9 +100,21 @@ public class SubmitComplaints extends AppCompatActivity {
             }
         });
 
-
+//        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+//            @Override
+//            public void handleOnBackPressed() {
+//                // Your custom back press logic here
+//                // If you want to continue with the default back press behavior, call super.handleOnBackPressed();
+//            }
+//        };
+//        void getOnBackPressedDispatcher().addCallback(this,callback);
+//
+//    }
     }
 
-
+    public void onStudentComplaintsButtonClickBackButtonClick(View view) {
+        Intent intent = new Intent(this, StudentHomeActivity.class);
+        startActivity(intent);
+    }
 }
 

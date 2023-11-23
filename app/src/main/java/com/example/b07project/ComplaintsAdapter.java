@@ -12,24 +12,23 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.ComplaintViewHolder> {
 
-    ArrayList<com.example.b07project.Complaints> Complaints;
+    List<Complaints> Complaints;
     Context context;
     LinearLayout verticalLayout, horizontalLayout;
-    CardView cardDisplay;
 
-    public ComplaintsAdapter(Context context, ArrayList<Complaints> complaintsModel) {
+    public ComplaintsAdapter(Context context, List<Complaints> Complaints) {
         this.context = context;
-        this.Complaints = complaintsModel;
+        this.Complaints = Complaints;
     }
 
     @NonNull
     @Override
     public ComplaintsAdapter.ComplaintViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_view, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item, parent, false);
         return new ComplaintsAdapter.ComplaintViewHolder(view);
     }
 
@@ -37,8 +36,8 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Co
     public void onBindViewHolder(@NonNull ComplaintsAdapter.ComplaintViewHolder holder, int position) {
         Complaints complaint = Complaints.get(position);
 
-        holder.subjectView.setText(Complaints.get(position).getSubject());
-        holder.messageView.setText(Complaints.get(position).getComplaints().toString());
+        holder.subjectView.setText(complaint.getSubject());
+        holder.messageView.setText(complaint.getComplaints().toString());
     }
 
     @Override
@@ -50,10 +49,16 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Co
         ImageView messageBottleIcon;
         TextView subjectView;
         TextView messageView;
+        CardView cardDisplay;
+        TextView title;
+        TextView expand;
 
         public ComplaintViewHolder(@NonNull View itemView) {
             super(itemView);
-            messageBottleIcon = itemView.findViewById(R.id.trumpetIcon);
+            expand = itemView.findViewById(R.id.expand);
+            title = itemView.findViewById(R.id.title);
+            cardDisplay = itemView.findViewById(R.id.card3);
+            messageBottleIcon = itemView.findViewById(R.id.message_Icon);
             subjectView = itemView.findViewById(R.id.subjectTextView);
             messageView = itemView.findViewById(R.id.messageTextView);
         }
