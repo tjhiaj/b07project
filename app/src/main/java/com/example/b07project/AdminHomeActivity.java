@@ -29,5 +29,4 @@ public class AdminHomeActivity extends AppCompatActivity {
 //        Intent intent = new Intent(this, ViewComplaints.class);
 //        startActivity(intent);
 //    }
-
 }

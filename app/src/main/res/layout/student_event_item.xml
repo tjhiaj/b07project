@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminEventDetailsActivity"
+    android:background="@color/beige">
+
+    <TextView
+        android:id="@+id/top_header_events"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="@color/teal"
+        android:text="Events"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/eventDetailsImageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/top_header_events"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="w,1:1"
+        android:src="@drawable/default_event"
+        />
+
+    <TextView
+        android:id="@+id/eventDetailsTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Event Title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/eventDetailsImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        />
+
+    <TextView
+        android:id="@+id/eventDetailsDescriptionTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Event Description"
+        app:layout_constraintTop_toBottomOf="@id/eventDetailsTitleTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        />
+
+    <Button
+        android:id="@+id/RsvpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RSVP"
+        android:onClick="OnRsvpButtonClick"
+        app:layout_constraintTop_toBottomOf="@id/eventDetailsDescriptionTextView"
+        app:layout_constraintBottom_toTopOf="@id/bottom_header_events"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <View
+        android:id="@+id/bottom_header_events"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="@color/teal"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
