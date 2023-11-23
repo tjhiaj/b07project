@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 //class ViewReclyerAdapter extends RecyclerView.Adapter<ViewReclyerAdapter.MyViewHolder>{
-////    Context context;
+//    Context context;
 //    ArrayList<com.example.b07project.ViewModel> viewModels;
 //    public static class MyViewHolder extends RecyclerView.ViewHolder{
 //        TextView subjectView,text1;
@@ -67,6 +67,4 @@ import java.util.ArrayList;
 //        //Log.d(TAG, "size"+ viewModels.size());
 //        return viewModels.size();
 //    }
-
-
 //}

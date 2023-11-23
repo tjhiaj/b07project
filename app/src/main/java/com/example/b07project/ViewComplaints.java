@@ -22,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Map;
 
-
 //public class ViewComplaints extends AppCompatActivity{
 //    FirebaseDatabase database;
 //    ArrayList<ViewModel> viewModels;

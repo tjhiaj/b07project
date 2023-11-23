@@ -75,6 +75,10 @@
             android:name="ScheduleOrViewActivity"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="true"/>
+        <activity
+            android:name=".AdminEventDetailsActivity"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
+            android:exported="true"/>
 
     </application>
 
