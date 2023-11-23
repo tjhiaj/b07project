@@ -13,11 +13,14 @@ public class Event implements Parcelable {
 
     private int participantLimit;
 
+    private String eventID;
+
     // Required default constructor for Firebase
 
-    public Event(String eventName, int participantLimit) {
+    public Event(String eventName, int participantLimit, String eventID) {
         this.eventName = eventName;
         this.participantLimit = participantLimit;
+        this.eventID = eventID;
     }
 
     // Getter methods
@@ -60,6 +63,8 @@ public class Event implements Parcelable {
     public String getEventName() {
         return eventName;
     }
+
+    public String getEventID(){return eventID;}
 
     public int getParticipantLimit() {
         return participantLimit;

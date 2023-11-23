@@ -50,7 +50,7 @@ public class ScheduleEvents extends AppCompatActivity {
 
                 int participantLimit = Integer.parseInt(participantLimitStr);
 
-                Event newEvent = new Event(eventName, participantLimit);
+                Event newEvent = new Event(eventName, participantLimit, eventsRef.getKey());
 
                 eventsRef.push().setValue(newEvent, new DatabaseReference.CompletionListener() {
                     @Override
