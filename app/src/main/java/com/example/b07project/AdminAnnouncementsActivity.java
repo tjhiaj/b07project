@@ -33,8 +33,6 @@ public class AdminAnnouncementsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announcements_admin);
-//        if(true)
-//            return;
 
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(false);
