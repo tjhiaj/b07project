@@ -12,6 +12,11 @@ public class Event implements Parcelable {
     private String eventName;
 
     private int participantLimit;
+    private String eventDescription;
+    private int imageResourceId;
+    private float averageRating;
+    private int[] ratings;
+    private List<String> comments;
 
     // Required default constructor for Firebase
 
@@ -19,13 +24,6 @@ public class Event implements Parcelable {
         this.eventName = eventName;
         this.participantLimit = participantLimit;
     }
-
-    // Getter methods
-    private String eventDescription;
-    private int imageResourceId;
-    private float averageRating;
-    private int[] ratings;
-    private List<String> comments;
 
     public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments, int[] ratings) {
         this.eventName = eventName;
