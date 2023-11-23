@@ -40,10 +40,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Handle item click, e.g., navigate to details activity
-                Intent intent = new Intent(context, AdminEventDetailsActivity.class);
-                intent.putExtra("EVENT", event);
+                // If Student
+                Intent intent = new Intent(context, StudentEventRsvpActivity.class);
                 context.startActivity(intent);
+                // If Admin - DO NOT DELETE
+//                Intent intent = new Intent(context, AdminEventDetailsActivity.class);
+//                intent.putExtra("EVENT", event);
+//                context.startActivity(intent);
             }
         });
     }
