@@ -16,4 +16,11 @@ public class ScheduleOrViewActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EventViewActivity.class);
         startActivity(intent);
     }
+
+    public void OnAdminScheduleButtonClick(View view){
+        Intent intent = new Intent(this, ScheduleEvents.class);
+        startActivity(intent);
+    }
+
+
 }

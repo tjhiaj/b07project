@@ -135,4 +135,5 @@
         \n
         Calculus II for Mathematical Sciences OR for Physical Sciences</string>
     <string name="title_activity_schedule_events">ScheduleEvents</string>
+    <string name="title_activity_feedback_student">FeedbackStudent</string>
 </resources>
