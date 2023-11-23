@@ -7,27 +7,43 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card3"
+        android:onClick="expand"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:onClick="expand">
+        app:cardElevation="10dp"
+        app:contentPadding="20dp">
 
         <LinearLayout
+            android:id="@+id/viewComplaintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="51dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/messenger_bottle">
+
+            </ImageView>
 
             <TextView
-                android:id="@+id/subject3"
-                android:layout_width="wrap_content"
+                android:id="@+id/subject1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1234567890asdfghjdfgh .                               " />
+                android:layout_toEndOf="@id/trumpetIcon"
+                android:text="@string/sampleSubject"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="123dp"
+            <TextView
+                android:id="@+id/complaints1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="expand"
-                android:text="@string/expand" />
+                android:text="@string/lorem_ipsum"
+                android:visibility="gone" />
 
         </LinearLayout>
 

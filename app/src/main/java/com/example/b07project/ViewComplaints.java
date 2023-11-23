@@ -3,6 +3,8 @@ package com.example.b07project;
 import static android.content.ContentValues.TAG;
 
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -23,14 +25,18 @@ import java.util.ArrayList;
 import java.util.Map;
 
 
-public class ViewComplaints extends AppCompatActivity{
+public class ViewComplaints extends AppCompatActivity {
     FirebaseDatabase database;
     ArrayList<Complaints> complaints;
+    TextView detailedText;
+    LinearLayout viewLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view);
+        setContentView(R.layout.card_item);
+        detailedText = findViewById(R.id.complaints1);
+        viewLayout = findViewById(R.id.viewComplaintLayout);
         //LayoutTransition layoutTransition = new LayoutTransition();
         //layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
@@ -75,13 +81,10 @@ public class ViewComplaints extends AppCompatActivity{
     }
 
 
-    public void expand(View view){
-        TextView complaintDisplay = findViewById(R.id.text1);
-        LinearLayout verticalLayout = findViewById(R.id.verticalLayout);
-        int visible = complaintDisplay.getVisibility();
-        if (visible == View.GONE) visible = View.VISIBLE;
-        else visible = View.GONE;
-        complaintDisplay.setVisibility(visible);
+    public void expand(View view) {
+        int visible = (detailedText.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE;
+        TransitionManager.beginDelayedTransition(viewLayout, new AutoTransition());
+        detailedText.setVisibility(visible);
     }
 }
 
