@@ -1,32 +1,18 @@
 package com.example.b07project;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 
 public class ViewComplaints extends AppCompatActivity {
@@ -43,16 +29,16 @@ public class ViewComplaints extends AppCompatActivity {
 //        viewLayout = findViewById(R.id.viewComplaintLayout);
         //LayoutTransition layoutTransition = new LayoutTransition();
         //layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
-        database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
+        //database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
         complaints = new ArrayList<>();
-        setupViewModel();
-        if (database == null) return;
+        //setupViewModel();
+        //if (database == null) return;
 
-        // Dummy data for testing
-
-        complaints.add(new Complaints("Announcement 1", new ArrayList<>(Arrays.asList("Apple", "Banana", "pear"))));
-        complaints.add(new Complaints("Announcement 2", new ArrayList<>(Arrays.asList("Apple", "Banana", "pear"))));
-        complaints.add(new Complaints("Announcement 3", new ArrayList<>(Arrays.asList("Apple", "Banana", "pear"))));
+//        // Dummy data for testing
+//
+        complaints.add(new Complaints("Announcement 1", "Apple"));
+//        complaints.add(new Complaints("Announcement 2", new ArrayList<>(Arrays.asList("Apple", "Banana", "pear"))));
+//        complaints.add(new Complaints("Announcement 3", new ArrayList<>(Arrays.asList("Apple", "Banana", "pear"))));
 
         // Set up RecyclerView
         RecyclerView activityView = findViewById(R.id.complaintsRecyclerView);
@@ -60,7 +46,7 @@ public class ViewComplaints extends AppCompatActivity {
         activityView.setAdapter(complaintAdapter);
         activityView.setLayoutManager(new LinearLayoutManager(this));
 
-        setupViewModel();
+        //setupViewModel();
 
     }
 
@@ -68,76 +54,76 @@ public class ViewComplaints extends AppCompatActivity {
         Intent intent = new Intent(this, AdminHomeActivity.class);
         startActivity(intent);
     }
-    
-    public void onExpandClick(View view) {
-        Intent intent = new Intent(this, ComplaintsExpand.class);
-        startActivity(intent);
-    }
 
-    private void setupViewModel() {
-        DatabaseReference ref = database.getReference("complaints");
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    Log.d(TAG, complaints.toString());
-                    Map<String, ArrayList<String>> dataMap = (Map<String, ArrayList<String>>) dataSnapshot.getValue();
-                    for (String subject : dataMap.keySet()) {
-                        complaints.add(new Complaints(subject, dataMap.get(subject)));
-                        Log.d(TAG, "Data: " + complaints.toString());
-                    }
-                    if (!isDestroyed()) {
-                        RecyclerView recyclerView = findViewById(R.id.complaintsRecyclerView);
-                        Log.d(TAG, "set new adapter");
-                        ComplaintsAdapter adapter = new ComplaintsAdapter(ViewComplaints.this, complaints);
-                        recyclerView.setAdapter(adapter);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(ViewComplaints.this));
-                        adapter.notifyDataSetChanged();
-                        Log.d(TAG, "setted adapter");
-                    }
+//    public void onExpandClick(View view) {
+//        Intent intent = new Intent(this, ComplaintsExpand.class);
+//        startActivity(intent);
+//    }
 
+//    private void setupViewModel() {
+//        DatabaseReference ref = database.getReference("complaints");
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.exists()) {
+//                    Log.d(TAG, complaints.toString());
+//                    Map<String, ArrayList<String>> dataMap = (Map<String, ArrayList<String>>) dataSnapshot.getValue();
+//                    for (String subject : dataMap.keySet()) {
+//                        complaints.add(new Complaints(subject, dataMap.get(subject)));
+//                        Log.d(TAG, "Data: " + complaints.toString());
+//                    }
+//                    if (!isDestroyed()) {
+//                        RecyclerView recyclerView = findViewById(R.id.complaintsRecyclerView);
+//                        Log.d(TAG, "set new adapter");
+//                        ComplaintsAdapter adapter = new ComplaintsAdapter(ViewComplaints.this, complaints);
+//                        recyclerView.setAdapter(adapter);
+//                        recyclerView.setLayoutManager(new LinearLayoutManager(ViewComplaints.this));
+//                        adapter.notifyDataSetChanged();
+//                        Log.d(TAG, "setted adapter");
+//                    }
+//
+//
+//                } else {
+//                    Log.d(TAG, "Data does not exist");
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                // Handle cancellation
+//            }
+//        });
+//    }
 
-                } else {
-                    Log.d(TAG, "Data does not exist");
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle cancellation
-            }
-        });
-    }
-
-
-    public class ComplaintsExpand extends AppCompatActivity {
-        ImageView expand;
-        LinearLayout hiddenView;
-        CardView cardView;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.card_item);
-
-            cardView = findViewById(R.id.card3);
-            this.expand = findViewById(R.id.expand);
-            hiddenView = findViewById(R.id.hidden_view);
-
-            expand.setOnClickListener(view -> {
-                if (hiddenView.getVisibility() == View.VISIBLE) {
-                    TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
-                    hiddenView.setVisibility(View.GONE);
-                    expand.setImageResource(R.drawable.expand_arrow);
-                } else {
-                    TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
-                    hiddenView.setVisibility(View.VISIBLE);
-                    expand.setImageResource(R.drawable.expand_arrow);
-                }
-            });
-        }
-    }
-
+//
+//    public class ComplaintsExpand extends AppCompatActivity {
+//        ImageView expand;
+//        LinearLayout hiddenView;
+//        CardView cardView;
+//
+//        @Override
+//        protected void onCreate(Bundle savedInstanceState) {
+//            super.onCreate(savedInstanceState);
+//            setContentView(R.layout.card_item);
+//
+//            cardView = findViewById(R.id.card3);
+//            this.expand = findViewById(R.id.expand);
+//            hiddenView = findViewById(R.id.hidden_view);
+//
+//            expand.setOnClickListener(view -> {
+//                if (hiddenView.getVisibility() == View.VISIBLE) {
+//                    TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+//                    hiddenView.setVisibility(View.GONE);
+//                    expand.setImageResource(R.drawable.expand_arrow);
+//                } else {
+//                    TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+//                    hiddenView.setVisibility(View.VISIBLE);
+//                    expand.setImageResource(R.drawable.expand_arrow);
+//                }
+//            });
+//        }
+//    }
+//
 
 }
 

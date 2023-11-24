@@ -21,7 +21,7 @@ public class ComplaintsExpand extends AppCompatActivity {
         setContentView(R.layout.card_item);
 
         cardView = findViewById(R.id.card3);
-        this.expand = findViewById(R.id.expand);
+        //this.expand = findViewById(R.id.expand);
         hiddenView = findViewById(R.id.hidden_view);
 
         expand.setOnClickListener(view -> {

@@ -54,43 +54,54 @@
 <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/lightBlue"
     android:orientation="vertical"
     android:padding="0dp">
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="62dp"
-        android:layout_marginHorizontal="0dp"
-        android:background="@color/navyBlue"
-        android:gravity="center"
-        android:text="@string/complaintsHeader"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginHorizontal="0dp"
+            android:background="@color/navyBlue"
+            android:gravity="center"
+            android:text="@string/complaintsHeader"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/complaintsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="593dp"
-        android:padding="16dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/complaintsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="593dp"
+            android:padding="16dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </TextView>
+        </TextView>
+
+    </LinearLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom">
 
         <TextView
             android:id="@+id/bottomNavigationView"
@@ -99,21 +110,20 @@
             android:background="@color/textBlue"
             android:textSize="23sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
-            android:id="@+id/backButton"
+            android:id="@+id/backButton2"
             android:layout_width="wrap_content"
             android:layout_height="62dp"
             android:background="@drawable/back_button_arrow"
             android:backgroundTint="@null"
-            android:drawableTint="@null"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|top"
             android:onClick="onStudentComplaintsButtonClickBackClick"
-            android:text="" />
+            android:text=""
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>
 
