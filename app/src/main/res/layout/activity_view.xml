@@ -112,12 +112,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/backButton2"
             android:layout_width="wrap_content"
             android:layout_height="62dp"
             android:background="@drawable/back_button_arrow"
-            android:backgroundTint="@null"
+            android:tint="@color/white"
             android:gravity="center_vertical|top"
             android:onClick="onStudentComplaintsButtonClickBackClick"
             android:text=""
