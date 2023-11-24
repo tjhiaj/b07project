@@ -69,6 +69,10 @@
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
+            android:name=".ViewComplaints"
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+        <activity
             android:name=".StudentHomeActivity"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
