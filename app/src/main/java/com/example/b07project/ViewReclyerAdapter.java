@@ -1,4 +1,21 @@
 
+import static android.content.ContentValues.TAG;
+
+import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
 //class ViewReclyerAdapter extends RecyclerView.Adapter<ViewReclyerAdapter.MyViewHolder>{
 //    Context context;
 //    ArrayList<com.example.b07project.ViewModel> viewModels;
@@ -49,6 +66,5 @@
 //        //Log.d(TAG, "size"+ viewModels.size());
 //        return viewModels.size();
 //    }
-//
-//
+
 //}

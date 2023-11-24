@@ -14,7 +14,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ViewComplaints extends AppCompatActivity {
     FirebaseDatabase database;
     List<Complaints> complaints;
@@ -66,6 +65,7 @@ public class ViewComplaints extends AppCompatActivity {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                if (dataSnapshot.exists()) {
+
 //                    Log.d(TAG, complaints.toString());
 //                    Map<String, ArrayList<String>> dataMap = (Map<String, ArrayList<String>>) dataSnapshot.getValue();
 //                    for (String subject : dataMap.keySet()) {
@@ -80,6 +80,7 @@ public class ViewComplaints extends AppCompatActivity {
 //                        recyclerView.setLayoutManager(new LinearLayoutManager(ViewComplaints.this));
 //                        adapter.notifyDataSetChanged();
 //                        Log.d(TAG, "setted adapter");
+
 //                    }
 //
 //
@@ -127,4 +128,16 @@ public class ViewComplaints extends AppCompatActivity {
 
 }
 
-
+//
+//
+//    public void expand(View view){
+//        TextView complaintDisplay = findViewById(R.id.text1);
+//        LinearLayout verticalLayout = findViewById(R.id.verticalLayout);
+//        int visible = complaintDisplay.getVisibility();
+//        if (visible == View.GONE) visible = View.VISIBLE;
+//        else visible = View.GONE;
+//        complaintDisplay.setVisibility(visible);
+//    }
+//}
+//
+//

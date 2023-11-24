@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ViewButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(MainActivity.this, ViewComplaints.class);
-                startActivity(intent1);
-            }
-        });
+//        ViewButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent1 = new Intent(MainActivity.this, ViewComplaints.class);
+//                startActivity(intent1);
+//            }
+//        });
     }
         
       /*  auth = FirebaseAuth.getInstance();
@@ -87,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
 */
 
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
+//    @Override
+//    public boolean onSupportNavigateUp() {
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+//        return NavigationUI.navigateUp(navController, appBarConfiguration)
+//                || super.onSupportNavigateUp();
+//    }
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige">
+
+    <TextView
+        android:id="@+id/top_header_events_student"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="@color/teal"
+        android:text="Events"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/myEventsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Events"
+        android:onClick="OnMyEventsButtonClick"
+        app:layout_constraintTop_toBottomOf="@id/top_header_events_student"
+        app:layout_constraintBottom_toTopOf="@id/allEventsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/allEventsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All Events"
+        android:onClick="OnAllEventsButtonClick"
+        app:layout_constraintTop_toBottomOf="@id/myEventsButton"
+        app:layout_constraintBottom_toTopOf="@id/bottom_header_events_student"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <View
+        android:id="@+id/bottom_header_events_student"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="@color/teal"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
