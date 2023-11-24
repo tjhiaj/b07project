@@ -35,8 +35,8 @@
 
                 <ImageView
                     android:id="@+id/message_Icon"
-                    android:layout_width="51dp"
-                    android:layout_height="77dp"
+                    android:layout_width="52dp"
+                    android:layout_height="78dp"
                     android:layout_gravity="center"
                     android:layout_marginEnd="16dp"
                     android:src="@drawable/messenger_bottle">
@@ -55,6 +55,7 @@
                         android:layout_toEndOf="@id/message_Icon"
                         android:background="@color/navyBlue"
                         android:padding="10dp"
+                        android:layout_marginTop="14dp"
                         android:text="@string/sampleSubject"
                         android:textColor="@color/white"
                         android:textSize="25sp" />
