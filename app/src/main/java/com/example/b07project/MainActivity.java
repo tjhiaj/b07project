@@ -49,13 +49,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-       ViewButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(MainActivity.this, ViewComplaints.class);
-                startActivity(intent1);
-            }
-        });
+//        ViewButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent1 = new Intent(MainActivity.this, ViewComplaints.class);
+//                startActivity(intent1);
+//            }
+//        });
+    }
         
       /*  auth = FirebaseAuth.getInstance();
         button = findViewById(R.id.logout);

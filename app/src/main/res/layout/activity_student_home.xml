@@ -20,10 +20,10 @@
         android:id="@+id/studentComplaintsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Complaints"
-        android:onClick="onStudentComplaintsButtonClick"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
-        android:layout_gravity="center_horizontal"/>
+        android:onClick="onStudentComplaintsButtonClick"
+        android:text="Complaints" />
 
     <Button
         android:id="@+id/studentAnnouncementsButton"

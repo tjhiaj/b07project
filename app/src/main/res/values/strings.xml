@@ -1,10 +1,4 @@
 <resources>
-    <string name= "viewComplaints">details a malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
-        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
-        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
-        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
-        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras</string>
-    <string name="expand">expand</string>
     <string name="viewSubject"> subject </string>
     <string name="view">View</string>
     <string name="subject">Subject</string>
@@ -59,7 +53,7 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="login_heading">Login to your account!</string>
-    <string name="utorid_label">UTORid</string>
+    <string name="utorid_label">Email</string>
     <string name="enter_utorid">Enter your UTORid here...</string>
     <string name="password_label">Password</string>
     <string name="enter_password">Enter your password here...</string>
@@ -140,4 +134,6 @@
         Calculus I for Mathematical Sciences OR for Physical Sciences\n
         \n
         Calculus II for Mathematical Sciences OR for Physical Sciences</string>
+    <string name="title_activity_schedule_events">ScheduleEvents</string>
+    <string name="title_activity_feedback_student">FeedbackStudent</string>
 </resources>
