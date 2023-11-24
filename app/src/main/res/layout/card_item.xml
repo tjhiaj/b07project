@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -10,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardElevation="10dp"
+        app:cardCornerRadius="10dp"
         app:contentPadding="20dp">
 
         <LinearLayout
@@ -35,8 +37,8 @@
 
                 <ImageView
                     android:id="@+id/message_Icon"
-                    android:layout_width="52dp"
-                    android:layout_height="78dp"
+                    android:layout_width="56dp"
+                    android:layout_height="106dp"
                     android:layout_gravity="center"
                     android:layout_marginEnd="16dp"
                     android:src="@drawable/messenger_bottle">
@@ -53,21 +55,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/message_Icon"
-                        android:background="@color/navyBlue"
+                        android:layout_gravity="center_horizontal"
                         android:padding="10dp"
+                        android:background="@drawable/rounded_view_complaints"
                         android:layout_marginTop="14dp"
                         android:text="@string/sampleSubject"
                         android:textColor="@color/white"
                         android:textSize="25sp" />
 
-                    <!--                    <ImageView-->
-                    <!--                        android:id="@+id/expand"-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_gravity="center"-->
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/expand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/expand_arrow"
+                        android:backgroundTint="@color/navyBlue"
+                        android:minHeight="48dp"
+                        android:text=""
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                     <!--                        android:onClick="onExpandClick"-->
-                    <!--                        android:src="@drawable/expand_arrow"-->
-                    <!--                        android:text="" />-->
+
 
                 </LinearLayout>
 
