@@ -17,6 +17,17 @@ public class Event implements Parcelable {
     private List<String> ratings;
     private List<String> comments;
 
+    public List<String> getParticipantList() {
+        return participantList;
+    }
+
+    public List<String> participantList;
+
+    public void setParticipantList(List<String> participantList){
+        this.participantList = participantList;
+    }
+
+
     public void setEventName(String eventName) {
         this.eventName = eventName;
     }
@@ -53,7 +64,7 @@ public class Event implements Parcelable {
 
 
 
-    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments,  List<String> ratings, String eventID, int participantLimit) {
+    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments,  List<String> ratings, String eventID, int participantLimit, List<String> participantList) {
         this.eventName = eventName;
         this.eventDescription = eventDescription;
         this.imageResourceId = imageResourceId;
@@ -62,6 +73,7 @@ public class Event implements Parcelable {
         this.ratings = ratings;
         this.eventID = eventID;
         this.participantLimit = participantLimit;
+        this.participantList = participantList;
 
 
     }
@@ -90,6 +102,7 @@ public class Event implements Parcelable {
     public String getEventName() {
         return eventName;
     }
+
 
     public String getEventID(){return eventID;}
 

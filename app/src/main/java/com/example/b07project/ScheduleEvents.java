@@ -61,10 +61,13 @@ public class ScheduleEvents extends AppCompatActivity {
                 List<String> rating = new ArrayList<>();
                 rating.add("placeholder");
 
+                List<String> participants = new ArrayList<>();
+                participants.add("placeholder");
+
 
                 int participantLimit = Integer.parseInt(participantLimitStr);
                 Log.i("pretty", "before Event");
-                Event newEvent = new Event(eventName, description, 0, 0, comments, rating, eventKey, participantLimit);
+                Event newEvent = new Event(eventName, description, 0, 0, comments, rating, eventKey, participantLimit, participants);
                 Log.i("pretty", "before push");
                 eventsRef.child(eventKey).setValue(newEvent, new DatabaseReference.CompletionListener() {
                     @Override
