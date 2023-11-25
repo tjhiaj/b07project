@@ -15,6 +15,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import androidx.annotation.NonNull;
 
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ScheduleEvents extends AppCompatActivity {
 
     private static final String TAG = "AdminEventsActivity";
@@ -40,25 +45,38 @@ public class ScheduleEvents extends AppCompatActivity {
                 DatabaseReference eventsRef = database.getReference("events");
                 EditText eventNameEditText = findViewById(R.id.eventNameEditText);
                 EditText participantLimitEditText = findViewById(R.id.participantLimitEditText);
+                EditText descriptionEditText = findViewById(R.id.description);
 
                 String eventName = eventNameEditText.getText().toString().trim();
                 String participantLimitStr = participantLimitEditText.getText().toString().trim();
+                String description = descriptionEditText.getText().toString().trim();
 
                 if (eventsRef == null || eventName.isEmpty() || participantLimitStr.isEmpty()) {
                     return;
                 }
+                String eventKey = eventsRef.push().getKey();
+                List<String> comments = new ArrayList<>();
+                comments.add("placeholder");
+
+                List<String> rating = new ArrayList<>();
+                rating.add("placeholder");
+
 
                 int participantLimit = Integer.parseInt(participantLimitStr);
-
-                Event newEvent = new Event(eventName, participantLimit, eventsRef.getKey());
-
-                eventsRef.push().setValue(newEvent, new DatabaseReference.CompletionListener() {
+                Log.i("pretty", "before Event");
+                Event newEvent = new Event(eventName, description, 0, 0, comments, rating, eventKey, participantLimit);
+                Log.i("pretty", "before push");
+                eventsRef.child(eventKey).setValue(newEvent, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@NonNull DatabaseError error, @NonNull DatabaseReference ref) {
                         if (error == null) {
+                            Log.i("pretty", "after push");
+                            Log.i("pretty", newEvent.getComments().get(0));
                             // Event added successfully
                             eventNameEditText.setText("");
                             participantLimitEditText.setText("");
+                            descriptionEditText.setText("");
+
                             Toast.makeText(ScheduleEvents.this, "Event scheduled", Toast.LENGTH_SHORT).show();
                         } else {
                             // Error adding event

@@ -33,10 +33,11 @@ public class AdminEventDetailsActivity extends AppCompatActivity {
         descriptionTextView.setText(event.getEventDescription());
         ratingBar.setRating(event.getRating());
 
-        int[] ratings = event.getRatings();
+        //Cheryl changed this part
+        List<String> ratings = event.getRatings();
         String ratingCount = "| ";
         for (int i = 0; i < 5; i++){
-            ratingCount = ratingCount + (i+1) + " star: " + ratings[i] + " | ";
+            ratingCount = ratingCount + (i+1) + " star: " + Integer.parseInt(ratings.get(i)) + " | ";
         }
         ratingCountsTextView.setText(ratingCount);
 

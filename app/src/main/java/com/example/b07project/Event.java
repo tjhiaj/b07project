@@ -5,7 +5,6 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Event implements Parcelable {
@@ -15,26 +14,56 @@ public class Event implements Parcelable {
     private String eventDescription;
     private int imageResourceId;
     private float averageRating;
-    private int[] ratings;
+    private List<String> ratings;
     private List<String> comments;
 
-    private String eventID;
-
-    // Required default constructor for Firebase
-
-    public Event(String eventName, int participantLimit, String eventID) {
+    public void setEventName(String eventName) {
         this.eventName = eventName;
+    }
+
+    public void setParticipantLimit(int participantLimit) {
         this.participantLimit = participantLimit;
+    }
+
+    public void setEventDescription(String eventDescription) {
+        this.eventDescription = eventDescription;
+    }
+
+    public void setImageResourceId(int imageResourceId) {
+        this.imageResourceId = imageResourceId;
+    }
+
+    public void setAverageRating(float averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public void setRatings( List<String> ratings) {
+        this.ratings = ratings;
+    }
+
+    public void setComments(List<String> comments) {
+        this.comments = comments;
+    }
+
+    public void setEventID(String eventID) {
         this.eventID = eventID;
     }
 
-    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments, int[] ratings) {
+    private String eventID;
+
+
+
+    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments,  List<String> ratings, String eventID, int participantLimit) {
         this.eventName = eventName;
         this.eventDescription = eventDescription;
         this.imageResourceId = imageResourceId;
         this.averageRating = averageRating;
         this.comments = comments;
         this.ratings = ratings;
+        this.eventID = eventID;
+        this.participantLimit = participantLimit;
+
+
     }
 
     protected Event(Parcel in) {
@@ -43,7 +72,7 @@ public class Event implements Parcelable {
         imageResourceId = in.readInt();
         averageRating = in.readFloat();
         comments = in.createStringArrayList();
-        ratings = in.createIntArray();
+        ratings = in.createStringArrayList();
     }
 
     public static final Creator<Event> CREATOR = new Creator<Event>() {
@@ -77,7 +106,7 @@ public class Event implements Parcelable {
     public float getRating() {return averageRating;}
 
     public List<String> getComments() {return comments;}
-    public int[] getRatings(){return ratings;}
+    public  List<String> getRatings(){return ratings;}
 
     @Override
     public int describeContents() {
@@ -91,6 +120,6 @@ public class Event implements Parcelable {
         dest.writeInt(imageResourceId);
         dest.writeFloat(averageRating);
         dest.writeStringList(comments);
-        dest.writeIntArray(ratings);
+        dest.writeStringList(ratings);
     }
 }
