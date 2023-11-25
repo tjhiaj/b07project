@@ -18,6 +18,13 @@
         android:hint="Participant Limit"
         android:inputType="number" />
 
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Enter description of event"
+        />
     <Button
         android:id="@+id/scheduleEventButton"
         android:layout_width="match_parent"

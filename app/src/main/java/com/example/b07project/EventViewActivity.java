@@ -1,6 +1,7 @@
 package com.example.b07project;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,10 +24,11 @@ public class EventViewActivity extends AppCompatActivity {
         L1.add("ab");
         L1.add("cd");
         int [] L2 = new int[]{2,0,0,3, 4};
-        eventList.add(new Event("Event 1", "This is the description for event 1.", R.drawable.default_event, 3, L1, L2));
-        eventList.add(new Event("Event 2", "This is the description for event 2.", R.drawable.default_event, 2, L1, L2));
-        eventList.add(new Event("Event 3", "This is the description for event 3.", R.drawable.default_event, 4, L1, L2));
+//        eventList.add(new Event("Event 1", "This is the description for event 1.", R.drawable.default_event, 3, L1, L2, "NjtusLW-ySqra_V71MP"));
+//        eventList.add(new Event("Event 2", "This is the description for event 2.", R.drawable.default_event, 2, L1, L2, "id2"));
+//        eventList.add(new Event("Event 3", "This is the description for event 3.", R.drawable.default_event, 4, L1, L2, "id3"));
 
+        Log.i("doubt it", "sad");
         // Set up RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         adapter = new EventAdapter(this, eventList);
