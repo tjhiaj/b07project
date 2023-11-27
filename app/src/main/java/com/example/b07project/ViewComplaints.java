@@ -36,6 +36,10 @@ public class ViewComplaints extends AppCompatActivity{
         setupViewModel();
 
     }
+    //    public void onExpandClick(View view) {
+//        Intent intent = new Intent(this, ComplaintsExpand.class);
+//        startActivity(intent);
+//    }
     private void setupViewModel() {
         DatabaseReference ref = database.getReference("complaints");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -79,15 +83,42 @@ public class ViewComplaints extends AppCompatActivity{
         });
     }
 
-
-    public void expand(View view){
-       TextView complaintDisplay = findViewById(R.id.text1);
-       LinearLayout verticalLayout = findViewById(R.id.verticalLayout);
-       int visible = complaintDisplay.getVisibility();
-       if (visible == View.GONE) visible = View.VISIBLE;
-       else visible = View.GONE;
-       complaintDisplay.setVisibility(visible);
-    }
+    //    public class ComplaintsExpand extends AppCompatActivity {
+//        ImageView expand;
+//        LinearLayout hiddenView;
+//        CardView cardView;
+//
+//        @Override
+//        protected void onCreate(Bundle savedInstanceState) {
+//            super.onCreate(savedInstanceState);
+//            setContentView(R.layout.card_item);
+//
+//            cardView = findViewById(R.id.card3);
+//            this.expand = findViewById(R.id.expand);
+//            hiddenView = findViewById(R.id.hidden_view);
+//
+//            expand.setOnClickListener(view -> {
+//                if (hiddenView.getVisibility() == View.VISIBLE) {
+//                    TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+//                    hiddenView.setVisibility(View.GONE);
+//                    expand.setImageResource(R.drawable.expand_arrow);
+//                } else {
+//                    TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+//                    hiddenView.setVisibility(View.VISIBLE);
+//                    expand.setImageResource(R.drawable.expand_arrow);
+//                }
+//            });
+//        }
+//    }
+//
+//    public void expand(View view){
+//        TextView complaintDisplay = findViewById(R.id.text1);
+//        LinearLayout verticalLayout = findViewById(R.id.verticalLayout);
+//        int visible = complaintDisplay.getVisibility();
+//        if (visible == View.GONE) visible = View.VISIBLE;
+//        else visible = View.GONE;
+//        complaintDisplay.setVisibility(visible);
+//    }
 }
 
 

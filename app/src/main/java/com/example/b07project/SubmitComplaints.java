@@ -2,6 +2,7 @@ package com.example.b07project;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -89,11 +90,23 @@ public class SubmitComplaints extends AppCompatActivity {
                 }
             }
         });
+        //        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+//            @Override
+//            public void handleOnBackPressed() {
+//                // Your custom back press logic here
+//                // If you want to continue with the default back press behavior, call super.handleOnBackPressed();
+//            }
+//        };
+//        void getOnBackPressedDispatcher().addCallback(this,callback);
+//
+//    }
+    }
+    public void onStudentComplaintsButtonClickBackButtonClick(View view) {
+        Intent intent = new Intent(this, StudentHomeActivity.class);
+        startActivity(intent);
 
 
     }
-
-
 }
 
 
