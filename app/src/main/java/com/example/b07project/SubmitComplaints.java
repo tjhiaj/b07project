@@ -5,13 +5,15 @@ import static android.content.ContentValues.TAG;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,17 +23,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Arrays;
+
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
 
 public class SubmitComplaints extends AppCompatActivity {
     FirebaseDatabase database;
     Button submit;
-    Map<String,Object>  complaintList;
-
+    ArrayList<Map<String,String>> complaintList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FirebaseDatabase.getInstance().setPersistenceEnabled(false);
@@ -39,8 +40,7 @@ public class SubmitComplaints extends AppCompatActivity {
         setContentView(R.layout.activity_complaints);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
         submit = findViewById(R.id.submitButton);
-        complaintList = new HashMap<>();
-        if (database == null) return;
+        if(database == null) return;
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,38 +49,28 @@ public class SubmitComplaints extends AppCompatActivity {
                 EditText subjectContent = findViewById(R.id.subjects);
                 String complaints = complaintContent.getText().toString();
                 String subjects = subjectContent.getText().toString();
+                Map<String,Object> allData = new HashMap<>();
+
                 if (!subjects.isEmpty()) {
                     ref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                            if (complaintList.containsKey(subjects)) {
-                                LinkedList<String> current = (LinkedList<String>) (complaintList.get(subjects));
-                                current.addFirst(complaints);
-                                Log.d(TAG, "Data does exist");
-                            } else {
-                                if (dataSnapshot.hasChild(subjects)) {
-                                    Map<String, LinkedList<String>> original = (Map<String, LinkedList<String>>) dataSnapshot.getValue();
-                                    LinkedList<String> curList = new LinkedList<String>(original.get(subjects));
-                                    curList.addFirst(complaints);
-                                    ref.child(subjects).setValue(curList);
-                                    Log.d(TAG, "Data does exist" + curList);
-
-                                } else {
-                                    complaintList.put(subjects, new LinkedList<String>(Arrays.asList(complaints)));
-                                    Log.d(TAG, "Data does not exist");
-                                }
-
+                            if(dataSnapshot.exists()){
+                                Object currentValue = dataSnapshot.getValue();
+                                complaintList = (ArrayList<Map<String, String>>)currentValue ;
                             }
-
+                            Map<String,String> newComplaints = new HashMap<>(1);
+                            newComplaints.put(subjects,complaints);
+                            complaintList.add(newComplaints);
+                            ref.setValue(complaintList);
+                            allData.put(complaints,complaintList);
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                             Log.e(TAG, "Error reading data: " + databaseError.getMessage(), databaseError.toException());
                         }
                     });
-                    ref.updateChildren(complaintList).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    ref.updateChildren(allData).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 
@@ -90,7 +80,8 @@ public class SubmitComplaints extends AppCompatActivity {
                                 Toast.makeText(SubmitComplaints.this, "Submitted", Toast.LENGTH_SHORT).show();
                             } else {
                                 Exception exception = task.getException();
-                                Log.e(TAG, "Failed to submit complaint: " + exception.getMessage(), exception);
+                                if(exception!=null) Log.e(TAG, "Failed to submit complaint: " + exception.getMessage(), exception);
+                                else Log.e(TAG, "Null Pointer Exception" );
                             }
                         }
                     });
@@ -99,8 +90,7 @@ public class SubmitComplaints extends AppCompatActivity {
                 }
             }
         });
-
-//        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+        //        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
 //            @Override
 //            public void handleOnBackPressed() {
 //                // Your custom back press logic here
@@ -111,10 +101,12 @@ public class SubmitComplaints extends AppCompatActivity {
 //
 //    }
     }
-
     public void onStudentComplaintsButtonClickBackButtonClick(View view) {
         Intent intent = new Intent(this, StudentHomeActivity.class);
         startActivity(intent);
+
+
     }
 }
+
 
