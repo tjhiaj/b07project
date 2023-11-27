@@ -2,6 +2,7 @@ package com.example.b07project;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,21 +21,53 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 
 public class ViewComplaints extends AppCompatActivity{
     FirebaseDatabase database;
+    List<Complaints> complaints;
+    ComplaintsAdapter complaintAdapter;
+    LinearLayout viewLayout;
     ArrayList<Map<String,String>> viewModels;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
+
+        //        detailedText = findViewById(R.id.complaints1);
+//        viewLayout = findViewById(R.id.viewComplaintLayout);
+        //LayoutTransition layoutTransition = new LayoutTransition();
+        //layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
+        //database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
+        complaints = new ArrayList<>();
+        //setupViewModel();
+        //if (database == null) return;
+
+//        // Dummy data for testing
+//
+        complaints.add(new Complaints("Announcement 1", "Apple"));
+//        complaints.add(new Complaints("Announcement 2", new ArrayList<>(Arrays.asList("Apple", "Banana", "pear"))));
+//        complaints.add(new Complaints("Announcement 3", new ArrayList<>(Arrays.asList("Apple", "Banana", "pear"))));
+
+        // Set up RecyclerView
+        RecyclerView activityView = findViewById(R.id.complaintsRecyclerView);
+        complaintAdapter = new ComplaintsAdapter(this, complaints);
+        activityView.setAdapter(complaintAdapter);
+        activityView.setLayoutManager(new LinearLayoutManager(this));
+
+        //setupViewModel();
+
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
         viewModels = new ArrayList<>();
         setupViewModel();
 
+    }
+    public void onStudentComplaintsButtonClickBackClick(View view) {
+        Intent intent = new Intent(this, AdminHomeActivity.class);
+        startActivity(intent);
     }
     //    public void onExpandClick(View view) {
 //        Intent intent = new Intent(this, ComplaintsExpand.class);
