@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Admin"
+            android:text="@string/admin"
             android:layout_marginEnd="8dp"
             android:onClick="OnAdminButtonClick"
             />
@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Student"
+            android:text="@string/student"
             android:onClick="OnStudentButtonClick"
             />
     </LinearLayout>

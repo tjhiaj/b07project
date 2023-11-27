@@ -20,7 +20,7 @@
         android:id="@+id/adminComplaintsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Complaints"
+        android:text="@string/complaintsHeader"
         android:onClick="onAdminComplaintsButtonClick"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center_horizontal"/>
@@ -29,7 +29,7 @@
         android:id="@+id/adminAnnouncementsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Announcements"
+        android:text="@string/announcements"
         android:onClick="onAdminAnnouncementsButtonClick"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center_horizontal"/>
@@ -38,7 +38,7 @@
         android:id="@+id/adminEventsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Events"
+        android:text="@string/events"
         android:onClick="onAdminEventsButtonClick"
         android:layout_marginBottom="38dp"
         android:layout_gravity="center_horizontal"/>
@@ -47,7 +47,7 @@
         android:id="@+id/greetingTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello, Admin!"
+        android:text="@string/hello_admin"
         android:textSize="18sp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
