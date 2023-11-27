@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:background="@color/teal"
-        android:text="Announcements"
+        android:text="@string/announcements"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="20sp"
