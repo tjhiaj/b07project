@@ -15,7 +15,7 @@ public class Event implements Parcelable {
     private String eventDescription;
     private int imageResourceId;
     private float averageRating;
-    private int[] ratings;
+    private List<Integer> ratings;
     private List<String> comments;
 
     // Required default constructor for Firebase
@@ -25,7 +25,7 @@ public class Event implements Parcelable {
         this.participantLimit = participantLimit;
     }
 
-    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments, int[] ratings) {
+    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments, List<Integer> ratings) {
         this.eventName = eventName;
         this.eventDescription = eventDescription;
         this.imageResourceId = imageResourceId;
@@ -40,7 +40,13 @@ public class Event implements Parcelable {
         imageResourceId = in.readInt();
         averageRating = in.readFloat();
         comments = in.createStringArrayList();
-        ratings = in.createIntArray();
+        int[] intArray = in.createIntArray();
+        if (intArray != null) {
+            ratings = new ArrayList<>();
+            for (int value : intArray) {
+                ratings.add(value);
+            }
+        }
     }
 
     public static final Creator<Event> CREATOR = new Creator<Event>() {
@@ -72,7 +78,7 @@ public class Event implements Parcelable {
     public float getRating() {return averageRating;}
 
     public List<String> getComments() {return comments;}
-    public int[] getRatings(){return ratings;}
+    public List<Integer> getRatings(){return ratings;}
 
     @Override
     public int describeContents() {
@@ -86,6 +92,12 @@ public class Event implements Parcelable {
         dest.writeInt(imageResourceId);
         dest.writeFloat(averageRating);
         dest.writeStringList(comments);
-        dest.writeIntArray(ratings);
+
+        int[] intArray = new int[ratings.size()];
+        for (int i = 0; i < ratings.size(); i++) {
+            intArray[i] = ratings.get(i);
+        }
+        dest.writeIntArray(intArray);
+        }
+
     }
-}
