@@ -51,8 +51,6 @@ public class Event implements Parcelable {
 
     private String eventID;
 
-
-
     public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments,  List<String> ratings, String eventID, int participantLimit) {
         this.eventName = eventName;
         this.eventDescription = eventDescription;
@@ -62,8 +60,6 @@ public class Event implements Parcelable {
         this.ratings = ratings;
         this.eventID = eventID;
         this.participantLimit = participantLimit;
-
-
     }
 
     protected Event(Parcel in) {
@@ -106,6 +102,7 @@ public class Event implements Parcelable {
     public float getRating() {return averageRating;}
 
     public List<String> getComments() {return comments;}
+
     public  List<String> getRatings(){return ratings;}
 
     @Override
