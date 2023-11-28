@@ -82,9 +82,9 @@ public class AdminAnnouncementsActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             // Log the actual data
                             if (dataSnapshot.exists()) {
-                                //Log.d(TAG, "Data: " + dataSnapshot.getValue());
+                                Log.d(TAG, "Data: " + dataSnapshot.getValue());
                             } else {
-                                //Log.d(TAG, "Data does not exist");
+                                Log.d(TAG, "Data does not exist");
                             }
                         }
 
