@@ -110,7 +110,7 @@
         Introduction to Computer Science II\n
         Discrete Mathematics\n
         Linear Algebra I for Mathematical Sciences OR MATA23, the alternative\n
-        AT LEAST ONE of the Calculus I's (Either MATA30, MATA31, MATA32)
+        AT LEAST ONE of the Calculus Is (Either MATA30, MATA31, MATA32)
     </string>
 
     <string name="CS_minor_disclaimer">
@@ -120,8 +120,8 @@
         Discrete Mathematics\n
         Linear Algebra I for Mathematical Sciences OR MATA23, the alternative\n
         \n
-        The better your grades for these courses, the better chance you have for getting into the
-        CS minor.
+        Basically, if you fulfill the above requirements and maximize your grades in the above\n
+        3 courses, your chances for getting into the CS Minor are better.
     </string>
 
     <string name="math_major_first_question">
