@@ -12,11 +12,12 @@ public class POStRequirementsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_requirements);
     }
-    /* not done yet
+
     public void onCSRequirementsClick(View view) {
-        Intent intent = new Intent(this, StudentAnnouncementsActivity.class);
+        Intent intent = new Intent(this, CSRequirementsActivity.class);
         startActivity(intent);
     }
+    /*
     public void onMathMajorRequirementsClick(View view) {
         Intent intent = new Intent(this, StudentAnnouncementsActivity.class);
         startActivity(intent);

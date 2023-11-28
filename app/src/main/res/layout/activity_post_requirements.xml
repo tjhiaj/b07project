@@ -69,6 +69,7 @@
                 android:layout_marginTop="50sp"
                 android:layout_marginEnd="30sp"
                 android:backgroundTint="@color/navyBlue"
+                android:onClick="onCSRequirementsClick"
                 android:text="@string/computer_science_post"
                 app:layout_constraintBottom_toTopOf="@+id/math_major_button"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -88,34 +89,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/computer_science_button" />
-
-            <Button
-                android:id="@+id/math_specialist_button2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30sp"
-                android:layout_marginTop="30sp"
-                android:layout_marginEnd="30sp"
-                android:backgroundTint="@color/navyBlue"
-                android:text="@string/math_specialist_post"
-                app:layout_constraintBottom_toTopOf="@+id/stats_button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/math_major_button" />
-
-            <Button
-                android:id="@+id/stats_button2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30sp"
-                android:layout_marginTop="30sp"
-                android:layout_marginEnd="30sp"
-                android:backgroundTint="@color/navyBlue"
-                android:text="@string/stats_post"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/math_specialist_button" />
 
             <Button
                 android:id="@+id/go_back_button"
