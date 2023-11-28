@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Event implements Parcelable {
@@ -15,7 +16,7 @@ public class Event implements Parcelable {
     private String eventDescription;
     private int imageResourceId;
     private float averageRating;
-    private List<String> ratings;
+    private List<Integer> ratings;
     private List<String> comments;
 
     public List<String> getParticipants() {
@@ -64,7 +65,7 @@ public class Event implements Parcelable {
         this.averageRating = averageRating;
     }
 
-    public void setRatings( List<String> ratings) {
+    public void setRatings( List<Integer> ratings) {
         this.ratings = ratings;
     }
 
@@ -82,7 +83,7 @@ public class Event implements Parcelable {
 
 
 
-    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments,  List<String> ratings, String eventID, int participantLimit, List<String> participants, LocalDateTime localDateTime) {
+    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments,  List<Integer> ratings, String eventID, int participantLimit, List<String> participants, LocalDateTime localDateTime) {
         this.eventName = eventName;
         this.eventDescription = eventDescription;
         this.imageResourceId = imageResourceId;
@@ -103,7 +104,13 @@ public class Event implements Parcelable {
         imageResourceId = in.readInt();
         averageRating = in.readFloat();
         comments = in.createStringArrayList();
-        ratings = in.createStringArrayList();
+        int[] intArray = in.createIntArray();
+        if (intArray != null){
+            ratings = new ArrayList<>();
+            for (int value : intArray){
+                ratings.add(value);
+            }
+        }
     }
 
     public static final Creator<Event> CREATOR = new Creator<Event>() {
@@ -137,7 +144,7 @@ public class Event implements Parcelable {
     public float getRating() {return averageRating;}
 
     public List<String> getComments() {return comments;}
-    public  List<String> getRatings(){return ratings;}
+    public  List<Integer> getRatings(){return ratings;}
 
     @Override
     public int describeContents() {
@@ -151,6 +158,6 @@ public class Event implements Parcelable {
         dest.writeInt(imageResourceId);
         dest.writeFloat(averageRating);
         dest.writeStringList(comments);
-        dest.writeStringList(ratings);
+        dest.writeList(ratings);
     }
 }
