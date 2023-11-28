@@ -42,9 +42,6 @@
             android:background="@drawable/rounded_edittext_background"
             android:hint="@string/insert_text_here"
             android:paddingLeft="8dp"
-            <!-- android:paddingStart="8dp"
-            android:paddingEnd="8dp" -->
-            <!-- Jo's code for padding above so idk how it should look like  -->
             android:textColorHint="#FFFFFF" />
 
         <TextView
@@ -67,9 +64,6 @@
             android:inputType="textMultiLine"
             android:minLines="5"
             android:paddingLeft="8dp"
-            <!-- android:paddingStart="8dp"
-            android:paddingEnd="8dp" -->
-            <!-- Jo's code for padding above so idk how it should look like  -->
             android:paddingTop="8dp"
             android:textColorHint="#FFFFFF" />
 

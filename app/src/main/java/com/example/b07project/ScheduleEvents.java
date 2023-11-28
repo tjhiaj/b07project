@@ -74,8 +74,8 @@ public class ScheduleEvents extends AppCompatActivity {
                 List<String> comments = new ArrayList<>();
                 comments.add("placeholder");
 
-                List<String> rating = new ArrayList<>();
-                rating.add("placeholder");
+                List<Integer> rating = new ArrayList<>();
+                rating.add(0);
 
                 List<String> participants = new ArrayList<>();
                 participants.add("placeholder");
