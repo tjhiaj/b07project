@@ -26,8 +26,8 @@ public class CSRequirementsActivity extends AppCompatActivity {
 
     public void onCSReqSubmitClick(View view){
         if (checkbox1.isChecked() && checkbox2.isChecked() && checkbox3.isChecked()) {
-            String message1 = "You qualify for UTSC's Computer Science POSt requirements and can" +
-                    "enroll in either a specialist or major CS program. Good job! Keep it up.";
+            String message1 = "You qualify for UTSC's Computer Science Major and Specialist " +
+                    "POSt! Good job.";
             Snackbar snackbar = Snackbar.make(view, message1, Snackbar.LENGTH_INDEFINITE);
 
             // Add an action (e.g., close button)
@@ -44,9 +44,8 @@ public class CSRequirementsActivity extends AppCompatActivity {
 //            Toast toast = Toast.makeText(getApplicationContext(), message, duration);
 //            toast.show();
         } else {
-            String message2 = "Sorry, you do not qualify for UTSC's Computer Science POSt " +
-                    "requirements and you may not enroll in either a specialist or major CS " +
-                    "program. Good luck in your future endeavors.";
+            String message2 = "Sorry, you do not qualify for UTSC's Computer Science Major and " +
+                    "Specialist POSt.";
             Snackbar snackbar = Snackbar.make(view, message2, Snackbar.LENGTH_INDEFINITE);
 
             // Add an action (e.g., close button)
@@ -66,5 +65,10 @@ public class CSRequirementsActivity extends AppCompatActivity {
 //            Toast toast = Toast.makeText(getApplicationContext(), message2, duration);
 //            toast.show();
         }
+    }
+
+    public void onCSReqGoBackClick(View view) {
+        Intent intent = new Intent(this, POStRequirementsActivity.class);
+        startActivity(intent);
     }
 }
