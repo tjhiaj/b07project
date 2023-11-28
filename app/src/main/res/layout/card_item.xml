@@ -71,7 +71,6 @@
                         android:background="@drawable/expand_arrow"
                         android:backgroundTint="@color/navyBlue"
                         android:minHeight="48dp"
-                        android:onClick="expand"
                         android:text=""
                         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                     <!--                        android:onClick="onExpandClick"-->
@@ -118,8 +117,7 @@
             android:id="@+id/text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:visibility="gone" />
+            android:text="TextView" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
