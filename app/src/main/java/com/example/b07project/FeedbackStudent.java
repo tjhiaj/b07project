@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class FeedbackStudent extends AppCompatActivity {
     private static final String TAG = "FeedbackStudent";
@@ -37,6 +38,8 @@ public class FeedbackStudent extends AppCompatActivity {
     private String eventID;
 
     private float rating;
+
+    private List<Integer> ratings;
 
     Event event;
 
@@ -60,6 +63,7 @@ public class FeedbackStudent extends AppCompatActivity {
 
         eventID = event.getEventID();
         rating = event.getRating();
+        ratings = event.getRatings();
 
         submitFeedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,35 +74,40 @@ public class FeedbackStudent extends AppCompatActivity {
                 DatabaseReference ratingsRef = feedbackRef.child("ratings");
                 ArrayList<Integer> ratingsList = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
 
+
+
                 String comment = commentEditText.getText().toString().trim();
                 int intRating = (int) ratingBar.getRating();
-
-
 
 
                 if (feedbackRef == null || comment.isEmpty()) {
                     return;
                 }
 
+                //increasing the number of people who gave the event a certain rating
                 if (intRating >= 1 && intRating <= 5) {
                     int index = intRating - 1; // Adjust index to match the rating (1 to 5)
                     int currentCount = ratingsList.get(index);
                     ratingsList.set(index, currentCount + 1);
 
                 commentsRef.push().setValue(comment);
-                float newOverallRating;
+                ratingsRef.setValue(ratingsList);
 
-                ratingsRef.setValue(ratingsList)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(FeedbackStudent.this, "Feedback submitted.", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(FeedbackStudent.this, "Failed in submitting feedback.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                //finds the new average rating now that the ratings list is updated to include the user's rating
+                float newOverallRating = calculateNewOverallRating(rating, intRating, ratingsList.size());
+
+
+                ratingRef.setValue(newOverallRating)  .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(FeedbackStudent.this, "Feedback submitted.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(FeedbackStudent.this, "Failed in submitting feedback.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
 
 
 
@@ -151,9 +160,14 @@ public class FeedbackStudent extends AppCompatActivity {
         });
 
 
-
-
-
-
     }
+
+    private float calculateNewOverallRating(float currentRating, float userRating, int size) {
+        // Your logic to calculate the new overall rating (e.g., taking the average)
+        int numberOfRatings = size; // Assuming this is the first rating, you might need to fetch this from the database
+        float sumOfRatings = currentRating * numberOfRatings + userRating;
+        return sumOfRatings / (numberOfRatings + 1);
+    }
+
+
     }
