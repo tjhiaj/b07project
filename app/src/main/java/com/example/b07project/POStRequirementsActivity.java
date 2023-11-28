@@ -17,6 +17,16 @@ public class POStRequirementsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CSRequirementsActivity.class);
         startActivity(intent);
     }
+
+    public void onPOStGoBackClick(View view){
+        Intent intent = new Intent(this, StudentHomeActivity.class);
+        startActivity(intent);
+    }
+
+    public void onCSMinorReqClick(View view){
+        Intent intent = new Intent(this, CSMinorRequirementsActivity.class);
+        startActivity(intent);
+    }
     /*
     public void onMathMajorRequirementsClick(View view) {
         Intent intent = new Intent(this, StudentAnnouncementsActivity.class);
