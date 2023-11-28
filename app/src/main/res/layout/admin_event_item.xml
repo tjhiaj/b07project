@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:background="@color/teal"
-        android:text="Events"
+        android:text="@string/events"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="20sp"
@@ -36,7 +36,8 @@
         android:id="@+id/eventDetailsTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Event Title"
+        <!-- android:text="Event Title" -->
+        <!-- Jo removed this so if anything breaks, uncomment this back -->
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/eventDetailsImageView"
@@ -49,7 +50,8 @@
         android:id="@+id/eventDetailsDescriptionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Event Description"
+        <!-- android:text="Event Description" -->
+        <!-- Jo removed it so if anything breaks, uncomment it back -->
         app:layout_constraintTop_toBottomOf="@id/eventDetailsTitleTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +76,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="5 stars: 10 | 4 stars: 5 | 3 stars: 3 | 2 stars: 1 | 1 star: 2"
+        <!-- android:text="5 stars: 10 | 4 stars: 5 | 3 stars: 3 | 2 stars: 1 | 1 star: 2" -->
+        <!-- Jo removed this but idk if important so uncomment it if u want it back -->
         app:layout_constraintTop_toBottomOf="@id/eventDetailsRatingBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +90,7 @@
         android:id="@+id/eventDetailsCommentsHeaderTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Comments"
+        android:text="@string/comments"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/ratingCountsTextView"

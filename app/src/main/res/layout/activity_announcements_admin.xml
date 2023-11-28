@@ -12,12 +12,13 @@
         android:background="#086788"
         android:gravity="center"
         android:paddingBottom="0dp"
-        android:text="Announcements"
+        android:text="@string/announcements"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <LinearLayout
+        android:id="@+id/admin_announcements_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -28,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Subject"
+            android:text="@string/subject"
             android:textColor="#086788"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -39,15 +40,18 @@
             android:layout_height="54dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/rounded_edittext_background"
-            android:hint="Insert text here..."
+            android:hint="@string/insert_text_here"
             android:paddingLeft="8dp"
+            <!-- android:paddingStart="8dp"
+            android:paddingEnd="8dp" -->
+            <!-- Jo's code for padding above so idk how it should look like  -->
             android:textColorHint="#FFFFFF" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Message"
+            android:text="@string/message"
             android:textColor="#086788"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -59,10 +63,13 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_edittext_background"
             android:gravity="top"
-            android:hint="Insert text here..."
+            android:hint="@string/insert_text_here"
             android:inputType="textMultiLine"
             android:minLines="5"
             android:paddingLeft="8dp"
+            <!-- android:paddingStart="8dp"
+            android:paddingEnd="8dp" -->
+            <!-- Jo's code for padding above so idk how it should look like  -->
             android:paddingTop="8dp"
             android:textColorHint="#FFFFFF" />
 
@@ -72,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="0dp"
-            android:text="Post" />
+            android:text="@string/post" />
     </LinearLayout>
 
     <RelativeLayout
