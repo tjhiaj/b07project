@@ -23,13 +23,13 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
         android:onClick="onStudentComplaintsButtonClick"
-        android:text="Complaints" />
+        android:text="@string/complaintsHeader" />
 
     <Button
         android:id="@+id/studentAnnouncementsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Announcements"
+        android:text="@string/announcements"
         android:onClick="onStudentAnnouncementsButtonClick"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center_horizontal"/>
@@ -38,16 +38,16 @@
         android:id="@+id/programButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:text="@string/program_of_study"
+        android:onClick="programButtonClick"
         android:layout_marginBottom="16dp"
-        android:onClick="onProgramButtonClick"
-        android:text="PoST" />
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:id="@+id/studentEventsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Events"
+        android:text="@string/events"
         android:onClick="onStudentEventsButtonClick"
         android:layout_marginBottom="38dp"
         android:layout_gravity="center_horizontal"/>
@@ -56,7 +56,7 @@
         android:id="@+id/greetingTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello, Student!"
+        android:text="@string/hello_student"
         android:textSize="18sp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"

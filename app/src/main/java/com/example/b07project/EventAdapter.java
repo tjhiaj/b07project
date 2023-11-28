@@ -2,6 +2,7 @@ package com.example.b07project;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                 Intent intent = new Intent(context, StudentEventRsvpActivity.class);
                 // If Admin - DO NOT DELETE
 //                Intent intent = new Intent(context, AdminEventDetailsActivity.class);
+                Log.i("pretty", event.toString());
                 intent.putExtra("EVENT", event);
                 context.startActivity(intent);
             }
