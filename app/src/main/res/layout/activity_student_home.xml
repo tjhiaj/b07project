@@ -41,7 +41,7 @@
         android:text="@string/program_of_study"
         android:onClick="programButtonClick"
         android:layout_marginBottom="16dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:id="@+id/studentEventsButton"

@@ -72,6 +72,18 @@
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
+            android:name=".POStRequirementsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
+        <activity
+            android:name=".CSRequirementsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
+        <activity
+            android:name=".CSMinorRequirementsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
+        <activity
             android:name=".EventViewActivity"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
