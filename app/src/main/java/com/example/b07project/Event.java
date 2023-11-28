@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Event implements Parcelable {
@@ -16,6 +17,22 @@ public class Event implements Parcelable {
     private float averageRating;
     private List<String> ratings;
     private List<String> comments;
+
+    private String eventID;
+
+    public float getAverageRating() {
+        return averageRating;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
+    }
+
+    private LocalDateTime localDateTime;
 
     public void setEventName(String eventName) {
         this.eventName = eventName;
@@ -49,9 +66,13 @@ public class Event implements Parcelable {
         this.eventID = eventID;
     }
 
-    private String eventID;
 
-    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments,  List<String> ratings, String eventID, int participantLimit) {
+
+
+
+
+
+    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments,  List<String> ratings, String eventID, int participantLimit, LocalDateTime localDateTime) {
         this.eventName = eventName;
         this.eventDescription = eventDescription;
         this.imageResourceId = imageResourceId;
@@ -60,6 +81,9 @@ public class Event implements Parcelable {
         this.ratings = ratings;
         this.eventID = eventID;
         this.participantLimit = participantLimit;
+        this.localDateTime = localDateTime;
+
+
     }
 
     protected Event(Parcel in) {
@@ -102,7 +126,6 @@ public class Event implements Parcelable {
     public float getRating() {return averageRating;}
 
     public List<String> getComments() {return comments;}
-
     public  List<String> getRatings(){return ratings;}
 
     @Override

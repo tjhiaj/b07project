@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 
 import org.checkerframework.checker.units.qual.A;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,21 @@ public class ScheduleEvents extends AppCompatActivity {
                 EditText eventNameEditText = findViewById(R.id.eventNameEditText);
                 EditText participantLimitEditText = findViewById(R.id.participantLimitEditText);
                 EditText descriptionEditText = findViewById(R.id.description);
+                Log.i("pretty", "edittext");
+                EditText yearEditText = findViewById(R.id.year);
+                EditText monthEditText = findViewById(R.id.month);
+                EditText dayEditText = findViewById(R.id.day);
+                EditText hourEditText = findViewById(R.id.hour);
+                EditText minuteEditText = findViewById(R.id.minute);
+
+
+
+                int year = Integer.parseInt(yearEditText.getText().toString());
+                int month = Integer.parseInt(monthEditText.getText().toString());
+                int day = Integer.parseInt(dayEditText.getText().toString());
+                int hour = Integer.parseInt(hourEditText.getText().toString());
+                int minute = Integer.parseInt(minuteEditText.getText().toString());
+
 
                 String eventName = eventNameEditText.getText().toString().trim();
                 String participantLimitStr = participantLimitEditText.getText().toString().trim();
@@ -61,10 +77,16 @@ public class ScheduleEvents extends AppCompatActivity {
                 List<String> rating = new ArrayList<>();
                 rating.add("placeholder");
 
+                Log.i("pretty", "before");
+                LocalDateTime localDateTime = LocalDateTime.of(2023, 11, 19, 12, 30);
+                Log.i("pretty", "before localdatetime");
+                localDateTime.withYear(year).withMonth(month).withDayOfMonth(day).withHour(hour).withMinute(minute);
+                Log.i("pretty", "after localdatetime");
+
 
                 int participantLimit = Integer.parseInt(participantLimitStr);
                 Log.i("pretty", "before Event");
-                Event newEvent = new Event(eventName, description, 0, 0, comments, rating, eventKey, participantLimit);
+                Event newEvent = new Event(eventName, description, 0, 0, comments, rating, eventKey, participantLimit, localDateTime);
                 Log.i("pretty", "before push");
                 eventsRef.child(eventKey).setValue(newEvent, new DatabaseReference.CompletionListener() {
                     @Override
@@ -76,6 +98,11 @@ public class ScheduleEvents extends AppCompatActivity {
                             eventNameEditText.setText("");
                             participantLimitEditText.setText("");
                             descriptionEditText.setText("");
+                            yearEditText.setText("");
+                            monthEditText.setText("");
+                            dayEditText.setText("");
+                            hourEditText.setText("");
+                            minuteEditText.setText("");
 
                             Toast.makeText(ScheduleEvents.this, "Event scheduled", Toast.LENGTH_SHORT).show();
                         } else {
