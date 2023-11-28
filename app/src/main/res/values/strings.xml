@@ -137,18 +137,4 @@
         Calculus II for Mathematical Sciences OR for Physical Sciences</string>
     <string name="title_activity_schedule_events">ScheduleEvents</string>
     <string name="title_activity_feedback_student">FeedbackStudent</string>
-    <string name="announcements">Announcements</string>
-    <string name="events">Events</string>
-    <string name="hello_admin">Hello, Admin!</string>
-    <string name="admin">Admin</string>
-    <string name="student">Student</string>
-    <string name="insert_text_here">Insert text here...</string>
-    <string name="post">Post</string>
-    <string name="my_events">My Events</string>
-    <string name="all_events">All Events</string>
-    <string name="program_of_study">POSt</string>
-    <string name="hello_student">Hello, Student!</string>
-    <string name="schedule">Schedule</string>
-    <string name="view_events">View Events</string>
-    <string name="comments">Comments</string>
 </resources>
