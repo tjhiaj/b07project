@@ -18,6 +18,16 @@ public class Event implements Parcelable {
     private List<String> ratings;
     private List<String> comments;
 
+    public List<String> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<String> participants) {
+        this.participants = participants;
+    }
+
+    private List<String> participants;
+
     private String eventID;
 
     public float getAverageRating() {
@@ -72,7 +82,7 @@ public class Event implements Parcelable {
 
 
 
-    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments,  List<String> ratings, String eventID, int participantLimit, LocalDateTime localDateTime) {
+    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments,  List<String> ratings, String eventID, int participantLimit, List<String> participants, LocalDateTime localDateTime) {
         this.eventName = eventName;
         this.eventDescription = eventDescription;
         this.imageResourceId = imageResourceId;
@@ -81,6 +91,7 @@ public class Event implements Parcelable {
         this.ratings = ratings;
         this.eventID = eventID;
         this.participantLimit = participantLimit;
+        this.participants = participants;
         this.localDateTime = localDateTime;
 
 

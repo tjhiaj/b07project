@@ -47,7 +47,7 @@ public class ScheduleEvents extends AppCompatActivity {
                 EditText eventNameEditText = findViewById(R.id.eventNameEditText);
                 EditText participantLimitEditText = findViewById(R.id.participantLimitEditText);
                 EditText descriptionEditText = findViewById(R.id.description);
-                Log.i("pretty", "edittext");
+
                 EditText yearEditText = findViewById(R.id.year);
                 EditText monthEditText = findViewById(R.id.month);
                 EditText dayEditText = findViewById(R.id.day);
@@ -77,16 +77,18 @@ public class ScheduleEvents extends AppCompatActivity {
                 List<String> rating = new ArrayList<>();
                 rating.add("placeholder");
 
-                Log.i("pretty", "before");
+                List<String> participants = new ArrayList<>();
+                participants.add("placeholder");
+
                 LocalDateTime localDateTime = LocalDateTime.of(2023, 11, 19, 12, 30);
-                Log.i("pretty", "before localdatetime");
+
                 localDateTime.withYear(year).withMonth(month).withDayOfMonth(day).withHour(hour).withMinute(minute);
-                Log.i("pretty", "after localdatetime");
+
 
 
                 int participantLimit = Integer.parseInt(participantLimitStr);
                 Log.i("pretty", "before Event");
-                Event newEvent = new Event(eventName, description, 0, 0, comments, rating, eventKey, participantLimit, localDateTime);
+                Event newEvent = new Event(eventName, description, 0, 0, comments, rating, eventKey, participantLimit, participants,localDateTime);
                 Log.i("pretty", "before push");
                 eventsRef.child(eventKey).setValue(newEvent, new DatabaseReference.CompletionListener() {
                     @Override
