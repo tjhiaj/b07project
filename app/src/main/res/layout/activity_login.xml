@@ -146,19 +146,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="30sp">
-
-                <ImageView
-                    android:id="@+id/cool_symbol"
-                    android:layout_width="match_parent"
-                    android:layout_height="200sp"
-                    android:contentDescription="@string/general_image_description"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/twilight_wave" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:paddingTop="30sp"/>
         </LinearLayout>
     </ScrollView>
 

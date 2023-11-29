@@ -35,7 +35,6 @@ public class SubmitComplaints extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaints);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");

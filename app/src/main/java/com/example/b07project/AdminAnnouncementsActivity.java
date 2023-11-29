@@ -35,7 +35,6 @@ public class AdminAnnouncementsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_announcements_admin);
 
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
 
         post = findViewById(R.id.postButton);
