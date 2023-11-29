@@ -33,7 +33,6 @@ public class ScheduleEvents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_admin_event);
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
 
         scheduleEventButton = findViewById(R.id.scheduleEventButton2);
