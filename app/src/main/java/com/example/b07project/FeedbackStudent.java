@@ -1,9 +1,5 @@
 package com.example.b07project;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +8,10 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.Task;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -76,45 +75,38 @@ public class FeedbackStudent extends AppCompatActivity {
         });
 
     }
-        private void submitFeedbackToEvent(String eventId) {
-            DatabaseReference feedbackRef = database.getReference("events").child(eventId).child("feedback");
 
-            String comment = commentEditText.getText().toString().trim();
-            float rating = ratingBar.getRating();
+    //    public void onStudentFeedbackButtonClickBackButtonClick(View view) {
+//        Intent intent = new Intent(this, StudentHomeActivity.class);
+//        startActivity(intent);
+//    }
+    private void submitFeedbackToEvent(String eventId) {
+        DatabaseReference feedbackRef = database.getReference("events").child(eventId).child("feedback");
 
-            if (feedbackRef == null || comment.isEmpty()) {
-                return;
-            }
+        String comment = commentEditText.getText().toString().trim();
+        float rating = ratingBar.getRating();
 
-            EventFeedbackStudent eventFeedback = new EventFeedbackStudent(comment, rating);
+        if (feedbackRef == null || comment.isEmpty()) {
+            return;
+        }
 
-            feedbackRef.push().setValue(eventFeedback, new DatabaseReference.CompletionListener() {
-                @Override
-                public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                    if (error == null) {
-                        // Feedback submitted successfully
-                        commentEditText.setText("");
-                        ratingBar.setRating(0);
-                        Toast.makeText(FeedbackStudent.this, "Feedback submitted", Toast.LENGTH_SHORT).show();
+        EventFeedbackStudent eventFeedback = new EventFeedbackStudent(comment, rating);
 
-                    } else {
-                        // Error submitting feedback
-                        Log.e(TAG, "Failed to provide feedback: " + error.getMessage(), error.toException());
-                    }
+        feedbackRef.push().setValue(eventFeedback, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                if (error == null) {
+                    // Feedback submitted successfully
+                    commentEditText.setText("");
+                    ratingBar.setRating(0);
+                    Toast.makeText(FeedbackStudent.this, "Feedback submitted", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    // Error submitting feedback
+                    Log.e(TAG, "Failed to provide feedback: " + error.getMessage(), error.toException());
                 }
-            });
-
-
-
-
-
-
-
-
-
-
-
-
+            }
+        });
 
 
     }
