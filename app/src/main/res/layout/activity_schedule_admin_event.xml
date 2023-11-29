@@ -11,15 +11,15 @@
         android:layout_height="63dp"
         android:background="#086788"
         android:gravity="center"
-        android:text="@string/enter_event_info"
         android:paddingBottom="0dp"
+        android:text="@string/enter_event_info"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/eventNameTextBox2"
+                android:id="@+id/eventNameTextBox"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:layout_marginStart="30dp"
@@ -77,28 +77,79 @@
                 android:textColorHint="#FFFFFF" />
 
             <TextView
-                android:id="@+id/datePickerLabel"
+                android:id="@+id/yearEventLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/date_picker"
+                android:text="@string/year"
                 android:textColor="#086788"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <DatePicker
-                android:id="@+id/datePicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <EditText
+                android:id="@+id/yearEventTextBox"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
-                android:background="@color/warmWhite"
-                android:calendarTextColor="@color/textBlue"
-                android:headerBackground="@color/navyBlue"
-                android:minDate="11/28/2023" />
+                android:background="@drawable/rounded_edittext_background"
+                android:hint="@string/enter_event_year"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textColorHint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/monthEventLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/month"
+                android:textColor="#086788"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/monthEventTextBox"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/rounded_edittext_background"
+                android:hint="@string/enter_event_month"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textColorHint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/dayEventLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/day"
+                android:textColor="#086788"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/dayEventTextBox"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/rounded_edittext_background"
+                android:hint="@string/enter_event_day"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textColorHint="#FFFFFF" />
 
             <TextView
                 android:id="@+id/eventHourLabel"
@@ -151,31 +202,6 @@
                 android:textColorHint="#FFFFFF" />
 
             <TextView
-                android:id="@+id/eventMeridiemLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/AMPM"
-                android:textColor="#086788"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/eventMeridiemTextBox"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/rounded_edittext_background"
-                android:hint="@string/enter_event_meridiem"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textColorHint="#FFFFFF" />
-
-            <TextView
                 android:id="@+id/eventDescriptionLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -201,6 +227,28 @@
                 android:paddingRight="8dp"
                 android:textColorHint="#FFFFFF" />
 
+            <Button
+                android:id="@+id/scheduleEventButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="@color/navyBlue"
+                android:text="@string/schedule_event_button" />
+
+            <Button
+                android:id="@+id/scheduleEventBackButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/navyBlue"
+                android:onClick="onAdminEventsBackButtonClick"
+                android:text="@string/go_back_button_text" />
+
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

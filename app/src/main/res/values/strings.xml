@@ -75,15 +75,21 @@
     <string name="enter_event_name">Enter event name...</string>
     <string name="participant_limit">Participant Limit</string>
     <string name="enter_event_participant_limit">Enter participant limit...</string>
-    <string name="date_picker">Please select a date.</string>
-    <string name="hour">Hour of Event (12 hour clock time please)</string>
-    <string name="enter_event_hour">Enter hour...</string>
-    <string name="minute">Minute of Event</string>
-    <string name="enter_event_minute">Enter minute...</string>
+    <string name="year">Year of event (In YYYY format please)</string>
+    <string name="enter_event_year">Enter event year (YYYY)...</string>
+    <string name="month">Month of event (In MM format please)</string>
+    <string name="enter_event_month">Enter event month (MM)...</string>
+    <string name="day">Day of event (In DD format please)</string>
+    <string name="enter_event_day">Enter event day (DD)...</string>
+    <string name="hour">Hour of Event (24 hour clock time, HH format)</string>
+    <string name="enter_event_hour">Enter hour (HH)...</string>
+    <string name="minute">Minute of Event (mm format)</string>
+    <string name="enter_event_minute">Enter minute (mm)...</string>
     <string name="AMPM">AM or PM</string>
     <string name="enter_event_meridiem">Enter AM or PM...</string>
     <string name="event_description">Event Description</string>
     <string name="enter_event_description">Enter event description...</string>
+    <string name="schedule_event_button">Schedule Event</string>
 
     <!-- the following strings are used in the post requirement views. -->
     <string name="do_I_qualify_heading">Do I qualify for POSt?</string>
