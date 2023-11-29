@@ -35,15 +35,21 @@ public class Event implements Parcelable {
         return averageRating;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
-    }
-
-    public void setLocalDateTime(LocalDateTime localDateTime) {
+//    public LocalDateTime getLocalDateTime() {
+//        return localDateTime;
+//    }
+//
+//    public void setLocalDateTime(LocalDateTime localDateTime) {
+//        this.localDateTime = localDateTime;
+//    }
+//
+//    private LocalDateTime localDateTime;
+    //try dealing with view events problem
+    private String localDateTime;
+    public void setLocalDateTime(String localDateTime) {
         this.localDateTime = localDateTime;
     }
 
-    private LocalDateTime localDateTime;
 
     public void setEventName(String eventName) {
         this.eventName = eventName;
@@ -78,7 +84,7 @@ public class Event implements Parcelable {
     }
 
     public Event(){}
-    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments,  List<Integer> ratings, String eventID, int participantLimit, List<String> participants, LocalDateTime localDateTime) {
+    public Event(String eventName, String eventDescription, int imageResourceId, float averageRating, List<String> comments,  List<Integer> ratings, String eventID, int participantLimit, List<String> participants, String localDateTime) {
         this.eventName = eventName;
         this.eventDescription = eventDescription;
         this.imageResourceId = imageResourceId;

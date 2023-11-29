@@ -2,6 +2,7 @@ package com.example.b07project;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class EventViewActivity extends AppCompatActivity {
     EventAdapter adapter;
@@ -62,19 +64,143 @@ public class EventViewActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for(DataSnapshot eventSnapshot:dataSnapshot.getChildren()){
+                        Log.i("eventSnapshot",eventSnapshot.toString());
                         Event event = eventSnapshot.getValue(Event.class);
                         if(event!= null){
-                        event.setEventName(dataSnapshot.child("eventName").getValue().toString());
-                        event.setEventDescription(dataSnapshot.child("eventDescription").getValue().toString());
-                        event.setImageResourceId((int) dataSnapshot.child("imageSourceId ").getValue());
-                        event.setAverageRating((float) dataSnapshot.child("averageRating").getValue());
-                        event.setComments((List<String>)dataSnapshot.child("comments").getValue());
-                        event.setRatings((List<Integer>) dataSnapshot.child("ratings").getValue());
-                        event.setEventID(dataSnapshot.child("eventID").getValue().toString());
-                        event.setParticipantLimit((int) dataSnapshot.child("participantLimit").getValue());
-                        event.setParticipants((List<String>) dataSnapshot.child("participants").getValue());
-                        event.setLocalDateTime((LocalDateTime) dataSnapshot.child("localDateTime").getValue());
-                        eventList.add(event);
+                            Log.i("event",event.toString());
+                            //eventName
+                            if(eventSnapshot.hasChild("eventName")){
+                                String eventName = eventSnapshot.child("eventName").getValue(String.class);
+                                event.setEventName(eventName);
+                                assert eventName != null;
+                                Log.i("eventName", eventName);
+                            }else{
+                                Log.i("eventName", "no child");
+                            }
+                            //eventDescription
+                            if(eventSnapshot.hasChild("eventDescription")){
+                                String eventDescription = eventSnapshot.child("eventDescription").getValue(String.class);
+                                event.setEventDescription(eventDescription);
+                                assert eventDescription != null;
+                                Log.i("eventDescription", eventDescription);
+                            }else{
+                                Log.i("eventDescription", "no child");
+                            }
+                            //LocalDateTime
+                            if(eventSnapshot.hasChild("localDateTime")){
+                                String localDateTime = eventSnapshot.child("localDateTime").getValue().toString();
+                                event.setLocalDateTime(localDateTime);
+                                assert localDateTime != null;
+                                Log.i("localDateTime", localDateTime);
+                            }else{
+                                Log.i("localDateTime", "no child");
+                            }
+                            //eventID
+                            if(eventSnapshot.hasChild("eventID")){
+                                String eventID = eventSnapshot.child("eventID").getValue(String.class);
+                                event.setEventID(eventID);
+                                assert eventID != null;
+                                Log.i("eventID", eventID);
+                            }else{
+                                Log.i("eventID", "no child");
+                            };
+                            //imageSourceId
+                            if (eventSnapshot.hasChild("imageResourceId")) {
+                                Integer imageSourceId = eventSnapshot.child("imageResourceId").getValue(Integer.class);
+                                if (imageSourceId != null) {
+                                    event.setImageResourceId(imageSourceId);
+                                    Log.i("imageResourceId", imageSourceId.toString());
+                                } else {
+                                    Log.i("imageResourceId", "null");
+                                }
+                            } else {
+                                Log.i("imageResourceId", "no child");
+                            }
+                            //averageRating
+                            if (eventSnapshot.hasChild("averageRating")) {
+                                Float averageRating = eventSnapshot.child("averageRating").getValue(Float.class);
+                                if (averageRating != null) {
+                                    event.setAverageRating(averageRating);
+                                    Log.i("averageRating", averageRating.toString());
+                                } else {
+                                    Log.i("averageRating", "null");
+                                }
+                            } else {
+                                Log.i("averageRating", "no child");
+                            }
+                            //Comments
+                            if (eventSnapshot.hasChild("comments")) {
+                                Object rawComments = eventSnapshot.child("comments").getValue();
+                                if (rawComments instanceof List<?>) {
+                                    List<?> rawCommentsList = (List<?>) rawComments;
+                                    if (!rawCommentsList.isEmpty() && allElementsAreString(rawCommentsList)) {
+                                        List<String> commentsList = convertList(rawCommentsList, String.class);
+                                        event.setComments(commentsList);
+                                        Log.w("comments", commentsList.toString());
+                                    } else {
+                                        Log.w("comments", "List elements are not of type String");
+                                    }
+                                } else {
+                                    Log.w("comments", "comments is not a List");
+                                }
+                            } else {
+                                Log.i("comments", "no child");
+                            }
+                            //Ratings
+                            if (eventSnapshot.hasChild("ratings")) {
+                                Object rawRatings = eventSnapshot.child("ratings").getValue();
+                                if (rawRatings instanceof List<?>) {
+                                    List<?> rawRatingsList = (List<?>) rawRatings;
+                                    if (!rawRatingsList.isEmpty() && allElementsAreInteger(rawRatingsList)) {
+                                        List<Integer> ratingsList = convertList(rawRatingsList, Integer.class);
+                                        event.setRatings(ratingsList);
+                                        Log.w("ratings", ratingsList.toString());
+                                    } else {
+                                        if(rawRatingsList.isEmpty()){
+                                            Log.w("ratings", "List is empty");
+                                        }
+                                        else{
+                                            Log.w("ratings", "List elements are not of type Integer");
+                                        }
+                                    }
+                                } else {
+                                    Log.w("ratings", "ratings is not a List");
+                                }
+                            } else {
+                                Log.i("ratings", "no child");
+                            }
+
+                            //participantLimit
+                            if (eventSnapshot.hasChild("participantLimit")) {
+                                Integer participantLimit = eventSnapshot.child("participantLimit").getValue(Integer.class);
+                                if (participantLimit != null) {
+                                    event.setParticipantLimit(participantLimit);
+                                    Log.i("participantLimit", participantLimit.toString());
+                                } else {
+                                    Log.i("participantLimit", "null");
+                                }
+                            } else {
+                                Log.i("participantLimit", "no child");
+                            }
+                            //participants
+                            if (eventSnapshot.hasChild("participants")) {
+                                Object rawParticipants = eventSnapshot.child("participants").getValue();
+                                if (rawParticipants instanceof List<?>) {
+                                    List<?> rawParticipantsList = (List<?>) rawParticipants;
+                                    if (!rawParticipantsList.isEmpty() && allElementsAreString(rawParticipantsList)) {
+                                        List<String> participantsList = convertList(rawParticipantsList, String.class);
+                                        event.setParticipants(participantsList);
+                                        Log.w("participants", participantsList.toString());
+                                    } else {
+                                        Log.w("participants", "List elements are not of type String");
+                                    }
+                                } else {
+                                    Log.w("participants", "comments is not a List");
+                                }
+                            } else {
+                                Log.i("participants", "no child");
+                            }
+                            eventList.add(event);
                         }
                     }
 
@@ -101,6 +227,30 @@ public class EventViewActivity extends AppCompatActivity {
             }
         });
     }
+    private static boolean allElementsAreInteger(List<?> integerList) {
+        for (Object element : integerList) {
+            if (!(element instanceof Integer)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static boolean allElementsAreString(List<?> list) {
+        for (Object element : list) {
+            if (!(element instanceof String)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static <T> List<T> convertList(List<?> list, Class<T> targetType) {
+        List<T> result = new ArrayList<>();
+        for (Object element : list) {
+            result.add(targetType.cast(element));
+        }
+        return result;
+    }
 
 }
+
 
