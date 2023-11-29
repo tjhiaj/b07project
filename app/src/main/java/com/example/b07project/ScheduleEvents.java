@@ -54,6 +54,19 @@ public class ScheduleEvents extends AppCompatActivity {
                 EditText hourEditText = findViewById(R.id.hour);
                 EditText minuteEditText = findViewById(R.id.minute);
 
+                if (eventNameEditText.getText().toString().isEmpty() ||
+                        participantLimitEditText.getText().toString().isEmpty() ||
+                        descriptionEditText.getText().toString().isEmpty() ||
+                        yearEditText.getText().toString().isEmpty() ||
+                        monthEditText.getText().toString().isEmpty() ||
+                        dayEditText.getText().toString().isEmpty() ||
+                        hourEditText.getText().toString().isEmpty() ||
+                        minuteEditText.getText().toString().isEmpty()) {
+
+                    // Show an error message or toast indicating that all fields must be filled
+                    Toast.makeText(ScheduleEvents.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
 
                 int year = Integer.parseInt(yearEditText.getText().toString());
@@ -118,7 +131,7 @@ public class ScheduleEvents extends AppCompatActivity {
     }
 
     public void onAdminEventsBackButtonClick(View view) {
-        Intent intent = new Intent(this, AdminHomeActivity.class);
+        Intent intent = new Intent(this, ScheduleOrViewActivity.class);
         startActivity(intent);
         finish();
     }
