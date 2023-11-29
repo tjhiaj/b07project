@@ -73,13 +73,15 @@
 
     <!-- the following strings are used in the post requirement views. -->
     <string name="do_I_qualify_heading">Do I qualify for POSt?</string>
-    <string name="do_I_qualify_CS_heading">Do I qualify for CS POSt?</string>
+    <string name="do_I_qualify_CS_heading">Do I qualify for CS Major or Specialist POSt?</string>
+    <string name="do_I_qualify_CS_minor_heading">Do I qualify for CS Minor POSt?</string>
     <string name="do_I_qualify_math_major_heading">Do I qualify for Math Major POSt?</string>
     <string name="do_I_qualify_math_specialist_heading">Do I qualify for Math Specialist POSt?</string>
     <string name="do_I_qualify_stats_heading">Do I qualify for Statistics POSt?</string>
     <string name="please_select_heading">Please select the category you are interested in.</string>
     <string name="please_answer_heading">Please answer the following.</string>
     <string name="computer_science_post">Computer Science (Both Specialist and Major)</string>
+    <string name="computer_science_minor_post">Computer Science (Only Minor)</string>
     <string name="math_major_post">Mathematics Major</string>
     <string name="math_specialist_post">Mathematics Specialist</string>
     <string name="stats_post">Statistics (Both Specialist and Major)</string>
@@ -100,6 +102,29 @@
         Discrete Mathematics\n
         Linear Algebra I for Mathematical Sciences\n
         Calculus II for Mathematical Sciences</string>
+
+    <string name="cs_minor_first_question">
+        Have you completed a total of 4 credits? (I.E. eight credited courses)
+    </string>
+    <string name="cs_minor_second_question">
+        Out of those 4 credits, have you obtained a credit in each of these?:\n
+        Introduction to Computer Science I\n
+        Introduction to Computer Science II\n
+        Discrete Mathematics\n
+        Linear Algebra I for Mathematical Sciences OR MATA23, the alternative\n
+        AT LEAST ONE of the Calculus Is (Either MATA30, MATA31, MATA32)
+    </string>
+
+    <string name="CS_minor_disclaimer">
+        Note: Even if you meet these requirements, you will be evaluated based on your grades in\n
+        these courses:\n
+        Introduction to Computer Science II\n
+        Discrete Mathematics\n
+        Linear Algebra I for Mathematical Sciences OR MATA23, the alternative\n
+        \n
+        Basically, if you fulfill the above requirements and maximize your grades in the above\n
+        3 courses, your chances for getting into the CS Minor are better.
+    </string>
 
     <string name="math_major_first_question">
         Do you have at least a GPA of 2.0 over the following courses?\n
@@ -139,4 +164,18 @@
         Calculus II for Mathematical Sciences OR for Physical Sciences</string>
     <string name="title_activity_schedule_events">ScheduleEvents</string>
     <string name="title_activity_feedback_student">FeedbackStudent</string>
+    <string name="announcements">Announcements</string>
+    <string name="events">Events</string>
+    <string name="hello_admin">Hello, Admin!</string>
+    <string name="admin">Admin</string>
+    <string name="student">Student</string>
+    <string name="insert_text_here">Insert text here...</string>
+    <string name="post">Post</string>
+    <string name="my_events">My Events</string>
+    <string name="all_events">All Events</string>
+    <string name="program_of_study">POSt</string>
+    <string name="hello_student">Hello, Student!</string>
+    <string name="schedule">Schedule</string>
+    <string name="view_events">View Events</string>
+    <string name="comments">Comments</string>
 </resources>

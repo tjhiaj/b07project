@@ -28,32 +28,6 @@ public class Login extends AppCompatActivity {
 
     TextView textView;
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if(currentUser != null){
-
-//            if ( UserInfo.getInstance().getRole()== UserInfo.RoleType.Student){
-//                Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//
-//            if ( UserInfo.getInstance().getRole()== UserInfo.RoleType.Admin){
-//                Intent intent = new Intent(getApplicationContext(), AdminHomeActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-
-
-//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//            startActivity(intent);
-//            finish();
-
-//        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

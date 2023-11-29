@@ -1,7 +1,10 @@
 package com.example.b07project;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,8 +17,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentEventRsvpActivity extends AppCompatActivity {
     private FirebaseDatabase database;
@@ -24,7 +33,8 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
 
     private TextView top_header_events;
 
-    private String eventId; // Assume you receive the eventId from the previous activity
+    private String eventId;
+
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser currentUser = auth.getCurrentUser();
@@ -34,6 +44,7 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        Log.i("pretty", "whats going on");
         setContentView(R.layout.student_event_item);
 
         eventDetailsTitleTextView = findViewById(R.id.eventDetailsTitleTextView);
@@ -51,41 +62,96 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
             event = intent.getParcelableExtra("EVENT");
         }
 
+        eventId = event.getEventID();
 
+//
 
-        eventId = getIntent().getStringExtra("eventId");
-        String eventName = event.getEventID();
+        if(eventId == null)
+            Log.i("pretty", "AAAAANULL");
+        Log.i("pretty2", event.toString());
+
+        String eventName = event.getEventName();
 
         eventDetailsTitleTextView.setText(eventName);
 
         top_header_events.setText(eventName);
 
+
         rsvpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("pretty", "OnClick");
                 rsvpForEvent();
+                Intent intent = new Intent(StudentEventRsvpActivity.this, EventViewActivity.class);
+                startActivity(intent);
+
             }
         });
 
     }
 
     private void rsvpForEvent() {
-        DatabaseReference eventsRef = database.getReference("events").child(eventId).child("participants");
+        Log.i("pretty", "RSVP");
+        DatabaseReference eventsRef = database.getReference("events").child(eventId);
+        Log.i("pretty", "error found");
+        DatabaseReference participantLimitRef = eventsRef.child("participantLimit");
+        DatabaseReference participantsRef = eventsRef.child("participants");
+        // Add the current user's UID to the "participants" node under the specific event
+        Log.i("pretty", currentUser.getUid());
 
-        // Check if the student has already RSVP'd
-        // This is a basic example and might not be the most efficient way to check
-        // In a real-world scenario, you might want to improve this logic
-        eventsRef.child(currentUser.getUid()).setValue(true).addOnCompleteListener(new OnCompleteListener<Void>() {
+        participantLimitRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(StudentEventRsvpActivity.this, "RSVP successful", Toast.LENGTH_SHORT).show();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // Participant limit is the value stored in the database
+                    long participantLimit = dataSnapshot.getValue(Long.class);
+
+                    // Check if the participant limit has been reached
+                    participantsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.getChildrenCount() >= participantLimit) {
+                                // Participant limit reached, prevent user from signing up
+                                Toast.makeText(StudentEventRsvpActivity.this, "Participant limit reached. Cannot RSVP.", Toast.LENGTH_SHORT).show();
+                            } else {
+                                // Participant limit not reached, add the user to the participants list
+                                participantsRef.child(currentUser.getUid()).setValue(true)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(StudentEventRsvpActivity.this, "RSVP successful", Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    Toast.makeText(StudentEventRsvpActivity.this, "RSVP failed", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            // Handle the error
+                            Toast.makeText(StudentEventRsvpActivity.this, "Error checking participant limit", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 } else {
-                    Toast.makeText(StudentEventRsvpActivity.this, "RSVP failed", Toast.LENGTH_SHORT).show();
+                    // Handle the case where participantLimitRef does not exist
+                    Toast.makeText(StudentEventRsvpActivity.this, "Participant limit not available", Toast.LENGTH_SHORT).show();
                 }
             }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle the error
+                Toast.makeText(StudentEventRsvpActivity.this, "Error retrieving participant limit", Toast.LENGTH_SHORT).show();
+            }
         });
+
     }
+
+
+
 
 
 }
