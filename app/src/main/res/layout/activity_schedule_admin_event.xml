@@ -11,8 +11,8 @@
         android:layout_height="63dp"
         android:background="#086788"
         android:gravity="center"
-        android:paddingBottom="0dp"
         android:text="@string/enter_event_info"
+        android:paddingBottom="0dp"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -52,7 +52,7 @@
                 android:textColorHint="#FFFFFF" />
 
             <TextView
-                android:id="@+id/eventNameLabel"
+                android:id="@+id/participantLimitLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -76,17 +76,130 @@
                 android:paddingRight="8dp"
                 android:textColorHint="#FFFFFF" />
 
+            <TextView
+                android:id="@+id/datePickerLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/date_picker"
+                android:textColor="#086788"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <DatePicker
                 android:id="@+id/datePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
                 android:layout_marginEnd="30dp"
                 android:background="@color/warmWhite"
                 android:calendarTextColor="@color/textBlue"
                 android:headerBackground="@color/navyBlue"
                 android:minDate="11/28/2023" />
+
+            <TextView
+                android:id="@+id/eventHourLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/hour"
+                android:textColor="#086788"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/hourTextBox"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/rounded_edittext_background"
+                android:hint="@string/enter_event_hour"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textColorHint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/eventMinuteLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/minute"
+                android:textColor="#086788"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/minuteTextBox"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/rounded_edittext_background"
+                android:hint="@string/enter_event_minute"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textColorHint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/eventMeridiemLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/AMPM"
+                android:textColor="#086788"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/eventMeridiemTextBox"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/rounded_edittext_background"
+                android:hint="@string/enter_event_meridiem"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textColorHint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/eventDescriptionLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/event_description"
+                android:textColor="#086788"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/eventDescriptionTextBox"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/rounded_edittext_background"
+                android:hint="@string/enter_event_description"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textColorHint="#FFFFFF" />
 
         </LinearLayout>
     </ScrollView>
