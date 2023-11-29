@@ -69,6 +69,13 @@
     <string name="logout">LOGOUT</string>
     <string name="general_image_description">cool image!</string>
 
+    <!-- the following strings are used in the event view. -->
+    <string name="enter_event_info">Add an event!</string>
+    <string name="event_name">Event Name</string>
+    <string name="enter_event_name">Enter event name...</string>
+    <string name="participant_limit">Participant Limit</string>
+    <string name="enter_event_participant_limit">Enter participant limit...</string>
+
     <!-- the following strings are used in the post requirement views. -->
     <string name="do_I_qualify_heading">Do I qualify for POSt?</string>
     <string name="do_I_qualify_CS_heading">Do I qualify for CS Major or Specialist POSt?</string>
