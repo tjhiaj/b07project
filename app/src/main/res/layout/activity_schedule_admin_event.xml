@@ -77,129 +77,97 @@
                 android:textColorHint="#FFFFFF" />
 
             <TextView
-                android:id="@+id/yearEventLabel"
+                android:id="@+id/dateEventLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/year"
+                android:text="@string/date"
                 android:textColor="#086788"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/yearEventTextBox"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/rounded_edittext_background"
-                android:hint="@string/enter_event_year"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textColorHint="#FFFFFF" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/dayEventTextBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:hint="@string/enter_event_day"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:textColorHint="#FFFFFF" />
+
+                <EditText
+                    android:id="@+id/monthEventTextBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:hint="@string/enter_event_month"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:textColorHint="#FFFFFF" />
+
+                <EditText
+                    android:id="@+id/yearEventTextBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:hint="@string/enter_event_year"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:textColorHint="#FFFFFF" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/monthEventLabel"
+                android:id="@+id/eventTimeLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/month"
+                android:text="@string/time"
                 android:textColor="#086788"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/monthEventTextBox"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/rounded_edittext_background"
-                android:hint="@string/enter_event_month"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textColorHint="#FFFFFF" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/dayEventLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/day"
-                android:textColor="#086788"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/hourTextBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:hint="@string/enter_event_hour"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:textColorHint="#FFFFFF" />
 
-            <EditText
-                android:id="@+id/dayEventTextBox"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/rounded_edittext_background"
-                android:hint="@string/enter_event_day"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textColorHint="#FFFFFF" />
-
-            <TextView
-                android:id="@+id/eventHourLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/hour"
-                android:textColor="#086788"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/hourTextBox"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/rounded_edittext_background"
-                android:hint="@string/enter_event_hour"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textColorHint="#FFFFFF" />
-
-            <TextView
-                android:id="@+id/eventMinuteLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/minute"
-                android:textColor="#086788"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/minuteTextBox"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/rounded_edittext_background"
-                android:hint="@string/enter_event_minute"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textColorHint="#FFFFFF" />
+                <EditText
+                    android:id="@+id/minuteTextBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:hint="@string/enter_event_minute"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:textColorHint="#FFFFFF" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/eventDescriptionLabel"

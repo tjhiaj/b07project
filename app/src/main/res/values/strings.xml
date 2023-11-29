@@ -76,11 +76,18 @@
     <string name="participant_limit">Participant Limit</string>
     <string name="enter_event_participant_limit">Enter participant limit...</string>
     <string name="year">Year of event (In YYYY format please)</string>
-    <string name="enter_event_year">Enter event year (YYYY)...</string>
+    <string name="enter_event_year">YYYY</string>
     <string name="month">Month of event (In MM format please)</string>
-    <string name="enter_event_month">Enter event month (MM)...</string>
+    <string name="enter_event_month">MM</string>
     <string name="day">Day of event (In DD format please)</string>
-    <string name="enter_event_day">Enter event day (DD)...</string>
+    <string name="enter_event_day">DD</string>
+
+    <string name="date">Date of Event (DD/MM/YYYY, please enter the numbers)</string>
+    <string name="enter_event_date">Enter event date (DD/MM/YYYY)...</string>
+
+    <string name="time">Time of event (24 hour clock).</string>
+    <string name="enter_event_time">Enter event date (DD/MM/YYYY)...</string>
+
     <string name="hour">Hour of Event (24 hour clock time, HH format)</string>
     <string name="enter_event_hour">Enter hour (HH)...</string>
     <string name="minute">Minute of Event (mm format)</string>
