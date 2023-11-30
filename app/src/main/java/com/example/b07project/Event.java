@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +49,9 @@ public class Event implements Parcelable {
     private String localDateTime;
     public void setLocalDateTime(String localDateTime) {
         this.localDateTime = localDateTime;
+    }
+    public String getLocalDateTime() {
+        return localDateTime;
     }
 
 
@@ -97,7 +101,7 @@ public class Event implements Parcelable {
         this.localDateTime = localDateTime;
     }
 
-    protected Event(Parcel in) {
+   /* protected Event(Parcel in) {
         eventName = in.readString();
         eventDescription = in.readString();
         imageResourceId = in.readInt();
@@ -110,7 +114,25 @@ public class Event implements Parcelable {
                 ratings.add(value);
             }
         }
-    }
+    }*/
+   protected Event(Parcel in) {
+       eventName = in.readString();
+       eventDescription = in.readString();
+       imageResourceId = in.readInt();
+       averageRating = in.readFloat();
+       comments = in.createStringArrayList();
+       eventID = in.readString();
+       int[] intArray = in.createIntArray();
+       if (intArray != null){
+           ratings = new ArrayList<>();
+           for (int value : intArray){
+               ratings.add(value);
+           }
+       }
+       participants = in.createStringArrayList();
+       localDateTime = in.readString();
+       participantLimit = in.readInt();
+   }
 
     public static final Creator<Event> CREATOR = new Creator<Event>() {
         @Override
@@ -150,13 +172,46 @@ public class Event implements Parcelable {
         return 0;
     }
 
-    @Override
+    /*@Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(eventName);
         dest.writeString(eventDescription);
         dest.writeInt(imageResourceId);
         dest.writeFloat(averageRating);
         dest.writeStringList(comments);
+        dest.writeList(ratings != null ? new ArrayList<>(ratings) : null);
+        dest.writeStringList(participants);
+        dest.writeString(localDateTime);
+    }*/
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(eventName);
+        dest.writeString(eventDescription);
+        dest.writeInt(imageResourceId);
+        dest.writeFloat(averageRating);
+        dest.writeStringList(comments);
+        dest.writeString(eventID);
         dest.writeList(ratings);
+        dest.writeStringList(participants);
+        dest.writeString(localDateTime);
+        dest.writeInt(participantLimit);
+
     }
+    @NonNull
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventName='" + eventName + '\'' +
+                ", participantLimit=" + participantLimit +
+                ", eventDescription='" + eventDescription + '\'' +
+                ", imageResourceId=" + imageResourceId +
+                ", averageRating=" + averageRating +
+                ", ratings=" + ratings +
+                ", comments=" + comments +
+                ", participants=" + participants +
+                ", eventID='" + eventID + '\'' +
+                ", localDateTime='" + localDateTime + '\'' +
+                '}';
+    }
+
 }

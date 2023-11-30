@@ -89,15 +89,14 @@ public class ScheduleEvents extends AppCompatActivity {
 
                 List<Integer> rating = new ArrayList<>();
                 for(int i = 0;i<5;i++){
-                    rating.add(i);
+                    rating.add(0);
                 }
 
                 List<String> participants = new ArrayList<>();
                 participants.add("placeholder");
 
                 LocalDateTime localDateTime = LocalDateTime.of(2023, 11, 19, 12, 30);
-
-                localDateTime.withYear(year).withMonth(month).withDayOfMonth(day).withHour(hour).withMinute(minute);
+                //localDateTime.withYear(year).withMonth(month).withDayOfMonth(day).withHour(hour).withMinute(minute);
                 String formattedDateTime = localDateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
 

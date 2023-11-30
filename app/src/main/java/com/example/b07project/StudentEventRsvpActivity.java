@@ -50,7 +50,7 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
         eventDetailsTitleTextView = findViewById(R.id.eventDetailsTitleTextView);
         top_header_events = findViewById(R.id.top_header_events);
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
+ //       FirebaseDatabase.getInstance().setPersistenceEnabled(false);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
 
         rsvpButton = findViewById(R.id.RsvpButton);
@@ -61,7 +61,7 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
         if (intent != null && intent.hasExtra("EVENT")) {
             event = intent.getParcelableExtra("EVENT");
         }
-
+        assert event != null;
         eventId = event.getEventID();
 
 //
@@ -82,9 +82,6 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i("pretty", "OnClick");
                 rsvpForEvent();
-                Intent intent = new Intent(StudentEventRsvpActivity.this, EventViewActivity.class);
-                startActivity(intent);
-
             }
         });
 
@@ -121,6 +118,8 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
                                                     Toast.makeText(StudentEventRsvpActivity.this, "RSVP successful", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(StudentEventRsvpActivity.this, EventViewActivity.class);
+                                                    startActivity(intent);
                                                 } else {
                                                     Toast.makeText(StudentEventRsvpActivity.this, "RSVP failed", Toast.LENGTH_SHORT).show();
                                                 }
