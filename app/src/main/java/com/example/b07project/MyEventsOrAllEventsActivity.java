@@ -16,4 +16,10 @@ public class MyEventsOrAllEventsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EventViewActivity.class);
         startActivity(intent);
     }
+
+    public void OnMyEventsButtonClick(View view){
+        Intent intent = new Intent(this, MyEvents.class);
+        startActivity(intent);
+
+    }
 }

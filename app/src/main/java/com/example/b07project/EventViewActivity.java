@@ -36,23 +36,24 @@ public class EventViewActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i("pretty", "All Events");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_events);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
-
-        // Dummy data for testing
-        List<String> L1 = new ArrayList<>();
-        L1.add("ab");
-        L1.add("cd");
-        List<Integer> L2 = new ArrayList<>();
-        L2.add(2);
-        L2.add(0);
-        L2.add(3);
-        L2.add(4);
-        L2.add(1);
-        List<String> L3 = new ArrayList<>();
-        L3.add("Bob");
-        LocalDateTime specificDate = LocalDateTime.of(2014, 1, 1, 10, 10, 30);
+//
+//        // Dummy data for testing
+//        List<String> L1 = new ArrayList<>();
+//        L1.add("ab");
+//        L1.add("cd");
+//        List<Integer> L2 = new ArrayList<>();
+//        L2.add(2);
+//        L2.add(0);
+//        L2.add(3);
+//        L2.add(4);
+//        L2.add(1);
+//        List<String> L3 = new ArrayList<>();
+//        L3.add("Bob");
+//        LocalDateTime specificDate = LocalDateTime.of(2014, 1, 1, 10, 10, 30);
         /*eventList.add(new Event("Event 1", "This is the description for event 1.", R.drawable.default_event, 3, L1, L2, "NjtusLW-ySqra_V71MP", 100, L3, specificDate));
         eventList.add(new Event("Event 2", "This is the description for event 2.", R.drawable.default_event, 2, L1, L2, "id2", 110, L3, specificDate));
         eventList.add(new Event("Event 3", "This is the description for event 3.", R.drawable.default_event, 4, L1, L2, "id3", 100, L3, specificDate));*/
@@ -62,9 +63,10 @@ public class EventViewActivity extends AppCompatActivity {
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.i("CONRAD", "SEEING IF EXISTS");
                 if (dataSnapshot.exists()) {
                     for(DataSnapshot eventSnapshot:dataSnapshot.getChildren()){
-                        Log.i("eventSnapshot",eventSnapshot.toString());
+                        Log.i("CONRAD", eventSnapshot.toString() + "getting events snapshot");
                         Event event = eventSnapshot.getValue(Event.class);
                         if(event!= null){
                             Log.i("event",event.toString());

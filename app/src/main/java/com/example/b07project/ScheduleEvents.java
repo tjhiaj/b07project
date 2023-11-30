@@ -110,7 +110,7 @@ public class ScheduleEvents extends AppCompatActivity {
                     public void onComplete(@NonNull DatabaseError error, @NonNull DatabaseReference ref) {
                         if (error == null) {
                             Log.i("pretty", "after push");
-                            Log.i("pretty", newEvent.getComments().get(0));
+//                            Log.i("pretty", newEvent.getComments().get(0));
                             // Event added successfully
                             eventNameEditText.setText("");
                             participantLimitEditText.setText("");
