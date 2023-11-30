@@ -47,9 +47,9 @@
             android:name=".SubmitComplaints"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" /> <!-- <activity -->
-        <!-- android:name=".ViewComplaints" -->
-        <!-- android:exported="true" -->
-        <!-- android:theme="@style/Theme.Material3.Light.NoActionBar" /> -->
+         <activity android:name=".ViewComplaints"
+         android:exported="true"
+         android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

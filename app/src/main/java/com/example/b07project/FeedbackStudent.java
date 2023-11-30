@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -162,6 +163,7 @@ public class FeedbackStudent extends AppCompatActivity {
 
     }
 
+
     private float calculateNewOverallRating(float currentRating, float userRating, int size) {
         // Your logic to calculate the new overall rating (e.g., taking the average)
         int numberOfRatings = size; // Assuming this is the first rating, you might need to fetch this from the database
@@ -170,4 +172,4 @@ public class FeedbackStudent extends AppCompatActivity {
     }
 
 
-    }
+}
