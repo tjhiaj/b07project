@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:background="#086788"
+        android:gravity="center"
+        android:paddingBottom="0dp"
+        android:text="@string/enter_event_info"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/eventNameLabel2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/event_name"
+                android:textColor="#086788"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/eventNameTextBox"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/rounded_edittext_background"
+                android:hint="@string/enter_event_name"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textColorHint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/participantLimitLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/participant_limit"
+                android:textColor="#086788"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/participantLimitTextBox"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/rounded_edittext_background"
+                android:hint="@string/enter_event_participant_limit"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textColorHint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/dateEventLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/date"
+                android:textColor="#086788"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/dayEventTextBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:hint="@string/enter_event_day"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:textColorHint="#FFFFFF" />
+
+                <EditText
+                    android:id="@+id/monthEventTextBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:hint="@string/enter_event_month"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:textColorHint="#FFFFFF" />
+
+                <EditText
+                    android:id="@+id/yearEventTextBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:hint="@string/enter_event_year"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:textColorHint="#FFFFFF" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/eventTimeLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/time"
+                android:textColor="#086788"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/hourTextBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:hint="@string/enter_event_hour"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:textColorHint="#FFFFFF" />
+
+                <EditText
+                    android:id="@+id/minuteTextBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:hint="@string/enter_event_minute"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:textColorHint="#FFFFFF" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/eventDescriptionLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/event_description"
+                android:textColor="#086788"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/eventDescriptionTextBox"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/rounded_edittext_background"
+                android:hint="@string/enter_event_description"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textColorHint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/scheduleEventButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="@color/navyBlue"
+                android:text="@string/schedule_event_button" />
+
+            <Button
+                android:id="@+id/scheduleEventBackButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/navyBlue"
+                android:onClick="onAdminEventsBackButtonClick"
+                android:text="@string/go_back_button_text" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

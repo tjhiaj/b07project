@@ -69,15 +69,46 @@
     <string name="logout">LOGOUT</string>
     <string name="general_image_description">cool image!</string>
 
+    <!-- the following strings are used in the event view. -->
+    <string name="enter_event_info">Add an event!</string>
+    <string name="event_name">Event Name</string>
+    <string name="enter_event_name">Enter event name...</string>
+    <string name="participant_limit">Participant Limit</string>
+    <string name="enter_event_participant_limit">Enter participant limit...</string>
+    <string name="year">Year of event (In YYYY format please)</string>
+    <string name="enter_event_year">YYYY</string>
+    <string name="month">Month of event (In MM format please)</string>
+    <string name="enter_event_month">MM</string>
+    <string name="day">Day of event (In DD format please)</string>
+    <string name="enter_event_day">DD</string>
+
+    <string name="date">Date of Event (DD/MM/YYYY, please enter the numbers)</string>
+    <string name="enter_event_date">Enter event date (DD/MM/YYYY)...</string>
+
+    <string name="time">Time of event (24 hour clock).</string>
+    <string name="enter_event_time">Enter event date (DD/MM/YYYY)...</string>
+
+    <string name="hour">Hour of Event (24 hour clock time, HH format)</string>
+    <string name="enter_event_hour">Enter hour (HH)...</string>
+    <string name="minute">Minute of Event (mm format)</string>
+    <string name="enter_event_minute">Enter minute (mm)...</string>
+    <string name="AMPM">AM or PM</string>
+    <string name="enter_event_meridiem">Enter AM or PM...</string>
+    <string name="event_description">Event Description</string>
+    <string name="enter_event_description">Enter event description...</string>
+    <string name="schedule_event_button">Schedule Event</string>
+
     <!-- the following strings are used in the post requirement views. -->
     <string name="do_I_qualify_heading">Do I qualify for POSt?</string>
-    <string name="do_I_qualify_CS_heading">Do I qualify for CS POSt?</string>
+    <string name="do_I_qualify_CS_heading">Do I qualify for CS Major or Specialist POSt?</string>
+    <string name="do_I_qualify_CS_minor_heading">Do I qualify for CS Minor POSt?</string>
     <string name="do_I_qualify_math_major_heading">Do I qualify for Math Major POSt?</string>
     <string name="do_I_qualify_math_specialist_heading">Do I qualify for Math Specialist POSt?</string>
     <string name="do_I_qualify_stats_heading">Do I qualify for Statistics POSt?</string>
     <string name="please_select_heading">Please select the category you are interested in.</string>
     <string name="please_answer_heading">Please answer the following.</string>
     <string name="computer_science_post">Computer Science (Both Specialist and Major)</string>
+    <string name="computer_science_minor_post">Computer Science (Only Minor)</string>
     <string name="math_major_post">Mathematics Major</string>
     <string name="math_specialist_post">Mathematics Specialist</string>
     <string name="stats_post">Statistics (Both Specialist and Major)</string>
@@ -98,6 +129,29 @@
         Discrete Mathematics\n
         Linear Algebra I for Mathematical Sciences\n
         Calculus II for Mathematical Sciences</string>
+
+    <string name="cs_minor_first_question">
+        Have you completed a total of 4 credits? (I.E. eight credited courses)
+    </string>
+    <string name="cs_minor_second_question">
+        Out of those 4 credits, have you obtained a credit in each of these?:\n
+        Introduction to Computer Science I\n
+        Introduction to Computer Science II\n
+        Discrete Mathematics\n
+        Linear Algebra I for Mathematical Sciences OR MATA23, the alternative\n
+        AT LEAST ONE of the Calculus Is (Either MATA30, MATA31, MATA32)
+    </string>
+
+    <string name="CS_minor_disclaimer">
+        Note: Even if you meet these requirements, you will be evaluated based on your grades in\n
+        these courses:\n
+        Introduction to Computer Science II\n
+        Discrete Mathematics\n
+        Linear Algebra I for Mathematical Sciences OR MATA23, the alternative\n
+        \n
+        Basically, if you fulfill the above requirements and maximize your grades in the above\n
+        3 courses, your chances for getting into the CS Minor are better.
+    </string>
 
     <string name="math_major_first_question">
         Do you have at least a GPA of 2.0 over the following courses?\n

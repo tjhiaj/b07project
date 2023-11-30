@@ -35,6 +35,7 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
 
     private String eventId;
 
+
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser currentUser = auth.getCurrentUser();
 
@@ -43,13 +44,13 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Log.i("pretty", "whats going on");
+
         setContentView(R.layout.student_event_item);
 
         eventDetailsTitleTextView = findViewById(R.id.eventDetailsTitleTextView);
         top_header_events = findViewById(R.id.top_header_events);
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
+
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
 
         rsvpButton = findViewById(R.id.RsvpButton);
@@ -60,9 +61,11 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
         if (intent != null && intent.hasExtra("EVENT")) {
             event = intent.getParcelableExtra("EVENT");
         }
-
+        assert event != null;
         eventId = event.getEventID();
+
 //
+
         if(eventId == null)
             Log.i("pretty", "AAAAANULL");
         Log.i("pretty2", event.toString());
@@ -79,35 +82,61 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i("pretty", "OnClick");
                 rsvpForEvent();
-                Intent intent = new Intent(StudentEventRsvpActivity.this, EventViewActivity.class);
-                startActivity(intent);
-
             }
         });
 
     }
 
     private void rsvpForEvent() {
-        Log.i("pretty", "RSVP");
         DatabaseReference eventsRef = database.getReference("events").child(eventId);
-        Log.i("pretty", "error found");
         DatabaseReference participantsRef = eventsRef.child("participants");
-        // Add the current user's UID to the "participants" node under the specific event
-        Log.i("pretty", currentUser.getUid());
-        participantsRef.child(currentUser.getUid()).setValue(true)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Log.i("pretty", "Done");
-                            Toast.makeText(StudentEventRsvpActivity.this, "RSVP successful", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(StudentEventRsvpActivity.this, "RSVP failed", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
 
+        participantsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.i("CONRAD", "CHECK IF EXIST");
+                if (dataSnapshot.exists()) {
+                    // Get the current list of participants
+                    Log.i("CONRAD", "DOING NOW");
+                    List<String> participantsList = new ArrayList<>();
+                    for (DataSnapshot participantSnapshot : dataSnapshot.getChildren()) {
+                        String participantUID = participantSnapshot.getKey();
+                        participantsList.add(participantUID);
+                    }
+                    Log.i("CONRAD", "DONE FILLING IT UP");
+                    Log.i("CONRAD", participantsList.toString() + " ARRAY HERE");
+
+                    // Add the current user's UID to the list
+                    participantsList.add(currentUser.getUid());
+
+                    // Update the participantsRef with the modified list
+                    participantsRef.setValue(participantsList)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(StudentEventRsvpActivity.this, "RSVP successful", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(StudentEventRsvpActivity.this, EventViewActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        Toast.makeText(StudentEventRsvpActivity.this, "RSVP failed", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                } else {
+                    // Handle the case where participantsRef does not exist
+                    Toast.makeText(StudentEventRsvpActivity.this, "Participants not available", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle the error
+                Toast.makeText(StudentEventRsvpActivity.this, "Error retrieving participants", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 
 
 

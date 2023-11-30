@@ -23,6 +23,10 @@ public class StudentHomeActivity extends AppCompatActivity {
         startActivity(intent);
     } 
 
+    public void programButtonClick(View view){
+        Intent intent = new Intent(this, POStRequirementsActivity.class);
+        startActivity(intent);
+    }
     public void onStudentComplaintsButtonClick(View view) {
         Intent intent = new Intent(this, SubmitComplaints.class);
         startActivity(intent);

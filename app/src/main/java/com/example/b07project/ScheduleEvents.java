@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import org.checkerframework.checker.units.qual.A;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,12 +32,11 @@ public class ScheduleEvents extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_schedule_events);
+        setContentView(R.layout.activity_schedule_admin_event);
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
 
-        scheduleEventButton = findViewById(R.id.scheduleEventButton);
+        scheduleEventButton = findViewById(R.id.scheduleEventButton2);
 
         if (database == null) return;
 
@@ -44,16 +44,29 @@ public class ScheduleEvents extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatabaseReference eventsRef = database.getReference("events");
-                EditText eventNameEditText = findViewById(R.id.eventNameEditText);
-                EditText participantLimitEditText = findViewById(R.id.participantLimitEditText);
-                EditText descriptionEditText = findViewById(R.id.description);
+                EditText eventNameEditText = findViewById(R.id.eventNameTextBox);
+                EditText participantLimitEditText = findViewById(R.id.participantLimitTextBox);
+                EditText descriptionEditText = findViewById(R.id.eventDescriptionTextBox);
 
-                EditText yearEditText = findViewById(R.id.year);
-                EditText monthEditText = findViewById(R.id.month);
-                EditText dayEditText = findViewById(R.id.day);
-                EditText hourEditText = findViewById(R.id.hour);
-                EditText minuteEditText = findViewById(R.id.minute);
+                EditText yearEditText = findViewById(R.id.yearEventTextBox);
+                EditText monthEditText = findViewById(R.id.monthEventTextBox);
+                EditText dayEditText = findViewById(R.id.dayEventTextBox);
+                EditText hourEditText = findViewById(R.id.hourTextBox);
+                EditText minuteEditText = findViewById(R.id.minuteTextBox);
 
+                if (eventNameEditText.getText().toString().isEmpty() ||
+                        participantLimitEditText.getText().toString().isEmpty() ||
+                        descriptionEditText.getText().toString().isEmpty() ||
+                        yearEditText.getText().toString().isEmpty() ||
+                        monthEditText.getText().toString().isEmpty() ||
+                        dayEditText.getText().toString().isEmpty() ||
+                        hourEditText.getText().toString().isEmpty() ||
+                        minuteEditText.getText().toString().isEmpty()) {
+
+                    // Show an error message or toast indicating that all fields must be filled
+                    Toast.makeText(ScheduleEvents.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
 
                 int year = Integer.parseInt(yearEditText.getText().toString());
@@ -75,27 +88,29 @@ public class ScheduleEvents extends AppCompatActivity {
                 comments.add("placeholder");
 
                 List<Integer> rating = new ArrayList<>();
-                rating.add(0);
+                for(int i = 0;i<5;i++){
+                    rating.add(0);
+                }
 
                 List<String> participants = new ArrayList<>();
                 participants.add("placeholder");
 
                 LocalDateTime localDateTime = LocalDateTime.of(2023, 11, 19, 12, 30);
-
-                localDateTime.withYear(year).withMonth(month).withDayOfMonth(day).withHour(hour).withMinute(minute);
+                //localDateTime.withYear(year).withMonth(month).withDayOfMonth(day).withHour(hour).withMinute(minute);
+                String formattedDateTime = localDateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
 
 
                 int participantLimit = Integer.parseInt(participantLimitStr);
                 Log.i("pretty", "before Event");
-                Event newEvent = new Event(eventName, description, 0, 0, comments, rating, eventKey, participantLimit, participants,localDateTime);
+                Event newEvent = new Event(eventName, description, R.drawable.default_event, 0, comments, rating, eventKey, participantLimit, participants,formattedDateTime);
                 Log.i("pretty", "before push");
                 eventsRef.child(eventKey).setValue(newEvent, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@NonNull DatabaseError error, @NonNull DatabaseReference ref) {
                         if (error == null) {
                             Log.i("pretty", "after push");
-                            Log.i("pretty", newEvent.getComments().get(0));
+//                            Log.i("pretty", newEvent.getComments().get(0));
                             // Event added successfully
                             eventNameEditText.setText("");
                             participantLimitEditText.setText("");
@@ -118,7 +133,7 @@ public class ScheduleEvents extends AppCompatActivity {
     }
 
     public void onAdminEventsBackButtonClick(View view) {
-        Intent intent = new Intent(this, AdminHomeActivity.class);
+        Intent intent = new Intent(this, ScheduleOrViewActivity.class);
         startActivity(intent);
         finish();
     }

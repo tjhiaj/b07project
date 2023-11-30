@@ -35,7 +35,6 @@ public class AdminAnnouncementsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_announcements_admin);
 
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
 
         post = findViewById(R.id.postButton);
@@ -82,9 +81,9 @@ public class AdminAnnouncementsActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             // Log the actual data
                             if (dataSnapshot.exists()) {
-                                //Log.d(TAG, "Data: " + dataSnapshot.getValue());
+                                Log.d(TAG, "Data: " + dataSnapshot.getValue());
                             } else {
-                                //Log.d(TAG, "Data does not exist");
+                                Log.d(TAG, "Data does not exist");
                             }
                         }
 
