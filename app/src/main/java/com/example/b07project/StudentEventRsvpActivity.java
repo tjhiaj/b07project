@@ -34,6 +34,7 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
     private TextView top_header_events;
 
     private String eventId;
+    private int participantLimit;
 
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -44,13 +45,13 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Log.i("pretty", "whats going on");
+
         setContentView(R.layout.student_event_item);
 
         eventDetailsTitleTextView = findViewById(R.id.eventDetailsTitleTextView);
         top_header_events = findViewById(R.id.top_header_events);
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
+
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
 
         rsvpButton = findViewById(R.id.RsvpButton);
@@ -61,8 +62,9 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
         if (intent != null && intent.hasExtra("EVENT")) {
             event = intent.getParcelableExtra("EVENT");
         }
-
+        assert event != null;
         eventId = event.getEventID();
+        participantLimit = event.getParticipantLimit();
 
 //
 
@@ -82,73 +84,68 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i("pretty", "OnClick");
                 rsvpForEvent();
-                Intent intent = new Intent(StudentEventRsvpActivity.this, EventViewActivity.class);
-                startActivity(intent);
-
             }
         });
 
     }
 
     private void rsvpForEvent() {
-        Log.i("pretty", "RSVP");
         DatabaseReference eventsRef = database.getReference("events").child(eventId);
-        Log.i("pretty", "error found");
-        DatabaseReference participantLimitRef = eventsRef.child("participantLimit");
         DatabaseReference participantsRef = eventsRef.child("participants");
-        // Add the current user's UID to the "participants" node under the specific event
-        Log.i("pretty", currentUser.getUid());
 
-        participantLimitRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        participantsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.i("CONRAD", "CHECK IF EXIST");
                 if (dataSnapshot.exists()) {
-                    // Participant limit is the value stored in the database
-                    long participantLimit = dataSnapshot.getValue(Long.class);
+                    // Get the current list of participants
+                    Log.i("CONRAD", "DOING NOW");
+                    List<String> participantsList = new ArrayList<>();
+                    for (DataSnapshot participantSnapshot : dataSnapshot.getChildren()) {
+                        String participantUID = participantSnapshot.getKey();
+                        participantsList.add(participantUID);
+                    }
+                    Log.i("CONRAD", "DONE FILLING IT UP");
+                    Log.i("CONRAD", participantsList.toString() + " ARRAY HERE");
 
-                    // Check if the participant limit has been reached
-                    participantsRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.getChildrenCount() >= participantLimit) {
-                                // Participant limit reached, prevent user from signing up
-                                Toast.makeText(StudentEventRsvpActivity.this, "Participant limit reached. Cannot RSVP.", Toast.LENGTH_SHORT).show();
-                            } else {
-                                // Participant limit not reached, add the user to the participants list
-                                participantsRef.child(currentUser.getUid()).setValue(true)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    Toast.makeText(StudentEventRsvpActivity.this, "RSVP successful", Toast.LENGTH_SHORT).show();
-                                                } else {
-                                                    Toast.makeText(StudentEventRsvpActivity.this, "RSVP failed", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        });
-                            }
-                        }
+                    // Add the current user's UID to the list
+                    participantsList.add(currentUser.getUid());
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                            // Handle the error
-                            Toast.makeText(StudentEventRsvpActivity.this, "Error checking participant limit", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    if (participantsList.size() -1 > participantLimit){
+
+                    }else{
+                        Toast.makeText(StudentEventRsvpActivity.this, "Participant limit reached. Can not rsvp.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    // Update the participantsRef with the modified list
+                    participantsRef.setValue(participantsList)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(StudentEventRsvpActivity.this, "RSVP successful", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(StudentEventRsvpActivity.this, EventViewActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        Toast.makeText(StudentEventRsvpActivity.this, "RSVP failed", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                 } else {
-                    // Handle the case where participantLimitRef does not exist
-                    Toast.makeText(StudentEventRsvpActivity.this, "Participant limit not available", Toast.LENGTH_SHORT).show();
+                    // Handle the case where participantsRef does not exist
+                    Toast.makeText(StudentEventRsvpActivity.this, "Participants not available", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Handle the error
-                Toast.makeText(StudentEventRsvpActivity.this, "Error retrieving participant limit", Toast.LENGTH_SHORT).show();
+                Toast.makeText(StudentEventRsvpActivity.this, "Error retrieving participants", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
+
 
 
 

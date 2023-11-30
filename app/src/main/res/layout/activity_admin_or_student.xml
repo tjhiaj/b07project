@@ -18,11 +18,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/logoImageView"
         android:orientation="horizontal"
         android:layout_gravity="center">
 
-        <!-- Admin Button -->
         <Button
             android:id="@+id/adminButton"
             android:layout_width="match_parent"
@@ -31,9 +29,9 @@
             android:text="@string/admin"
             android:layout_marginEnd="8dp"
             android:onClick="OnAdminButtonClick"
+            android:backgroundTint="@color/teal"
             />
 
-        <!-- Student Button -->
         <Button
             android:id="@+id/studentButton"
             android:layout_width="match_parent"
@@ -41,6 +39,7 @@
             android:layout_weight="1"
             android:text="@string/student"
             android:onClick="OnStudentButtonClick"
+            android:backgroundTint="@color/teal"
             />
     </LinearLayout>
 </LinearLayout>

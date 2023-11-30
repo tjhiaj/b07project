@@ -15,29 +15,47 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-    <Button
-        android:id="@+id/adminScheduleButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/schedule"
-        android:onClick="OnAdminScheduleButtonClick"
+        android:orientation="vertical"
+        android:layout_gravity="center"
         app:layout_constraintTop_toBottomOf="@id/top_header_events_admin"
-        app:layout_constraintBottom_toTopOf="@id/adminViewEventsButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/bottom_header_events_admin">
 
-    <Button
-        android:id="@+id/adminViewEventsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/view_events"
-        android:onClick="OnAdminViewEventsButtonClick"
-        app:layout_constraintTop_toBottomOf="@id/adminScheduleButton"
-        app:layout_constraintBottom_toTopOf="@id/bottom_header_events_admin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        <Button
+            android:id="@+id/adminScheduleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule"
+            android:onClick="OnAdminScheduleButtonClick"
+            app:layout_constraintTop_toBottomOf="@id/top_header_events_admin"
+            app:layout_constraintBottom_toTopOf="@id/adminViewEventsButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/teal"
+            android:layout_marginBottom="38dp"
+            android:layout_gravity="center"
+            />
+
+        <Button
+            android:id="@+id/adminViewEventsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/view_events"
+            android:onClick="OnAdminViewEventsButtonClick"
+            app:layout_constraintTop_toBottomOf="@id/adminScheduleButton"
+            app:layout_constraintBottom_toTopOf="@id/bottom_header_events_admin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/teal"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
 
     <View
         android:id="@+id/bottom_header_events_admin"
