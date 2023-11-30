@@ -23,7 +23,8 @@
         android:text="@string/complaintsHeader"
         android:onClick="onAdminComplaintsButtonClick"
         android:layout_marginBottom="16dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/teal"/>
 
     <Button
         android:id="@+id/adminAnnouncementsButton"
@@ -32,7 +33,8 @@
         android:text="@string/announcements"
         android:onClick="onAdminAnnouncementsButtonClick"
         android:layout_marginBottom="16dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/teal"/>
 
     <Button
         android:id="@+id/adminEventsButton"
@@ -41,7 +43,8 @@
         android:text="@string/events"
         android:onClick="onAdminEventsButtonClick"
         android:layout_marginBottom="38dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/teal"/>
 
     <TextView
         android:id="@+id/greetingTextView"
