@@ -27,7 +27,7 @@ public class StudentHomeActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
-    AnnouncementAdapter adapter;
+    AnnouncementAdapterDismissable adapter;
 
     List<Announcement> announcementList = new ArrayList<>();
 
@@ -43,19 +43,27 @@ public class StudentHomeActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.studentNotifications);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new AnnouncementAdapter(this, announcementList);
+        adapter = new AnnouncementAdapterDismissable(this, announcementList);
         recyclerView.setAdapter(adapter);
 
-        // Set an item click listener for the adapter
-        adapter.setOnItemClickListener(position -> {
-            // Handle click event for the clicked item
-            Announcement clickedAnnouncement = announcementList.get(position);
-//
-//            // Start a new activity or navigate to the announcement details page
-//            Intent intent = new Intent(StudentHomeActivity.this, StudentAnnouncementsActivity.class);
-//            intent.putExtra("announcement_id", clickedAnnouncement.getId()); // Pass any necessary data to the details page
-//            startActivity(intent);
+        adapter.setOnItemClickListener(new AnnouncementAdapterDismissable.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                // Handle item click event if needed
+                Announcement clickedAnnouncement = announcementList.get(position);
+                Intent intent = new Intent(StudentHomeActivity.this, StudentAnnouncementsActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onDismissalClick(int position) {
+                // Handle dismiss button click
+                announcementList.remove(position);
+                adapter.notifyItemRemoved(position);
+                // don't remove from database tho
+            }
         });
+
 
         getdata();
     }
