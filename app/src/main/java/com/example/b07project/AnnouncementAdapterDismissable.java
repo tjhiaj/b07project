@@ -24,10 +24,10 @@ public class AnnouncementAdapterDismissable extends RecyclerView.Adapter<Announc
     }
 
     private OnItemClickListener listener;
-    private List<Announcement> announcementList;
+    private List<DismissableAnnouncements> announcementList;
     private Context context;
 
-    public AnnouncementAdapterDismissable(Context context, List<Announcement> announcementList) {
+    public AnnouncementAdapterDismissable(Context context, List<DismissableAnnouncements> announcementList) {
         this.context = context;
         this.announcementList = announcementList;
     }
@@ -44,10 +44,10 @@ public class AnnouncementAdapterDismissable extends RecyclerView.Adapter<Announc
 
     @Override
     public void onBindViewHolder(@NonNull AnnouncementViewHolder holder, int position) {
-        Announcement announcement = announcementList.get(position);
+        DismissableAnnouncements announcement = announcementList.get(position);
 
-        holder.subjectTextView.setText(announcement.getSubject());
-        holder.messageTextView.setText(announcement.getMessage());
+        holder.subjectTextView.setText(announcement.getDismissableSubject());
+        holder.messageTextView.setText(announcement.getDismissableMessage());
 
 
         holder.dismissButton.setOnClickListener(view -> {

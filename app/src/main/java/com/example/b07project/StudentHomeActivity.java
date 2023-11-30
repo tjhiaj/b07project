@@ -1,6 +1,8 @@
 package com.example.b07project;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -31,7 +33,7 @@ public class StudentHomeActivity extends AppCompatActivity {
 
     AnnouncementAdapterDismissable adapter;
 
-    List<Announcement> announcementList = new ArrayList<>();
+    List<DismissableAnnouncements> announcementList = new ArrayList<>();
 
 
     @Override
@@ -52,13 +54,17 @@ public class StudentHomeActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new AnnouncementAdapterDismissable.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Announcement clickedAnnouncement = announcementList.get(position);
+                DismissableAnnouncements clickedAnnouncement = announcementList.get(position);
                 Intent intent = new Intent(StudentHomeActivity.this, StudentAnnouncementsActivity.class);
                 startActivity(intent);
             }
 
             @Override
             public void onDismissalClick(int position) {
+                DismissableAnnouncements dismissedAnnouncement = announcementList.get(position);
+
+                // Dismiss the announcement (store its ID as dismissed in SharedPreferences)
+                dismissNotification(dismissedAnnouncement.getDismissableId());
                 announcementList.remove(position);
                 adapter.notifyItemRemoved(position);
                 adapter.notifyDataSetChanged();
@@ -88,10 +94,12 @@ public class StudentHomeActivity extends AppCompatActivity {
                     // Loop through the children of the "announcements" node
                     String subject = dataSnapshot.getKey();
                     String announcement = dataSnapshot.getValue(String.class);
+                    String announcementId = AnnouncementIDGenerator.generateUniqueId();
 
-                    // Create an Announcement object and add it to the list
-                    Announcement newAnnouncement = new Announcement(subject, announcement);
-                    announcementList.add(newAnnouncement);
+                    if (!isDismissed(announcementId)) {
+                        DismissableAnnouncements newAnnouncement = new DismissableAnnouncements(subject, announcement, announcementId);
+                        announcementList.add(newAnnouncement);
+                    }
                 }
 
                 // Notify the adapter that the data set has changed
@@ -108,6 +116,19 @@ public class StudentHomeActivity extends AppCompatActivity {
 
 
     }
+
+    private void dismissNotification(String notificationId) {
+        SharedPreferences prefs = getSharedPreferences("DismissedNotifications", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("notification_" + notificationId + "_dismissed", true);
+        editor.apply();
+    }
+
+    private boolean isDismissed(String notificationId) {
+        SharedPreferences prefs = getSharedPreferences("DismissedNotifications", Context.MODE_PRIVATE);
+        return prefs.getBoolean("notification_" + notificationId + "_dismissed", false);
+    }
+
 
     public void onStudentAnnouncementsButtonClick(View view) {
         Intent intent = new Intent(this, StudentAnnouncementsActivity.class);
