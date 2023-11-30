@@ -9,7 +9,7 @@
         android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/navyBlue"
+        android:background="@color/teal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -38,7 +38,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="22dp"
-            android:text="@string/please_answer_heading"
+            android:text="@string/check_all_that_apply"
             android:textAlignment="viewStart"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -51,7 +51,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightBlue">
+        android:background="@color/beige">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,7 +67,7 @@
                 android:layout_marginEnd="15dp"
                 android:lineSpacingExtra="1sp"
                 android:text="@string/cs_minor_first_question"
-                android:textColor="@color/navyBlue"
+                android:textColor="@color/teal"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +80,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cs_first_question" />
+                app:layout_constraintTop_toBottomOf="@+id/cs_first_question"
+                android:theme="@style/checkBoxStyle"/>
 
             <TextView
                 android:id="@+id/CS_minor_second_question"
@@ -92,7 +93,7 @@
                 android:lineSpacingExtra="1sp"
                 android:text="@string/cs_minor_second_question"
                 android:textAlignment="textStart"
-                android:textColor="@color/navyBlue"
+                android:textColor="@color/teal"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +107,8 @@
                 android:layout_marginStart="15dp"
                 android:contentDescription='Indeed.'
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cs_second_question" />
+                app:layout_constraintTop_toBottomOf="@+id/cs_second_question"
+                android:theme="@style/checkBoxStyle"/>
 
             <TextView
                 android:id="@+id/CS_minor_disclaimer"
@@ -117,7 +119,7 @@
                 android:layout_marginEnd="15dp"
                 android:lineSpacingExtra="1sp"
                 android:text="@string/CS_minor_disclaimer"
-                android:textColor="@color/navyBlue"
+                android:textColor="@color/teal"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -134,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginBottom="15dp"
-                    android:backgroundTint="@color/navyBlue"
+                    android:backgroundTint="@color/teal"
                     android:onClick="onCSMinorGoBackClick"
                     android:text="@string/go_back_button_text"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -146,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
-                    android:backgroundTint="@color/navyBlue"
+                    android:backgroundTint="@color/teal"
                     android:onClick="onCSMinorSubmitClick"
                     android:text="@string/submit"
                     app:layout_constraintBottom_toBottomOf="parent"

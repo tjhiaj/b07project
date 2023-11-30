@@ -46,7 +46,8 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:textColorHint="#FFFFFF"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textCursorDrawable = "@null"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -71,7 +72,8 @@
             android:paddingEnd="8dp"
             android:paddingTop="8dp"
             android:textColorHint="#FFFFFF"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textCursorDrawable = "@null"/>
 
         <Button
             android:id="@+id/postButton"
