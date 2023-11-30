@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import org.checkerframework.checker.units.qual.A;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,20 +88,22 @@ public class ScheduleEvents extends AppCompatActivity {
                 comments.add("placeholder");
 
                 List<Integer> rating = new ArrayList<>();
-                rating.add(0);
+                for(int i = 0;i<5;i++){
+                    rating.add(0);
+                }
 
                 List<String> participants = new ArrayList<>();
                 participants.add("placeholder");
 
                 LocalDateTime localDateTime = LocalDateTime.of(2023, 11, 19, 12, 30);
-
-                localDateTime.withYear(year).withMonth(month).withDayOfMonth(day).withHour(hour).withMinute(minute);
+                //localDateTime.withYear(year).withMonth(month).withDayOfMonth(day).withHour(hour).withMinute(minute);
+                String formattedDateTime = localDateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
 
 
                 int participantLimit = Integer.parseInt(participantLimitStr);
                 Log.i("pretty", "before Event");
-                Event newEvent = new Event(eventName, description, 0, 0, comments, rating, eventKey, participantLimit, participants,localDateTime);
+                Event newEvent = new Event(eventName, description, R.drawable.default_event, 0, comments, rating, eventKey, participantLimit, participants,formattedDateTime);
                 Log.i("pretty", "before push");
                 eventsRef.child(eventKey).setValue(newEvent, new DatabaseReference.CompletionListener() {
                     @Override
