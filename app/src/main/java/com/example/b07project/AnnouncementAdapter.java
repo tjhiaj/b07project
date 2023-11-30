@@ -13,6 +13,11 @@ import java.util.List;
 
 public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapter.AnnouncementViewHolder> {
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    private OnItemClickListener listener;
     private List<Announcement> announcementList;
     private Context context;
 
@@ -21,6 +26,9 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
         this.announcementList = announcementList;
     }
 
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
     @NonNull
     @Override
     public AnnouncementViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,6 +42,12 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 
         holder.subjectTextView.setText(announcement.getSubject());
         holder.messageTextView.setText(announcement.getMessage());
+
+        holder.itemView.setOnClickListener(view -> {
+            if (listener != null) {
+                listener.onItemClick(position);
+            }
+        });
     }
 
     @Override

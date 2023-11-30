@@ -25,6 +25,8 @@ public class StudentHomeActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
+    RecyclerView recyclerView;
+
     AnnouncementAdapter adapter;
 
     List<Announcement> announcementList = new ArrayList<>();
@@ -38,14 +40,26 @@ public class StudentHomeActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference("announcements");
 
         // Set up RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.studentNotifications);
-        adapter = new AnnouncementAdapter(this, announcementList);
-        recyclerView.setAdapter(adapter);
+        recyclerView = findViewById(R.id.studentNotifications);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        getdata();
+        adapter = new AnnouncementAdapter(this, announcementList);
+        recyclerView.setAdapter(adapter);
 
+        // Set an item click listener for the adapter
+        adapter.setOnItemClickListener(position -> {
+            // Handle click event for the clicked item
+            Announcement clickedAnnouncement = announcementList.get(position);
+//
+//            // Start a new activity or navigate to the announcement details page
+//            Intent intent = new Intent(StudentHomeActivity.this, StudentAnnouncementsActivity.class);
+//            intent.putExtra("announcement_id", clickedAnnouncement.getId()); // Pass any necessary data to the details page
+//            startActivity(intent);
+        });
+
+        getdata();
     }
+
 
     private void getdata() {
 
