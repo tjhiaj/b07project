@@ -45,7 +45,8 @@
             android:hint="@string/insert_text_here"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:textColorHint="#FFFFFF" />
+            android:textColorHint="#FFFFFF"
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -69,7 +70,8 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:paddingTop="8dp"
-            android:textColorHint="#FFFFFF" />
+            android:textColorHint="#FFFFFF"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/postButton"
