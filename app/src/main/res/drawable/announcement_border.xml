@@ -5,7 +5,9 @@
     <!-- Border Color -->
     <stroke
         android:width="2dp"
-        android:color="#0C4A6E"/>
+        android:color="#0C4A6E" />
 
      <corners android:radius="8dp" />
+    <solid
+        android:color="#99FFF1D0"/>
 </shape>

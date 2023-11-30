@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="0dp"
     android:background="#FFF1D0"
-    android:gravity="center_vertical">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/studentNotifications"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:itemCount="11">
-
-    </androidx.recyclerview.widget.RecyclerView>
+    android:orientation="vertical"
+    android:padding="0dp">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="125dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
@@ -87,5 +80,104 @@
                 android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/studentNotifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="horizontal"
+        tools:itemCount="11"></androidx.recyclerview.widget.RecyclerView>
+
+</FrameLayout>
+
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:tools="http://schemas.android.com/tools"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:orientation="vertical"-->
+<!--android:padding="0dp"-->
+<!--android:background="#FFF1D0"-->
+<!--android:gravity="center_vertical">-->
+
+<!--<androidx.recyclerview.widget.RecyclerView-->
+<!--    android:id="@+id/studentNotifications"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:orientation="horizontal"-->
+<!--    tools:itemCount="11">-->
+
+<!--</androidx.recyclerview.widget.RecyclerView>-->
+
+<!--<ScrollView-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/logoImageView"-->
+<!--            android:layout_width="144dp"-->
+<!--            android:layout_height="136dp"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:layout_marginBottom="28dp"-->
+<!--            android:src="@drawable/twilight_wave" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/studentComplaintsButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:backgroundTint="@color/navyBlue"-->
+<!--            android:onClick="onStudentComplaintsButtonClick"-->
+<!--            android:text="@string/complaintsHeader" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/studentAnnouncementsButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:backgroundTint="@color/navyBlue"-->
+<!--            android:onClick="onStudentAnnouncementsButtonClick"-->
+<!--            android:text="@string/announcements" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/programButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:backgroundTint="@color/navyBlue"-->
+<!--            android:onClick="programButtonClick"-->
+<!--            android:text="@string/program_of_study" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/studentEventsButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginBottom="38dp"-->
+<!--            android:backgroundTint="@color/navyBlue"-->
+<!--            android:onClick="onStudentEventsButtonClick"-->
+<!--            android:text="@string/events" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/greetingTextView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:text="@string/hello_student"-->
+<!--            android:textColor="#086788"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textStyle="bold" />-->
+<!--    </LinearLayout>-->
+<!--</ScrollView>-->
+<!--</LinearLayout>-->
