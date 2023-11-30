@@ -67,7 +67,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext_background"
                     tools:ignore="SpeakableTextPresentCheck"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textCursorDrawable = "@null"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,7 +95,8 @@
                     android:layout_width="350sp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext_background"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textCursorDrawable = "@null"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
