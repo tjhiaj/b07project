@@ -14,13 +14,13 @@ public class AdminOrStudentActivity extends AppCompatActivity {
     }
     public void OnAdminButtonClick(View view) {
         UserInfo.getInstance().setRole(UserInfo.RoleType.Admin);
-        Intent intent = new Intent(this, Login.class);
+        Intent intent = new Intent(this, LoginView.class);
         startActivity(intent);
     }
 
     public void OnStudentButtonClick(View view) {
         UserInfo.getInstance().setRole(UserInfo.RoleType.Student);
-        Intent intent = new Intent(this, Login.class);
+        Intent intent = new Intent(this, LoginView.class);
         startActivity(intent);
     }
 }

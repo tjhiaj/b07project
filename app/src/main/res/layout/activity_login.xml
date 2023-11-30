@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/lightBlue"
     android:orientation="vertical"
-    tools:context=".Login">
+    tools:context=".LoginView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/heading"
