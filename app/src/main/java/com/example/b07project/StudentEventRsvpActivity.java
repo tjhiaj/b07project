@@ -34,6 +34,7 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
     private TextView top_header_events;
 
     private String eventId;
+    private int participantLimit;
 
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -63,6 +64,7 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
         }
         assert event != null;
         eventId = event.getEventID();
+        participantLimit = event.getParticipantLimit();
 
 //
 
@@ -91,6 +93,7 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
         DatabaseReference eventsRef = database.getReference("events").child(eventId);
         DatabaseReference participantsRef = eventsRef.child("participants");
 
+
         participantsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -109,6 +112,12 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
                     // Add the current user's UID to the list
                     participantsList.add(currentUser.getUid());
 
+                    if (participantsList.size() -1 > participantLimit){
+
+                    }else{
+                        Toast.makeText(StudentEventRsvpActivity.this, "Participant limit reached. Can not rsvp.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     // Update the participantsRef with the modified list
                     participantsRef.setValue(participantsList)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
