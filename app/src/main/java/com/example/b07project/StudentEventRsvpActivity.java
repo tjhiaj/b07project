@@ -44,13 +44,13 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Log.i("pretty", "whats going on");
+
         setContentView(R.layout.student_event_item);
 
         eventDetailsTitleTextView = findViewById(R.id.eventDetailsTitleTextView);
         top_header_events = findViewById(R.id.top_header_events);
 
- //       FirebaseDatabase.getInstance().setPersistenceEnabled(false);
+
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
 
         rsvpButton = findViewById(R.id.RsvpButton);
@@ -93,26 +93,28 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
         Log.i("pretty", "error found");
         DatabaseReference participantLimitRef = eventsRef.child("participantLimit");
         DatabaseReference participantsRef = eventsRef.child("participants");
-        // Add the current user's UID to the "participants" node under the specific event
-        Log.i("pretty", currentUser.getUid());
 
         participantLimitRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    // Participant limit is the value stored in the database
                     long participantLimit = dataSnapshot.getValue(Long.class);
 
-                    // Check if the participant limit has been reached
                     participantsRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.getChildrenCount() >= participantLimit) {
+                            List<String> participantsList = new ArrayList<>();
+                            for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                                String participantUid = childSnapshot.getValue(String.class);
+                                participantsList.add(participantUid);
+                            }
+
+                            if (participantsList.size() >= participantLimit) {
                                 // Participant limit reached, prevent user from signing up
                                 Toast.makeText(StudentEventRsvpActivity.this, "Participant limit reached. Cannot RSVP.", Toast.LENGTH_SHORT).show();
                             } else {
                                 // Participant limit not reached, add the user to the participants list
-                                participantsRef.child(currentUser.getUid()).setValue(true)
+                                participantsRef.push().setValue(currentUser.getUid())
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
@@ -146,7 +148,6 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
                 Toast.makeText(StudentEventRsvpActivity.this, "Error retrieving participant limit", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
 
