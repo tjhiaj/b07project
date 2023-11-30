@@ -11,7 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class AnnouncementAdapterDismissable extends RecyclerView.Adapter<AnnouncementAdapterDismissable.AnnouncementViewHolder> {
 
@@ -46,6 +48,7 @@ public class AnnouncementAdapterDismissable extends RecyclerView.Adapter<Announc
 
         holder.subjectTextView.setText(announcement.getSubject());
         holder.messageTextView.setText(announcement.getMessage());
+
 
         holder.dismissButton.setOnClickListener(view -> {
             if (listener != null) {

@@ -17,7 +17,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class StudentHomeActivity extends AppCompatActivity {
@@ -30,6 +32,7 @@ public class StudentHomeActivity extends AppCompatActivity {
     AnnouncementAdapterDismissable adapter;
 
     List<Announcement> announcementList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,6 @@ public class StudentHomeActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new AnnouncementAdapterDismissable.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                // Handle item click event if needed
                 Announcement clickedAnnouncement = announcementList.get(position);
                 Intent intent = new Intent(StudentHomeActivity.this, StudentAnnouncementsActivity.class);
                 startActivity(intent);
@@ -57,9 +59,10 @@ public class StudentHomeActivity extends AppCompatActivity {
 
             @Override
             public void onDismissalClick(int position) {
-                // Handle dismiss button click
                 announcementList.remove(position);
                 adapter.notifyItemRemoved(position);
+                adapter.notifyDataSetChanged();
+
                 // don't remove from database tho
             }
         });
