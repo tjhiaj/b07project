@@ -3,7 +3,7 @@ package com.example.b07project;
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -25,8 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FeedbackStudent extends AppCompatActivity {
@@ -73,7 +71,7 @@ public class FeedbackStudent extends AppCompatActivity {
                 DatabaseReference commentsRef = feedbackRef.child("comments");
                 DatabaseReference ratingRef = feedbackRef.child("rating");
                 DatabaseReference ratingsRef = feedbackRef.child("ratings");
-                ArrayList<Integer> ratingsList = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
+                List<Integer> ratingsList = ratings;
 
 
 
@@ -166,9 +164,8 @@ public class FeedbackStudent extends AppCompatActivity {
 
     private float calculateNewOverallRating(float currentRating, float userRating, int size) {
         // Your logic to calculate the new overall rating (e.g., taking the average)
-        int numberOfRatings = size; // Assuming this is the first rating, you might need to fetch this from the database
-        float sumOfRatings = currentRating * numberOfRatings + userRating;
-        return sumOfRatings / (numberOfRatings + 1);
+        float sumOfRatings = currentRating * size + userRating;
+        return sumOfRatings / (size + 1);
     }
 
 
