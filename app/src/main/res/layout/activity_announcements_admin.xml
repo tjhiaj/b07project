@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/beige">
@@ -82,7 +83,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="0dp"
             android:text="@string/post"
-            android:backgroundTint="@color/teal"/>
+            android:backgroundTint="@color/teal" />
     </LinearLayout>
 
     <View
@@ -91,4 +92,17 @@
         android:layout_height="62dp"
         android:background="@color/teal"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:backgroundTint="@color/blue"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottom_header_announcements_admin"
+        android:onClick="OnAdminAnnouncementsBackButtonClick"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
