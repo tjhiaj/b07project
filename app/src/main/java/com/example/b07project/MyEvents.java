@@ -1,5 +1,7 @@
 package com.example.b07project;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -83,7 +85,7 @@ public class MyEvents extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    // Handle onCancelled
+                    Log.e(TAG, "Error reading data: " + databaseError.getMessage(), databaseError.toException());
                 }
             });
         }

@@ -1,39 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:id="@+id/activity_student_feedback"
+    android:background="@color/lightBlue"
     tools:context=".FeedbackStudent">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/feedback_header"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/navyBlue"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         android:text="Event Feedback"
-        android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginBottom="16dp"/>
+        android:textSize="30sp" />
 
-    <EditText
-        android:id="@+id/commentEditText"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|center_vertical|center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        app:layout_constraintStart_toEndOf="@id/feedback_header">
+
+        <TextView
+            android:id="@+id/feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"
+            android:text="@string/feedback"
+            android:textColor="@color/textBlue"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textInputLayout"
+            app:layout_constraintHorizontal_bias="0.516" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="15dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
+            app:layout_constraintEnd_toEndOf="@+id/subjects"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="@+id/subjects"
+            app:layout_constraintTop_toTopOf="@+id/subjects"
+            app:layout_constraintVertical_bias="0.0">
+
+            <EditText
+                android:id="@+id/commentEditText"
+                android:layout_width="match_parent"
+                android:layout_height="213dp"
+                android:layout_marginStart="45dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Enter your comment"
+                android:paddingStart="15dp"
+                android:paddingEnd="0dp"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/rating"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintVertical_bias="0.779" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"
+            android:text="@string/rating"
+            android:textColor="@color/textBlue"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/ratingBar"
+            app:layout_constraintHorizontal_bias="0.516" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:numStars="5"
+            android:stepSize="0.5" />
+
+        <Button
+            android:id="@+id/submitFeedbackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/navyBlue"
+            android:text="Submit" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter comment"/>
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        android:orientation="vertical">
 
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="5"
-        android:stepSize="1.0"
-        android:layout_marginTop="16dp"/>
+        <TextView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@color/textBlue"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/submitFeedbackButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Submit Feedback"
-        android:layout_marginTop="16dp"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="62dp"
+            android:background="@drawable/back_button_arrow"
+            android:gravity="center_vertical"
+            android:onClick="onStudentFeedbackButtonClickBackButtonClick"
+            android:text=""
+            android:tint="@color/white"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </RelativeLayout>
 
-</LinearLayout>
+
+</RelativeLayout>
