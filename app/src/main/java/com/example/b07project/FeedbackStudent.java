@@ -46,7 +46,6 @@ public class FeedbackStudent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback_student);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
 
         submitFeedbackButton = findViewById(R.id.submitFeedbackButton);
@@ -168,5 +167,8 @@ public class FeedbackStudent extends AppCompatActivity {
         return sumOfRatings / (size + 1);
     }
 
-
+    public void onStudentFeedbackButtonClickBackButtonClick(View view) {
+        Intent intent = new Intent(this, MyEvents.class);
+        startActivity(intent);
+    }
 }

@@ -111,7 +111,6 @@ public class EventViewActivity extends AppCompatActivity {
                             if(eventSnapshot.hasChild("localDateTime")){
                                 String localDateTime = eventSnapshot.child("localDateTime").getValue().toString();
                                 event.setLocalDateTime(localDateTime);
-                                assert localDateTime != null;
                                 Log.i("localDateTime", localDateTime);
                             }else{
                                 Log.i("localDateTime", "no child");
@@ -156,6 +155,7 @@ public class EventViewActivity extends AppCompatActivity {
                                     List<?> rawCommentsList = (List<?>) rawComments;
                                     if (!rawCommentsList.isEmpty() && allElementsAreString(rawCommentsList)) {
                                         List<String> commentsList = convertList(rawCommentsList, String.class);
+                                        commentsList.remove(0);
                                         event.setComments(commentsList);
                                         Log.w("comments", commentsList.toString());
                                     } else {
@@ -210,6 +210,7 @@ public class EventViewActivity extends AppCompatActivity {
                                     List<?> rawParticipantsList = (List<?>) rawParticipants;
                                     if (!rawParticipantsList.isEmpty() && allElementsAreString(rawParticipantsList)) {
                                         List<String> participantsList = convertList(rawParticipantsList, String.class);
+                                        participantsList.remove(0);
                                         event.setParticipants(participantsList);
                                         Log.w("participants", participantsList.toString());
                                     } else {
