@@ -2,13 +2,18 @@ package com.example.b07project;
 
 import static android.content.ContentValues.TAG;
 
+import static com.example.b07project.UserInfo.RoleType.Admin;
+import static com.example.b07project.UserInfo.RoleType.Student;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +34,11 @@ public class MyEvents extends AppCompatActivity {
     private EventAdapter eventAdapter;
     private List<Event> myEventsList;
 
+    public void OnViewEventsBackButtonClick(View view){
+        Intent intent = new Intent(this, MyEventsOrAllEventsActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i("pretty", "MyEvents");
@@ -37,7 +47,7 @@ public class MyEvents extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         myEventsList = new ArrayList<>();
-        eventAdapter = new EventAdapter(MyEvents.this, myEventsList);
+        eventAdapter = new EventAdapter(MyEvents.this, myEventsList, MyEvents.class);
         recyclerView.setAdapter(eventAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

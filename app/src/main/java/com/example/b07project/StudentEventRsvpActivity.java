@@ -42,6 +42,11 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
 
     Event event;
 
+    public void OnRsvpEventsBackButtonClick(View view){
+        Intent intent = new Intent(this, EventViewActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
