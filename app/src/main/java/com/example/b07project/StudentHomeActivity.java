@@ -79,23 +79,18 @@ public class StudentHomeActivity extends AppCompatActivity {
 
 
     private void getdata() {
-
-        // calling add value event listener method
-        // for getting the values from database.
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // this method is call to get the realtime
-                // updates in the data.
-                // this method is called when the data is
-
                 announcementList.clear();
+
+                // Loop through the fetched announcements
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    // Loop through the children of the "announcements" node
                     String subject = dataSnapshot.getKey();
                     String announcement = dataSnapshot.getValue(String.class);
                     String announcementId = AnnouncementIDGenerator.generateUniqueId();
 
+                    // Check if the announcement is not dismissed before adding it
                     if (!isDismissed(announcementId)) {
                         DismissableAnnouncements newAnnouncement = new DismissableAnnouncements(subject, announcement, announcementId);
                         announcementList.add(newAnnouncement);
@@ -108,13 +103,10 @@ public class StudentHomeActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // calling on cancelled method when we receive
-                // any error or we are not able to get the data.
-                Toast.makeText(StudentHomeActivity.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
+                // Handle onCancelled event
+                Toast.makeText(StudentHomeActivity.this, "Failed to get data.", Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
     private void dismissNotification(String notificationId) {
