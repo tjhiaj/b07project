@@ -31,6 +31,8 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
     private Button rsvpButton;
     private TextView eventDetailsTitleTextView;
 
+    private TextView eventDetailsDescriptionTextView;
+
     private TextView top_header_events;
 
     private String eventId;
@@ -55,6 +57,7 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
 
         eventDetailsTitleTextView = findViewById(R.id.eventDetailsTitleTextView);
         top_header_events = findViewById(R.id.top_header_events);
+        eventDetailsDescriptionTextView = findViewById(R.id.eventDetailsDescriptionTextView);
 
 
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
@@ -78,10 +81,13 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
         Log.i("pretty2", event.toString());
 
         String eventName = event.getEventName();
+        String description = event.getEventDescription();
 
         eventDetailsTitleTextView.setText(eventName);
-
+        eventDetailsDescriptionTextView.setText(description);
         top_header_events.setText(eventName);
+
+
 
 
         rsvpButton.setOnClickListener(new View.OnClickListener() {
@@ -116,27 +122,31 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
 
                     // Add the current user's UID to the list
                     participantsList.add(currentUser.getUid());
+                    Log.i("CONRAD", participantsList.toString() + " new ARRAY HERE");
 
-                    if (participantsList.size() -1 > participantLimit){
+                    if (participantsList.size() - 1 <= participantLimit){
+                        // Update the participantsRef with the modified list
+                        Log.i("CONRAD", participantsList.toString() + "adding to database");
+                        participantsRef.setValue(participantsList)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(StudentEventRsvpActivity.this, "RSVP successful", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(StudentEventRsvpActivity.this, EventViewActivity.class);
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(StudentEventRsvpActivity.this, "RSVP failed", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
 
                     }else{
                         Toast.makeText(StudentEventRsvpActivity.this, "Participant limit reached. Can not rsvp.", Toast.LENGTH_SHORT).show();
-                        return;
+
                     }
-                    // Update the participantsRef with the modified list
-                    participantsRef.setValue(participantsList)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(StudentEventRsvpActivity.this, "RSVP successful", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(StudentEventRsvpActivity.this, EventViewActivity.class);
-                                        startActivity(intent);
-                                    } else {
-                                        Toast.makeText(StudentEventRsvpActivity.this, "RSVP failed", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
+
+
                 } else {
                     // Handle the case where participantsRef does not exist
                     Toast.makeText(StudentEventRsvpActivity.this, "Participants not available", Toast.LENGTH_SHORT).show();

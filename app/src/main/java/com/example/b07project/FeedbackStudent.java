@@ -39,6 +39,7 @@ public class FeedbackStudent extends AppCompatActivity {
     private float rating;
 
     private List<Integer> ratings;
+    private List<String> comments;
 
     Event event;
 
@@ -46,7 +47,6 @@ public class FeedbackStudent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback_student);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
 
         submitFeedbackButton = findViewById(R.id.submitFeedbackButton);
@@ -61,8 +61,13 @@ public class FeedbackStudent extends AppCompatActivity {
         }
 
         eventID = event.getEventID();
+        Log.i("CONRAD", eventID + " ID");
         rating = event.getRating();
+        Log.i("CONRAD", rating + " rating");
         ratings = event.getRatings();
+        Log.i("CONRAD", ratings + " ratings");
+        comments = event.getComments();
+
 
         submitFeedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,13 +77,13 @@ public class FeedbackStudent extends AppCompatActivity {
                 DatabaseReference ratingRef = feedbackRef.child("rating");
                 DatabaseReference ratingsRef = feedbackRef.child("ratings");
                 List<Integer> ratingsList = ratings;
+                List<String> commentsList = comments;
 
 
 
                 String comment = commentEditText.getText().toString().trim();
                 int intRating = (int) ratingBar.getRating();
-
-
+                Log.i("CONRAD", intRating + " intRating");
                 if (feedbackRef == null || comment.isEmpty()) {
                     return;
                 }
@@ -89,8 +94,10 @@ public class FeedbackStudent extends AppCompatActivity {
                     int currentCount = ratingsList.get(index);
                     ratingsList.set(index, currentCount + 1);
 
-                commentsRef.push().setValue(comment);
-                ratingsRef.setValue(ratingsList);
+                    commentsList.add(comment);
+                    commentsRef.setValue(commentsList);
+                    Log.i("CONRAD", ratingsList + " ratingsList");
+                    ratingsRef.setValue(ratingsList);
 
                 //finds the new average rating now that the ratings list is updated to include the user's rating
                 float newOverallRating = calculateNewOverallRating(rating, intRating, ratingsList.size());
