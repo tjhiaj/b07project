@@ -40,11 +40,11 @@ public class EventViewActivity extends AppCompatActivity {
     public void OnViewEventsBackButtonClick(View view){
 
         UserInfo.RoleType role = UserInfo.getInstance().getRole();
-        // If Admin
+       
         if (role==Admin){
             Intent intent = new Intent(this, ScheduleOrViewActivity.class);
             startActivity(intent);
-        }
+
         // If Student
         if (role==Student){
             Intent intent = new Intent(this, MyEventsOrAllEventsActivity.class);
