@@ -2,6 +2,9 @@ package com.example.b07project;
 
 import static android.content.ContentValues.TAG;
 
+import static com.example.b07project.UserInfo.RoleType.Admin;
+import static com.example.b07project.UserInfo.RoleType.Student;
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,12 +38,20 @@ public class EventViewActivity extends AppCompatActivity {
     FirebaseDatabase database;
 
     public void OnViewEventsBackButtonClick(View view){
-        // If Admin
-//        Intent intent = new Intent(this, ScheduleOrViewActivity.class);
-//        startActivity(intent);
+
+        UserInfo.RoleType role = UserInfo.getInstance().getRole();
+       
+        if (role==Admin){
+            Intent intent = new Intent(this, ScheduleOrViewActivity.class);
+            startActivity(intent);
+
         // If Student
-//        Intent intent = new Intent(this, MyEventsOrAllEventsActivity.class);
-//        startActivity(intent);
+        if (role==Student){
+            Intent intent = new Intent(this, MyEventsOrAllEventsActivity.class);
+            startActivity(intent);
+        }
+
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
