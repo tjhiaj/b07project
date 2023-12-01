@@ -1,5 +1,8 @@
 package com.example.b07project;
 
+import android.content.Intent;
+import android.view.View;
+
 public class LoginPresenter {
     private LoginModel loginModel;
     private LoginView loginView;
