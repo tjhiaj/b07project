@@ -96,5 +96,10 @@ public class LoginView extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public void OnLoginBackButtonClick(View view) {
+        Intent intent = new Intent(this, AdminOrStudentActivity.class);
+        startActivity(intent);
+    }
 }
 
