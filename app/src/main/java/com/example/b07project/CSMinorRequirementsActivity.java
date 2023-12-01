@@ -26,39 +26,26 @@ public class CSMinorRequirementsActivity extends AppCompatActivity {
             String message1 = "You qualify for UTSC's Computer Science Minor POSt! Good job.";
             Snackbar snackbar = Snackbar.make(view, message1, Snackbar.LENGTH_INDEFINITE);
 
-            // Add an action (e.g., close button)
             snackbar.setAction("Close", new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    snackbar.dismiss(); // Dismiss the Snackbar when the action is clicked
+                    snackbar.dismiss();
                 }
             });
 
             snackbar.show();
-//            int duration = Toast.LENGTH_SHORT; // Duration for how long the toast message will appear
-//
-//            Toast toast = Toast.makeText(getApplicationContext(), message, duration);
-//            toast.show();
         } else {
             String message2 = "Sorry, you do not qualify for UTSC's Computer Science Minor POSt.";
             Snackbar snackbar = Snackbar.make(view, message2, Snackbar.LENGTH_INDEFINITE);
 
-            // Add an action (e.g., close button)
             snackbar.setAction("Close", new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    snackbar.dismiss(); // Dismiss the Snackbar when the action is clicked
+                    snackbar.dismiss();
                 }
             });
 
             snackbar.show();
-//            String message2 = "Sorry, you do not qualify for UTSC's Computer Science POSt " +
-//                    "requirements and you may not enroll in either a specialist or major CS program." +
-//                    "Good luck in your future endeavors.";
-//            int duration = Toast.LENGTH_SHORT; // Duration for how long the toast message will appear
-//
-//            Toast toast = Toast.makeText(getApplicationContext(), message2, duration);
-//            toast.show();
         }
     }
 

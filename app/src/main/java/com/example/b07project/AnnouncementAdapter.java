@@ -34,6 +34,7 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 
         holder.subjectTextView.setText(announcement.getSubject());
         holder.messageTextView.setText(announcement.getMessage());
+
     }
 
     @Override
