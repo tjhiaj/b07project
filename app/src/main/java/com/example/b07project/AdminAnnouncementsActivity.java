@@ -62,8 +62,7 @@ public class AdminAnnouncementsActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
 
                             if (task.isSuccessful()) {
-                                // Notification creation logic
-                                NotificationHelper.showNotification(AdminAnnouncementsActivity.this, "New Announcement", subjects + " - " + announcements);
+                                NotificationHelper.showNotification(AdminAnnouncementsActivity.this, "New Announcement!", subjects + " - " + announcements);
                                 // Update UI or show a toast indicating successful update
                                 complaintContent.setText("");
                                 subjectContent.setText("");
