@@ -15,7 +15,10 @@ public class NotificationHelper {
     private static final String CHANNEL_NAME = "Andy Channel";
     private static final String CHANNEL_DESCRIPTION = "I DONT KNOW WHAT IM DOING";
 
-    public static void showNotification(Context context, String title, String message) {
+    String ID;
+
+    public static void showNotification(Context context, String title, String message, String ID) {
+        ID = ID;
         NotificationManager notificationManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -39,8 +42,18 @@ public class NotificationHelper {
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        Intent intent = new Intent(context, StudentAnnouncementsActivity.class);
+        Intent intent;
+        if (ID == "announcement")
+        {
+            intent = new Intent(context, StudentAnnouncementsActivity.class);
+        }
+        else if (ID == "event")
+        {
+            intent = new Intent(context, EventViewActivity.class);
+        }
+        else{
+            intent = new Intent(context, AdminOrStudentActivity.class);
+        }
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent,
                 PendingIntent.FLAG_IMMUTABLE);

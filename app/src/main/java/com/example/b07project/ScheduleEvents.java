@@ -108,6 +108,9 @@ public class ScheduleEvents extends AppCompatActivity {
                 eventsRef.child(eventKey).setValue(newEvent, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@NonNull DatabaseError error, @NonNull DatabaseReference ref) {
+
+                        NotificationHelper.showNotification(ScheduleEvents.this, "New Event!", eventName + " - " + description, "event");
+
                         if (error == null) {
                             Log.i("pretty", "after push");
 //                            Log.i("pretty", newEvent.getComments().get(0));
