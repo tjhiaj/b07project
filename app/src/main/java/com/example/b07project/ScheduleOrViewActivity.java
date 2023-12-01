@@ -22,5 +22,10 @@ public class ScheduleOrViewActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void OnAdminEventsNavBackButtonClick(View view){
+        Intent intent = new Intent(this, AdminHomeActivity.class);
+        startActivity(intent);
+    }
+
 
 }

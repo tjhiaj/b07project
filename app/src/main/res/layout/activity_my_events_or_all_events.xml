@@ -17,27 +17,43 @@
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/myEventsButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/my_events"
-        android:onClick="OnMyEventsButtonClick"
+        android:orientation="vertical"
+        android:layout_gravity="center"
         app:layout_constraintTop_toBottomOf="@id/top_header_events_student"
-        app:layout_constraintBottom_toTopOf="@id/allEventsButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/bottom_header_events_student">
 
-    <Button
-        android:id="@+id/allEventsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/all_events"
-        android:onClick="OnAllEventsButtonClick"
-        app:layout_constraintTop_toBottomOf="@id/myEventsButton"
-        app:layout_constraintBottom_toTopOf="@id/bottom_header_events_student"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        <Button
+            android:id="@+id/myEventsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_events"
+            android:onClick="OnMyEventsButtonClick"
+            app:layout_constraintTop_toBottomOf="@id/top_header_events_student"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/teal"
+            app:layout_constraintBottom_toTopOf="@id/bottom_header_events_student"
+            android:layout_marginBottom="38dp"
+            android:layout_gravity="center"
+            />
+
+        <Button
+            android:id="@+id/allEventsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all_events"
+            android:onClick="OnAllEventsButtonClick"
+            app:layout_constraintTop_toBottomOf="@id/myEventsButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/teal"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
 
     <View
         android:id="@+id/bottom_header_events_student"
@@ -45,4 +61,17 @@
         android:layout_height="62dp"
         android:background="@color/teal"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:backgroundTint="@color/blue"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottom_header_events_student"
+        android:onClick="OnStudentEventNavBackButtonClick"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

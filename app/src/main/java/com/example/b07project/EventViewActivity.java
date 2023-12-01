@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -32,6 +33,15 @@ public class EventViewActivity extends AppCompatActivity {
     EventAdapter adapter;
     List<Event> eventList = new ArrayList<>();
     FirebaseDatabase database;
+
+    public void OnViewEventsBackButtonClick(View view){
+        // If Admin
+        Intent intent = new Intent(this, ScheduleOrViewActivity.class);
+        startActivity(intent);
+        // If Student
+//        Intent intent = new Intent(this, MyEventsOrAllEventsActivity.class);
+//        startActivity(intent);
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
