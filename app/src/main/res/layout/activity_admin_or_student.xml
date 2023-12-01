@@ -18,29 +18,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/logoImageView"
         android:orientation="horizontal"
         android:layout_gravity="center">
 
-        <!-- Admin Button -->
         <Button
             android:id="@+id/adminButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/navyBlue"
             android:onClick="OnAdminButtonClick"
-            android:text="@string/admin" />
+            android:text="@string/admin" 
+            android:backgroundTint="@color/teal"
+            />
 
-        <!-- Student Button -->
         <Button
             android:id="@+id/studentButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/navyBlue"
             android:onClick="OnStudentButtonClick"
-            android:text="@string/student" />
+            android:text="@string/student"
+            android:backgroundTint="@color/teal"
+            />
     </LinearLayout>
 </LinearLayout>

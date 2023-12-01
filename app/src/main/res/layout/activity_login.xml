@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightBlue"
+    android:background="@color/beige"
     android:orientation="vertical"
-    tools:context=".Login">
+    tools:context=".LoginView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="123dp"
-        android:background="@color/navyBlue">
+        android:background="@color/teal">
 
         <TextView
             android:id="@+id/login_heading"
@@ -22,13 +22,14 @@
             android:layout_marginTop="62sp"
             android:layout_marginEnd="30sp"
             android:gravity="start"
-            android:text="@string/login_heading"
+            android:text="@string/Login"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:textStyle="bold"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -65,7 +66,10 @@
                     android:layout_width="350sp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext_background"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:textColor="@color/white"
+                    android:textCursorDrawable = "@null"
+                    android:inputType="text"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,7 +95,10 @@
                     android:id="@+id/password"
                     android:layout_width="350sp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_edittext_background" />
+                    android:background="@drawable/rounded_edittext_background"
+                    android:textColor="@color/white"
+                    android:textCursorDrawable = "@null"
+                    android:inputType="text"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -105,7 +112,7 @@
                 android:paddingBottom="10sp"
                 android:text="@string/forgot_password"
                 android:textAllCaps="false"
-                android:textColor="@color/navyBlue"
+                android:textColor="@color/teal"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -120,7 +127,7 @@
                     android:layout_marginStart="75dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="75dp"
-                    android:backgroundTint="@color/navyBlue"
+                    android:backgroundTint="@color/teal"
                     android:text="@string/Login"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -139,7 +146,7 @@
                 android:paddingEnd="30sp"
                 android:text="@string/click_to_register"
                 android:textAlignment="center"
-                android:textColor="@color/navyBlue"
+                android:textColor="@color/teal"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

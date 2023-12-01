@@ -13,4 +13,9 @@
     </style>
 
     <style name="Theme.Material3.Light" parent="Base.Theme.Material3.Light" />
+
+    <style name="checkBoxStyle" parent="Base.Theme.AppCompat">
+        <item name="colorAccent">@color/teal</item>
+        <item name="android:textColorSecondary">@color/beige</item>
+    </style>
 </resources>

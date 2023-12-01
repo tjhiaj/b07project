@@ -61,7 +61,7 @@
                         android:layout_marginTop="14dp"
                         android:text="@string/sampleSubject"
                         android:textColor="@color/white"
-                        android:textSize="25sp" />
+                        android:textSize="18sp" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/expand"

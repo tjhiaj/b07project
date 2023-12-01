@@ -16,6 +16,8 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="feedback">Feedback</string>
+    <string name="rating">Rating</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -58,14 +60,14 @@
     <string name="enter_utorid">Enter your UTORid here...</string>
     <string name="password_label">Password</string>
     <string name="enter_password">Enter your password here...</string>
-    <string name="forgot_password">Did you forget your password?</string>
+    <string name="forgot_password">Forgot your password?</string>
     <string name="Login">Login</string>
     <string name="Signup">Sign up</string>
     <string name="register">Register</string>
     <string name="Register">REGISTER</string>
     <string name="register_heading">Register an account!</string>
     <string name="click_to_login">Click this text to go back to the login page.</string>
-    <string name="click_to_register">Click this text if you need to register.</string>
+    <string name="click_to_register">Click this text to register.</string>
     <string name="logout">LOGOUT</string>
     <string name="general_image_description">cool image!</string>
 
@@ -107,50 +109,46 @@
     <string name="do_I_qualify_stats_heading">Do I qualify for Statistics POSt?</string>
     <string name="please_select_heading">Please select the category you are interested in.</string>
     <string name="please_answer_heading">Please answer the following.</string>
-    <string name="computer_science_post">Computer Science (Both Specialist and Major)</string>
-    <string name="computer_science_minor_post">Computer Science (Only Minor)</string>
+    <string name="computer_science_post">Computer Science (Specialist or Major)</string>
+    <string name="computer_science_minor_post">Computer Science (Minor)</string>
     <string name="math_major_post">Mathematics Major</string>
     <string name="math_specialist_post">Mathematics Specialist</string>
     <string name="stats_post">Statistics (Both Specialist and Major)</string>
     <string name="go_back_button_text">Go Back</string>
 
     <string name="cs_first_question">
-        Do you have at least a GPA of 2.5 over the following courses?\n
-        (Basically an average grade of 70% and above in terms of UTSC grading.)\n
-        Introduction to Computer Science II\n
-        Discrete Mathematics\n
-        Linear Algebra I for Mathematical Sciences\n
-        Calculus I for Mathematical Sciences\n
-        Calculus II for Mathematical Sciences</string>
+        Do you have a minimum GPA of 2.5 (70%) over the following courses?\n
+         - Introduction to Computer Science II\n
+         - Discrete Mathematics\n
+         - Linear Algebra I for Mathematical Sciences\n
+         - Calculus I for Mathematical Sciences\n
+         - Calculus II for Mathematical Sciences</string>
     <string name="cs_second_question">
         Do you have a minimum grade of B (73-76%) in Introduction to Computer Science II?</string>
     <string name="cs_third_question">
         Do you have a minimum grade of C- (60-62%) in at least two of these courses?\n
-        Discrete Mathematics\n
-        Linear Algebra I for Mathematical Sciences\n
-        Calculus II for Mathematical Sciences</string>
+        - Discrete Mathematics\n
+        - Linear Algebra I for Mathematical Sciences\n
+        - Calculus II for Mathematical Sciences</string>
 
     <string name="cs_minor_first_question">
-        Have you completed a total of 4 credits? (I.E. eight credited courses)
+        Have you completed a total of 4 credits?
     </string>
     <string name="cs_minor_second_question">
-        Out of those 4 credits, have you obtained a credit in each of these?:\n
-        Introduction to Computer Science I\n
-        Introduction to Computer Science II\n
-        Discrete Mathematics\n
-        Linear Algebra I for Mathematical Sciences OR MATA23, the alternative\n
-        AT LEAST ONE of the Calculus Is (Either MATA30, MATA31, MATA32)
+        Of those 4 credits, have you obtained credit in each of the following?:\n
+        - Introduction to Computer Science I\n
+        - Introduction to Computer Science II\n
+        - Discrete Mathematics\n
+        - Linear Algebra I for Mathematical Sciences OR MATA23, the alternative\n
+        - AT LEAST ONE of the Calculus Is (MATA30, MATA31, MATA32)
     </string>
 
     <string name="CS_minor_disclaimer">
-        Note: Even if you meet these requirements, you will be evaluated based on your grades in\n
-        these courses:\n
-        Introduction to Computer Science II\n
-        Discrete Mathematics\n
-        Linear Algebra I for Mathematical Sciences OR MATA23, the alternative\n
-        \n
-        Basically, if you fulfill the above requirements and maximize your grades in the above\n
-        3 courses, your chances for getting into the CS Minor are better.
+        Note: Even if you meet these requirements, you will be evaluated based on your grades in the following:\n
+        - Introduction to Computer Science II\n
+        - Discrete Mathematics\n
+        - Linear Algebra I for Mathematical Sciences OR MATA23, the alternative\n
+        \nIf you fulfill the above requirements and maximize your grades in the above 3 courses, your chances for getting into the CS Minor are better.
     </string>
 
     <string name="math_major_first_question">
@@ -205,4 +203,6 @@
     <string name="schedule">Schedule</string>
     <string name="view_events">View Events</string>
     <string name="comments">Comments</string>
+    <string name="back">Back</string>
+    <string name="check_all_that_apply">Check all that apply.</string>
 </resources>
