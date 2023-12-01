@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,14 +34,26 @@ public class MyEvents extends AppCompatActivity {
         setContentView(R.layout.activity_view_events);
 
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
+        myEventsList = new ArrayList<>();
+        eventAdapter = new EventAdapter(MyEvents.this, myEventsList);
+        recyclerView.setAdapter(eventAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        myEventsList = new ArrayList<>();
-        eventAdapter = new EventAdapter(MyEvents.this,myEventsList);
-        recyclerView.setAdapter(eventAdapter);
+        // Dummy data for testing
+        List<String> L1 = new ArrayList<>();
+        L1.add("ab");
+        L1.add("cd");
+        List<Integer> L2 = new ArrayList<>();
+        L2.add(2);
+        L2.add(0);
+        L2.add(3);
+        L2.add(4);
+        L2.add(1);
+        List<String> L3 = new ArrayList<>();
+        L3.add("Bob");
 
-        loadMyEvents();
+        myEventsList.add(new Event("Event 1", "This is the description for event 1.", R.drawable.default_event, 3, L1, L2, "NjtusLW-ySqra_V71MP", 100, L3, "specificDate"));
+        //loadMyEvents();
     }
 
     private void loadMyEvents() {
