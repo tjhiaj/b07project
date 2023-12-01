@@ -2,6 +2,7 @@ package com.example.b07project;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -48,6 +49,11 @@ public class AdminEventDetailsActivity extends AppCompatActivity {
             commentsLinearLayout.addView(commentTextView);
         }
 
+    }
+
+    public void OnAdminEventsBackButtonClick(View view){
+        Intent intent = new Intent(this, EventViewActivity.class);
+        startActivity(intent);
     }
 
 }

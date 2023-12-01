@@ -50,8 +50,6 @@ public class EventViewActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MyEventsOrAllEventsActivity.class);
             startActivity(intent);
         }
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -232,7 +230,7 @@ public class EventViewActivity extends AppCompatActivity {
                         if (!isDestroyed()) {
                             // Set up RecyclerView
                             RecyclerView recyclerView = findViewById(R.id.recyclerView);
-                            adapter = new EventAdapter(EventViewActivity.this, eventList);
+                            adapter = new EventAdapter(EventViewActivity.this, eventList, EventViewActivity.class);
                             recyclerView.setAdapter(adapter);
                             recyclerView.setLayoutManager(new LinearLayoutManager(EventViewActivity.this));
                         }

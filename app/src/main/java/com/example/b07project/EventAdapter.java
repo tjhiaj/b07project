@@ -18,10 +18,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     private List<Event> eventList;
     private Context context;
+    private Class<?> currentIntentClass;
 
-    public EventAdapter(Context context, List<Event> eventList) {
+    public EventAdapter(Context context, List<Event> eventList, Class<?> currentIntentClass) {
         this.context = context;
         this.eventList = eventList;
+        this.currentIntentClass = currentIntentClass;
     }
 
     @NonNull
@@ -41,10 +43,19 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // If Student
-//                Intent intent = new Intent(context, StudentEventRsvpActivity.class);
-                //If Admin - DO NOT DELETE
-                Intent intent = new Intent(context, AdminEventDetailsActivity.class);
+                Intent intent;
+                UserInfo.RoleType role = UserInfo.getInstance().getRole();
+                if (role == UserInfo.RoleType.Admin){
+                    intent = new Intent(context, AdminEventDetailsActivity.class);
+                }
+                else if (currentIntentClass == EventViewActivity.class){
+                    intent = new Intent(context, StudentEventRsvpActivity.class);
+                }
+                else{
+                    // replace this with working code to switch to feedback page
+                    intent = new Intent(context, FeedbackStudent.class);
+                }
+
                 Log.i("pretty", event.toString());
                 intent.putExtra("EVENT", event);
                 context.startActivity(intent);
