@@ -36,8 +36,8 @@ public class EventViewActivity extends AppCompatActivity {
 
     public void OnViewEventsBackButtonClick(View view){
         // If Admin
-        Intent intent = new Intent(this, ScheduleOrViewActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, ScheduleOrViewActivity.class);
+//        startActivity(intent);
         // If Student
 //        Intent intent = new Intent(this, MyEventsOrAllEventsActivity.class);
 //        startActivity(intent);
