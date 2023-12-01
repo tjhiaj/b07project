@@ -34,7 +34,7 @@ public class AdminEventDetailsActivity extends AppCompatActivity {
         descriptionTextView.setText(event.getEventDescription());
         ratingBar.setRating(event.getRating());
 
-        //Cheryl changed this part
+
         List<Integer> ratings = event.getRatings();
         String ratingCount = "| ";
         for (int i = 0; i < 5; i++){
