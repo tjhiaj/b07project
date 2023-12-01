@@ -65,13 +65,27 @@
         app:layout_constraintTop_toBottomOf="@id/eventDetailsDescriptionTextView"
         app:layout_constraintBottom_toTopOf="@id/bottom_header_events"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/blue"/>
     <View
         android:id="@+id/bottom_header_events"
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:background="@color/teal"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:backgroundTint="@color/blue"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottom_header_events"
+        android:onClick="OnRsvpEventsBackButtonClick"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

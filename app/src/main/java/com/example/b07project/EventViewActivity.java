@@ -41,17 +41,15 @@ public class EventViewActivity extends AppCompatActivity {
 
         UserInfo.RoleType role = UserInfo.getInstance().getRole();
        
-        if (role==Admin){
+        if (role==Admin) {
             Intent intent = new Intent(this, ScheduleOrViewActivity.class);
             startActivity(intent);
-
+        }
         // If Student
         if (role==Student){
             Intent intent = new Intent(this, MyEventsOrAllEventsActivity.class);
             startActivity(intent);
         }
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -231,7 +229,7 @@ public class EventViewActivity extends AppCompatActivity {
                         if (!isDestroyed()) {
                             // Set up RecyclerView
                             RecyclerView recyclerView = findViewById(R.id.recyclerView);
-                            adapter = new EventAdapter(EventViewActivity.this, eventList);
+                            adapter = new EventAdapter(EventViewActivity.this, eventList, EventViewActivity.class);
                             recyclerView.setAdapter(adapter);
                             recyclerView.setLayoutManager(new LinearLayoutManager(EventViewActivity.this));
                         }
