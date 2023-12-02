@@ -21,7 +21,7 @@ public class StudentHomeActivity extends AppCompatActivity {
     public void onStudentEventsButtonClick(View view) {
         Intent intent = new Intent(this, MyEventsOrAllEventsActivity.class);
         startActivity(intent);
-    } 
+    }
 
     public void programButtonClick(View view){
         Intent intent = new Intent(this, POStRequirementsActivity.class);
@@ -29,6 +29,11 @@ public class StudentHomeActivity extends AppCompatActivity {
     }
     public void onStudentComplaintsButtonClick(View view) {
         Intent intent = new Intent(this, SubmitComplaints.class);
+        startActivity(intent);
+    }
+
+    public void OnStudentLogoutButtonClick(View view) {
+        Intent intent = new Intent(this, LoginView.class);
         startActivity(intent);
     }
 }

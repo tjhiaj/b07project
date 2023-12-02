@@ -26,4 +26,9 @@ public class AdminHomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ViewComplaints.class);
         startActivity(intent);
     }
+
+    public void OnAdminLogoutButtonClick(View view) {
+        Intent intent = new Intent(this, LoginView.class);
+        startActivity(intent);
+    }
 }
