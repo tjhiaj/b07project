@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FeedbackStudent extends AppCompatActivity {
@@ -36,7 +37,7 @@ public class FeedbackStudent extends AppCompatActivity {
 
     private String eventID;
 
-    private float rating;
+    private double rating;
 
     private List<Integer> ratings;
     private List<String> comments;
@@ -54,36 +55,118 @@ public class FeedbackStudent extends AppCompatActivity {
         ratingBar = findViewById(R.id.ratingBar);
 
         if (database == null) return;
-
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("EVENT")) {
             event = intent.getParcelableExtra("EVENT");
         }
 
         eventID = event.getEventID();
-        Log.i("CONRAD", eventID + " ID");
-        rating = event.getRating();
-        Log.i("CONRAD", rating + " rating");
-        ratings = event.getRatings();
-        Log.i("CONRAD", ratings + " ratings");
-        comments = event.getComments();
+        Log.i("Cheryl", eventID);
+
+        DatabaseReference feedbackRef = database.getReference("events").child(eventID);
+        DatabaseReference commentsRef = feedbackRef.child("comments");
+        DatabaseReference ratingRef = feedbackRef.child("rating");
+        DatabaseReference ratingsRef = feedbackRef.child("ratings");
+
+
+//
+//
+//        rating = event.getRating();
+//
+//        ratings = event.getRatings();
+//
+//        comments = event.getComments();
+
+
+
+        ratingRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Check if dataSnapshot exists and has a value
+                if (dataSnapshot.exists() && dataSnapshot.getValue() != null) {
+                    // Check if the value is a number
+                    Object value = dataSnapshot.getValue();
+                    if (value instanceof Number) {
+                        Number ratingValue = (Number) value;
+                        // Assign ratingValue to the rating variable
+                        rating = ratingValue.doubleValue();
+                    } else {
+                        // Handle the case where the value is not a Number
+                        // You can log a warning or handle it based on your requirements
+                        Log.w(TAG, "Unexpected data type for rating: " + value.getClass().getSimpleName());
+                        rating = 0.0; // Default to 0.0
+                    }
+                } else {
+                    // Handle the case where the data is missing or not in the expected format
+                    rating = 0.0; // Default to 0.0
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle cancellation
+            }
+        });
+
+        ratingsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Assuming ratings is a list of integers
+                List<Integer> ratingsList = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Long rating = snapshot.getValue(Long.class);
+                    if (rating != null) {
+                        ratingsList.add(Math.toIntExact(rating));
+                    }
+                }
+                // Assign ratingsList to the ratings variable
+                ratings = ratingsList;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
+
+        commentsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Assuming comments is a list of strings
+                List<String> commentsList = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String comment = snapshot.getValue(String.class);
+                    if (comment != null) {
+                        commentsList.add(comment);
+                    }
+                }
+                // Assign commentsList to the comments variable
+                comments = commentsList;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
+
+
 
 
         submitFeedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseReference feedbackRef = database.getReference("events").child(eventID);
-                DatabaseReference commentsRef = feedbackRef.child("comments");
-                DatabaseReference ratingRef = feedbackRef.child("rating");
-                DatabaseReference ratingsRef = feedbackRef.child("ratings");
+
                 List<Integer> ratingsList = ratings;
                 List<String> commentsList = comments;
+                Log.i("Cheryl", ratingsList.get(0).toString());
+                Log.i("Cheryl", commentsList.get(0).toString());
 
 
 
                 String comment = commentEditText.getText().toString().trim();
                 int intRating = (int) ratingBar.getRating();
-                Log.i("CONRAD", intRating + " intRating");
+
                 if (feedbackRef == null || comment.isEmpty()) {
                     return;
                 }
@@ -96,11 +179,11 @@ public class FeedbackStudent extends AppCompatActivity {
 
                     commentsList.add(comment);
                     commentsRef.setValue(commentsList);
-                    Log.i("CONRAD", ratingsList + " ratingsList");
+
                     ratingsRef.setValue(ratingsList);
 
                 //finds the new average rating now that the ratings list is updated to include the user's rating
-                float newOverallRating = calculateNewOverallRating(rating, intRating, ratingsList.size());
+                double newOverallRating = calculateNewOverallRating(rating, intRating, ratingsList.size());
 
 
                 ratingRef.setValue(newOverallRating)  .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -169,9 +252,9 @@ public class FeedbackStudent extends AppCompatActivity {
     }
 
 
-    private float calculateNewOverallRating(float currentRating, float userRating, int size) {
+    private double calculateNewOverallRating(double currentRating, float userRating, int size) {
         // Your logic to calculate the new overall rating (e.g., taking the average)
-        float sumOfRatings = currentRating * size + userRating;
+        double sumOfRatings = currentRating * size + userRating;
         return sumOfRatings / (size + 1);
     }
 
