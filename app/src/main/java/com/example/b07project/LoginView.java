@@ -34,7 +34,7 @@ public class LoginView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        loginPresenter = new LoginPresenter(this);
+        loginPresenter = new LoginPresenter(this,new LoginModel());
 
 
         editTextEmail = findViewById(R.id.email);
@@ -59,9 +59,8 @@ public class LoginView extends AppCompatActivity {
                 String email, password;
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
-
-                loginPresenter.onLoginButtonClicked(email, password);
-
+                loginPresenter.checkInputEmpty(email,password);
+                //loginPresenter.onLoginButtonClicked(email, password);
 
             }
         });
@@ -82,7 +81,6 @@ public class LoginView extends AppCompatActivity {
     public void showErrorMessage() {
         Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
     }
-
 
     public void navigateToStudentHome() {
         Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
