@@ -70,6 +70,10 @@ public class Register extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
+                                if (password.length() < 6){
+                                    Toast.makeText(Register.this, "Password needs to be at least 6 characters",
+                                            Toast.LENGTH_SHORT).show();
+                                }
                                 if (task.isSuccessful()) {
 
                                     // Sign in success, update UI with the signed-in user's information
@@ -78,7 +82,6 @@ public class Register extends AppCompatActivity {
                                   Intent intent = new Intent(getApplicationContext(), LoginView.class);
                                   startActivity(intent);
                                   finish();
-
 
                                 } else {
                                     // If sign in fails, display a message to the user.

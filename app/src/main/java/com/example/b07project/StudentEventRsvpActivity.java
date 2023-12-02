@@ -38,6 +38,9 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
     private String eventId;
     private int participantLimit;
 
+    String eventName;
+
+    String description;
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser currentUser = auth.getCurrentUser();
@@ -59,29 +62,74 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
         top_header_events = findViewById(R.id.top_header_events);
         eventDetailsDescriptionTextView = findViewById(R.id.eventDetailsDescriptionTextView);
 
-
-        database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
-
-        rsvpButton = findViewById(R.id.RsvpButton);
-
-        if (database == null) return;
-
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("EVENT")) {
             event = intent.getParcelableExtra("EVENT");
         }
         assert event != null;
         eventId = event.getEventID();
-        participantLimit = event.getParticipantLimit();
 
-//
 
-        if(eventId == null)
-            Log.i("pretty", "AAAAANULL");
-        Log.i("pretty2", event.toString());
+        database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
+        DatabaseReference eventsIDRef = database.getReference("events").child(eventId);
+        DatabaseReference participantLimitRef = eventsIDRef.child("participantLimit");
+        DatabaseReference eventNameRef = eventsIDRef.child("eventName");
+        DatabaseReference descriptionRef = eventsIDRef.child("description");
 
-        String eventName = event.getEventName();
-        String description = event.getEventDescription();
+
+
+
+        rsvpButton = findViewById(R.id.RsvpButton);
+
+        if (database == null) return;
+
+
+        eventNameRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String eventNameValue = dataSnapshot.getValue(String.class);
+                // Assign eventNameValue to the eventName variable
+                eventName = eventNameValue;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
+
+        descriptionRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String descriptionValue = dataSnapshot.getValue(String.class);
+                // Assign descriptionValue to the description variable
+                description = descriptionValue;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
+
+
+        participantLimitRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Integer participantLimitValue = dataSnapshot.getValue(Integer.class);
+                // Assign participantLimitValue to the participantLimit variable
+                participantLimit = participantLimitValue != null ? participantLimitValue : 0; // Default to 0 if null
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
+
+
+
 
         eventDetailsTitleTextView.setText(eventName);
         eventDetailsDescriptionTextView.setText(description);
@@ -114,7 +162,9 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
                     Log.i("CONRAD", "DOING NOW");
                     List<String> participantsList = new ArrayList<>();
                     for (DataSnapshot participantSnapshot : dataSnapshot.getChildren()) {
-                        String participantUID = participantSnapshot.getKey();
+                        String participantUID = participantSnapshot.getValue(String.class);
+                        Log.i("CONRAD", "participant"+participantSnapshot.getKey());
+
                         participantsList.add(participantUID);
                     }
                     Log.i("CONRAD", "DONE FILLING IT UP");
