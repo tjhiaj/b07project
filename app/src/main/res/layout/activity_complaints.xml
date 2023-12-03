@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:paddingStart="20dp"
+            android:paddingStart="50dp"
             android:paddingEnd="0dp"
             android:text="@string/subject"
             android:textColor="@color/textBlue"
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="20dp"
-            android:paddingStart="20dp"
+            android:paddingStart="50dp"
             android:paddingEnd="15dp"
             android:text="@string/message"
             android:textColor="@color/textBlue"
@@ -107,35 +107,35 @@
 
         </TextView>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editComplaints"
-            android:layout_width="match_parent"
-            android:layout_height="213dp"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="56dp"
-            android:background="@drawable/rounded_edittext_background"
-            android:gravity="top"
-            android:hint="@string/insert_text_here"
-            android:textColorHint="@color/white"
-            android:paddingLeft="15dp"
-            android:paddingTop="10dp"
-            android:paddingRight="15dp"
-            app:layout_constraintBottom_toTopOf="@id/submitButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
-            app:layout_constraintStart_toStartOf="parent"
-            android:textCursorDrawable = "@null"/>
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="0dp"
+            android:textColorHint="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/editComplaints"
+            app:layout_constraintBottom_toTopOf="@id/submitButton"
             app:layout_constraintStart_toStartOf="@id/editComplaints">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editComplaints"
+                android:layout_width="match_parent"
+                android:layout_height="213dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="56dp"
+                android:background="@drawable/rounded_edittext_background"
+                android:gravity="top"
+                android:hint="@string/insert_text_here"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingRight="15dp"
+                android:textCursorDrawable="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
