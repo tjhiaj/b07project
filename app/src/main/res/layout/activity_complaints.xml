@@ -7,59 +7,45 @@
     android:id="@+id/frameLayout"
     android:background="@color/beige">
 
-
-    <TextView
-        android:id="@+id/textView"
+    <RelativeLayout
+        android:id="@+id/complaintHeader"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
-        android:layout_marginBottom="30dp"
-        android:background="@color/teal"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:text="@string/complaintsHeader"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/complaintLayout"
-        app:layout_constraintEnd_toEndOf="@id/complaintLayout"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004" />
+        android:layout_height="match_parent"
+        android:gravity="top"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@color/teal"
+            android:gravity="center"
+            android:text="@string/complaintsHeader"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.004" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/complaintLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center|center_vertical|center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/relativeBottom"
-        app:layout_constraintStart_toEndOf="@id/textView">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:paddingBottom="15dp"
-            android:text="@string/subject"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@id/textInputLayout2"
-            app:layout_constraintEnd_toEndOf="@id/subjects"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="@id/subjects"
-            app:layout_constraintTop_toTopOf="@id/subjects"
-            app:layout_constraintVertical_bias="0.0">
-
-        </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintStart_toEndOf="@id/complaintHeader">
 
         <TextView
             android:id="@+id/subject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="20dp"
             android:paddingStart="20dp"
             android:paddingEnd="0dp"
             android:text="@string/subject"
@@ -72,32 +58,43 @@
 
         </TextView>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/subjects"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginStart="45dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/rounded_edittext_background"
-            android:hint="@string/insert_text_here"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:paddingBottom="15dp"
             android:textColorHint="@color/white"
-            android:paddingStart="15dp"
-            android:paddingEnd="0dp"
-            app:layout_constraintBottom_toTopOf="@id/textInputLayout2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.779"
-            android:textCursorDrawable = "@null"/>
+            app:layout_constraintBottom_toTopOf="@id/textInputLayout2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/subjects"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/rounded_edittext_background"
+                android:hint="@string/insert_text_here"
+                android:paddingStart="15dp"
+                android:paddingEnd="0dp"
+                android:textCursorDrawable="@null"
+                app:layout_constraintBottom_toTopOf="@id/textInputLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintVertical_bias="0.779" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="20dp"
             android:paddingStart="20dp"
             android:paddingEnd="15dp"
             android:text="@string/message"
