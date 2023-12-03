@@ -52,20 +52,20 @@ public class MyEvents extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Dummy data for testing
-        List<String> L1 = new ArrayList<>();
-        L1.add("ab");
-        L1.add("cd");
-        List<Integer> L2 = new ArrayList<>();
-        L2.add(2);
-        L2.add(0);
-        L2.add(3);
-        L2.add(4);
-        L2.add(1);
-        List<String> L3 = new ArrayList<>();
-        L3.add("Bob");
-
-        myEventsList.add(new Event("Event 1", "This is the description for event 1.", R.drawable.default_event, 3, L1, L2, "NjtusLW-ySqra_V71MP", 100, L3, "specificDate"));
-        //loadMyEvents();
+//        List<String> L1 = new ArrayList<>();
+//        L1.add("ab");
+//        L1.add("cd");
+//        List<Integer> L2 = new ArrayList<>();
+//        L2.add(2);
+//        L2.add(0);
+//        L2.add(3);
+//        L2.add(4);
+//        L2.add(1);
+//        List<String> L3 = new ArrayList<>();
+//        L3.add("Bob");
+//
+//        myEventsList.add(new Event("Event 1", "This is the description for event 1.", R.drawable.default_event, 3, L1, L2, "NjtusLW-ySqra_V71MP", 100, L3, "specificDate"));
+        loadMyEvents();
     }
 
     private void loadMyEvents() {
@@ -82,7 +82,6 @@ public class MyEvents extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     myEventsList.clear();
-
                     for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
                         Event event = eventSnapshot.getValue(Event.class);
                         if (event != null) {
