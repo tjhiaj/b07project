@@ -20,7 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginView extends AppCompatActivity {
-    TextInputEditText editTextEmail, editTextPassword;
+    //TextInputEditText editTextEmail, editTextPassword;
     Button buttonLogin;
 
     ProgressBar progressBar;
@@ -37,8 +37,8 @@ public class LoginView extends AppCompatActivity {
         loginPresenter = new LoginPresenter(this,new LoginModel());
 
 
-        editTextEmail = findViewById(R.id.email);
-        editTextPassword = findViewById(R.id.password);
+        //editTextEmail = findViewById(R.id.email);
+        //editTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_login);
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.registerNow);
@@ -56,10 +56,12 @@ public class LoginView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                String email, password;
-                email = String.valueOf(editTextEmail.getText());
-                password = String.valueOf(editTextPassword.getText());
-                loginPresenter.checkInputEmpty(email,password);
+                //String email, password;
+                //email = String.valueOf(editTextEmail.getText());
+                //password = String.valueOf(editTextPassword.getText());
+                String email = getEmail();
+                String password = getPassword();
+                loginPresenter.checkUser(email,password);
                 //loginPresenter.onLoginButtonClicked(email, password);
 
             }
@@ -67,6 +69,17 @@ public class LoginView extends AppCompatActivity {
 
 
     }
+
+    public String getEmail(){
+        TextInputEditText editTextEmail  = findViewById(R.id.email);
+        return String.valueOf(editTextEmail.getText());
+    }
+    public String getPassword(){
+        TextInputEditText editTextPassword = findViewById(R.id.password);
+        return String.valueOf(editTextPassword.getText());
+    }
+
+
 
     public void showProgressBar() {
         progressBar.setVisibility(View.VISIBLE);
@@ -78,9 +91,6 @@ public class LoginView extends AppCompatActivity {
     }
 
 
-    public void showErrorMessage() {
-        Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-    }
 
     public void navigateToStudentHome() {
         Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
@@ -99,5 +109,9 @@ public class LoginView extends AppCompatActivity {
         Intent intent = new Intent(this, AdminOrStudentActivity.class);
         startActivity(intent);
     }
+    public void showToast(String msg){
+        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+    }
+
 }
 
