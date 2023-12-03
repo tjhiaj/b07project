@@ -77,15 +77,15 @@ public class EventViewActivity extends AppCompatActivity {
         eventList.add(new Event("Event 2", "This is the description for event 2.", R.drawable.default_event, 2, L1, L2, "id2", 110, L3, specificDate));
         eventList.add(new Event("Event 3", "This is the description for event 3.", R.drawable.default_event, 4, L1, L2, "id3", 100, L3, specificDate));*/
 
-        Log.i("doubt it", "sad");
+
         DatabaseReference ref = database.getReference("events");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.i("CONRAD", "SEEING IF EXISTS");
+
                 if (dataSnapshot.exists()) {
                     for(DataSnapshot eventSnapshot:dataSnapshot.getChildren()){
-                        Log.i("CONRAD", eventSnapshot.toString() + "getting events snapshot");
+
                         Event event = eventSnapshot.getValue(Event.class);
                         if(event!= null){
                             Log.i("event",event.toString());

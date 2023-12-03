@@ -31,4 +31,9 @@ public class StudentHomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SubmitComplaints.class);
         startActivity(intent);
     }
+
+    public void OnStudentLogoutButtonClick(View view) {
+        Intent intent = new Intent(this, LoginView.class);
+        startActivity(intent);
+    }
 }

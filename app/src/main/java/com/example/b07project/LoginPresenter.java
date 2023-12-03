@@ -1,11 +1,13 @@
 package com.example.b07project;
 
-public class LoginPresenter {
-    private LoginModel loginModel;
-    private LoginView loginView;
+import android.widget.Toast;
 
-    public LoginPresenter(LoginView loginView) {
-        this.loginModel = new LoginModel();
+public class LoginPresenter {
+    private final LoginModel loginModel;
+    private final LoginView loginView;
+
+    public LoginPresenter(LoginView loginView,LoginModel loginModel) {
+        this.loginModel = loginModel;
         this.loginView = loginView;
     }
 
@@ -27,5 +29,15 @@ public class LoginPresenter {
                 loginView.showErrorMessage();
             }
         });
+    }
+    public void checkInputEmpty(String email, String password) {
+        if (email.isEmpty() || email == null) {
+            Toast.makeText(loginView, "Email cannot be empty", Toast.LENGTH_SHORT).show();
+        } else if (password.isEmpty() || password == null) {
+            Toast.makeText(loginView, "Password cannot be empty", Toast.LENGTH_SHORT).show();
+        } else {
+            onLoginButtonClicked(email, password);
+        }
+
     }
 }

@@ -205,4 +205,5 @@
     <string name="comments">Comments</string>
     <string name="back">Back</string>
     <string name="check_all_that_apply">Check all that apply.</string>
+    <string name="logout_text">Logout</string>
 </resources>
