@@ -109,7 +109,7 @@ public class ScheduleEvents extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull DatabaseError error, @NonNull DatabaseReference ref) {
 
-                        NotificationHelper.showNotification(ScheduleEvents.this, "New Event!", eventName + " - " + description, "event");
+                        NotificationHelper.showNotification(ScheduleEvents.this, "New Event!", eventName + " - " + description, 2);
 
                         if (error == null) {
                             Log.i("pretty", "after push");
