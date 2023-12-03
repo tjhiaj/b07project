@@ -258,5 +258,8 @@ public class FeedbackStudent extends AppCompatActivity {
         return sumOfRatings / (size + 1);
     }
 
-
+    public void onStudentFeedbackButtonClickBackButtonClick(View view) {
+        Intent intent = new Intent(this, MyEvents.class);
+        startActivity(intent);
+    }
 }
