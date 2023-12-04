@@ -92,7 +92,7 @@
                 android:id="@+id/complaints1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/lorem_ipsum"
+                android:text="@string/complaints"
                 android:layout_toEndOf="@id/subject1"
                 android:textColor="@color/white"
                 android:visibility="gone" />
