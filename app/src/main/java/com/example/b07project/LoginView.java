@@ -56,16 +56,23 @@ public class LoginView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                String email, password;
-                email = String.valueOf(editTextEmail.getText());
-                password = String.valueOf(editTextPassword.getText());
-                loginPresenter.checkInputEmpty(email,password);
+                String email = getEmail();
+                String password = getPassword();
+                loginPresenter.checkUserEmpty(email,password);
                 //loginPresenter.onLoginButtonClicked(email, password);
 
             }
         });
 
 
+    }
+    public String getEmail(){
+        TextInputEditText editTextEmail  = findViewById(R.id.email);
+        return String.valueOf(editTextEmail.getText());
+    }
+    public String getPassword(){
+        TextInputEditText editTextPassword = findViewById(R.id.password);
+        return String.valueOf(editTextPassword.getText());
     }
 
     public void showProgressBar() {
@@ -78,9 +85,6 @@ public class LoginView extends AppCompatActivity {
     }
 
 
-    public void showErrorMessage() {
-        Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-    }
 
     public void navigateToStudentHome() {
         Intent intent = new Intent(getApplicationContext(), StudentHomeActivity.class);
@@ -99,5 +103,9 @@ public class LoginView extends AppCompatActivity {
         Intent intent = new Intent(this, AdminOrStudentActivity.class);
         startActivity(intent);
     }
+    public void showToast(int msgId){
+        Toast.makeText(this,msgId,Toast.LENGTH_SHORT).show();
+    }
+
 }
 
