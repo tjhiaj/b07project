@@ -13,6 +13,7 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for login -->
     <string name="invalidEmail">Invalid email address</string>
+    <string name="invalidPassword">Invalid password</string>
     <string name="emptyPassword">Password cannot be empty</string>
     <string name="emptyEmail">Email cannot be empty</string>
     <string name="auth">Authentication Failed</string>

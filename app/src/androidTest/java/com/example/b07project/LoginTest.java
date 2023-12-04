@@ -33,23 +33,45 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ErrorOnLogoutButtonClicked {
+public class LoginTest {
 
     @Rule
     public ActivityScenarioRule<AdminOrStudentActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AdminOrStudentActivity.class);
 
     @Test
-    public void adminOrStudentActivityTest2() {
+    public void loginTest() {
         ViewInteraction materialButton = onView(
-                allOf(withId(R.id.studentButton), withText("Student"),
+                allOf(withId(R.id.adminButton), withText("Admin"),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.LinearLayout")),
                                         1),
-                                1),
+                                0),
                         isDisplayed()));
         materialButton.perform(click());
+
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(R.id.btn_login), withText("Login"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.LinearLayout")),
+                                        4),
+                                0),
+                        isDisplayed()));
+        materialButton2.perform(click());
+
+        ViewInteraction editText = onView(
+                allOf(withId(R.id.email),
+                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
+                        isDisplayed()));
+        editText.check(matches(withText("")));
+
+        ViewInteraction editText2 = onView(
+                allOf(withId(R.id.password),
+                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
+                        isDisplayed()));
+        editText2.check(matches(withText("")));
 
         ViewInteraction textInputEditText = onView(
                 allOf(withId(R.id.email),
@@ -69,39 +91,9 @@ public class ErrorOnLogoutButtonClicked {
                                         0),
                                 0),
                         isDisplayed()));
-        textInputEditText2.perform(replaceText("katepcH"), closeSoftKeyboard());
-
-        ViewInteraction materialButton2 = onView(
-                allOf(withId(R.id.btn_login), withText("Login"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        4),
-                                0),
-                        isDisplayed()));
-        materialButton2.perform(click());
-
-        ViewInteraction materialButton3 = onView(
-                allOf(withId(R.id.logoutButton), withText("Logout"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        materialButton3.perform(click());
+        textInputEditText2.perform(click());
 
         ViewInteraction textInputEditText3 = onView(
-                allOf(withId(R.id.email),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("com.google.android.material.textfield.TextInputLayout")),
-                                        0),
-                                0),
-                        isDisplayed()));
-        textInputEditText3.perform(replaceText("katepchuang@gmail.com"), closeSoftKeyboard());
-
-        ViewInteraction textInputEditText4 = onView(
                 allOf(withId(R.id.password),
                         childAtPosition(
                                 childAtPosition(
@@ -109,7 +101,59 @@ public class ErrorOnLogoutButtonClicked {
                                         0),
                                 0),
                         isDisplayed()));
-        textInputEditText4.perform(replaceText("katepcH"), closeSoftKeyboard());
+        textInputEditText3.perform(replaceText("ddd"), closeSoftKeyboard());
+
+        ViewInteraction materialButton3 = onView(
+                allOf(withId(R.id.btn_login), withText("Login"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.LinearLayout")),
+                                        4),
+                                0),
+                        isDisplayed()));
+        materialButton3.perform(click());
+
+        ViewInteraction editText3 = onView(
+                allOf(withId(R.id.email), withText("katepchuang@gmail.com"),
+                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
+                        isDisplayed()));
+        editText3.check(matches(withText("katepchuang@gmail.com")));
+
+        ViewInteraction editText4 = onView(
+                allOf(withId(R.id.password), withText("ddd"),
+                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
+                        isDisplayed()));
+        editText4.check(matches(withText("ddd")));
+
+        ViewInteraction textInputEditText4 = onView(
+                allOf(withId(R.id.password), withText("ddd"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("com.google.android.material.textfield.TextInputLayout")),
+                                        0),
+                                0),
+                        isDisplayed()));
+        textInputEditText4.perform(click());
+
+        ViewInteraction textInputEditText5 = onView(
+                allOf(withId(R.id.password), withText("ddd"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("com.google.android.material.textfield.TextInputLayout")),
+                                        0),
+                                0),
+                        isDisplayed()));
+        textInputEditText5.perform(replaceText("katepcH"));
+
+        ViewInteraction textInputEditText6 = onView(
+                allOf(withId(R.id.password), withText("katepcH"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("com.google.android.material.textfield.TextInputLayout")),
+                                        0),
+                                0),
+                        isDisplayed()));
+        textInputEditText6.perform(closeSoftKeyboard());
 
         ViewInteraction materialButton4 = onView(
                 allOf(withId(R.id.btn_login), withText("Login"),
@@ -120,12 +164,6 @@ public class ErrorOnLogoutButtonClicked {
                                 0),
                         isDisplayed()));
         materialButton4.perform(click());
-
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.greetingTextView), withText("Hello, Student!"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
-                        isDisplayed()));
-        textView.check(matches(withText("Hello, Student!")));
     }
 
     private static Matcher<View> childAtPosition(
