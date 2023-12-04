@@ -60,7 +60,7 @@ public class LoginView extends AppCompatActivity {
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
                 loginPresenter.checkInputEmpty(email,password);
-                //loginPresenter.onLoginButtonClicked(email, password);
+                loginPresenter.onLoginButtonClicked(email, password);
 
             }
         });
@@ -98,6 +98,14 @@ public class LoginView extends AppCompatActivity {
     public void OnLoginBackButtonClick(View view) {
         Intent intent = new Intent(this, AdminOrStudentActivity.class);
         startActivity(intent);
+    }
+
+    public void emailEmpty(){
+        Toast.makeText(this, "Email cannot be empty", Toast.LENGTH_SHORT).show();
+    }
+
+    public void passwordEmpty(){
+        Toast.makeText(this, "Password cannot be empty", Toast.LENGTH_SHORT).show();
     }
 }
 
