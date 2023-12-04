@@ -148,7 +148,7 @@
                     android:layout_marginBottom="15dp"
                     android:backgroundTint="@color/teal"
                     android:onClick="onCSReqGoBackClick"
-                    android:text="@string/go_back_button_text"
+                    android:text="@string/back"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
