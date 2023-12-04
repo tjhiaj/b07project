@@ -60,9 +60,9 @@ public class NotificationHelper {
     private static Intent getIntentForNotificationId(Context context, int notificationId) {
         Intent intent;
 
-        if (notificationId == 1) {
+        if (NotificationType.checkNotificationType(notificationId) == "Announcement") {
             intent = new Intent(context, StudentAnnouncementsActivity.class);
-        } else if (notificationId == 2) {
+        } else if (NotificationType.checkNotificationType(notificationId) == "Event") {
             intent = new Intent(context, EventViewActivity.class);
         } else {
             intent = new Intent(context, AdminOrStudentActivity.class);
@@ -73,7 +73,7 @@ public class NotificationHelper {
     }
 
     private static void startForegroundServiceForNotification(Context context, String title, String message) {
-        Intent serviceIntent = new Intent(context, NotificationService.class);
+        Intent serviceIntent = new Intent(context, NotificationPersistor.class);
         serviceIntent.putExtra("notificationTitle", title);
         serviceIntent.putExtra("notificationMessage", message);
         context.startForegroundService(serviceIntent);

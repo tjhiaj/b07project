@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingBottom="20dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardElevation="10dp"
         app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
         app:contentPadding="20dp">
 
         <LinearLayout
@@ -54,11 +55,11 @@
                         android:id="@+id/subject1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/message_Icon"
                         android:layout_gravity="center_horizontal"
-                        android:padding="10dp"
-                        android:background="@drawable/rounded_view_complaints"
                         android:layout_marginTop="14dp"
+                        android:layout_toEndOf="@id/message_Icon"
+                        android:background="@drawable/rounded_view_complaints"
+                        android:padding="10dp"
                         android:text="@string/sampleSubject"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
@@ -92,8 +93,8 @@
                 android:id="@+id/complaints1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/lorem_ipsum"
                 android:layout_toEndOf="@id/subject1"
+                android:text="@string/lorem_ipsum"
                 android:textColor="@color/white"
                 android:visibility="gone" />
 

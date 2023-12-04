@@ -11,7 +11,7 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
-public class NotificationService extends Service {
+public class NotificationPersistor extends Service {
 
     private static final String CHANNEL_ID = "foreground_channel";
 
