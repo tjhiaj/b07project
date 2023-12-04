@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:id="@+id/activity_student_feedback"
-    android:background="@color/lightBlue"
+    android:background="#FFF1D0"
     tools:context=".FeedbackStudent">
 
     <TextView
@@ -34,8 +34,9 @@
             android:id="@+id/feedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginEnd="45dp"
             android:layout_marginBottom="15dp"
-            android:paddingStart="20dp"
             android:paddingEnd="0dp"
             android:text="@string/feedback"
             android:textColor="@color/textBlue"
@@ -45,20 +46,6 @@
             app:layout_constraintBottom_toTopOf="@id/textInputLayout"
             app:layout_constraintHorizontal_bias="0.516" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingBottom="15dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
-            app:layout_constraintEnd_toEndOf="@+id/subjects"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="@+id/subjects"
-            app:layout_constraintTop_toTopOf="@+id/subjects"
-            app:layout_constraintVertical_bias="0.0">
 
             <EditText
                 android:id="@+id/commentEditText"
@@ -67,11 +54,15 @@
                 android:layout_marginStart="45dp"
                 android:layout_marginEnd="45dp"
                 android:layout_marginBottom="40dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/rounded_edittext"
+                android:gravity="top|start"
                 android:hint="Enter your comment"
                 android:paddingStart="15dp"
+                android:paddingTop="10dp"
                 android:paddingEnd="0dp"
-                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textColorHint="#FFFFFF"
                 app:layout_constraintBottom_toTopOf="@+id/rating"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
@@ -79,14 +70,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 app:layout_constraintVertical_bias="0.779" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
         <TextView
             android:id="@+id/rating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginEnd="45dp"
             android:layout_marginBottom="15dp"
-            android:paddingStart="20dp"
             android:paddingEnd="0dp"
             android:text="@string/rating"
             android:textColor="@color/textBlue"
