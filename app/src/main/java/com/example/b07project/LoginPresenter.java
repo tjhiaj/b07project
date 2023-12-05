@@ -2,11 +2,9 @@ package com.example.b07project;
 
 import android.app.Activity;
 
-
 public class LoginPresenter extends Activity {
     private LoginModel loginModel;
     private LoginView loginView;
-
 
     public LoginPresenter() {
     }
@@ -23,12 +21,10 @@ public class LoginPresenter extends Activity {
         }
     }
 
-
     public boolean isValidEmail(String email) {
         // Add your email validation logic here
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
-
 
     public boolean checkUser(String email, String password) {
         if (loginView.validEmail(email) && loginView.validPassword(password)) {
