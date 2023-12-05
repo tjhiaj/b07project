@@ -101,7 +101,9 @@ public class ViewComplaints extends AppCompatActivity{
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle cancellation
+                String errorMessage = databaseError.getMessage();
+                int errorCode = databaseError.getCode();
+                Log.e("Firebase Database Error", "Error Code: " + errorCode + ", Message: " + errorMessage);
             }
         });
     }

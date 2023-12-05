@@ -79,16 +79,22 @@
 
             </LinearLayout>
 
-            <!--            <ImageView-->
-            <!--                android:id="@+id/expandButton"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:background="@drawable/expand_arrow"-->
-            <!--                android:backgroundTint="@color/navyBlue"-->
-            <!--                android:minHeight="48dp"-->
-            <!--                android:text=""-->
-            <!--                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hidden_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/complaints1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/complaints"
+                android:layout_toEndOf="@id/subject1"
+                android:textColor="@color/white"
+                android:visibility="gone" />
 
         </LinearLayout>
 
