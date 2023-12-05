@@ -183,7 +183,7 @@ public class FeedbackStudent extends AppCompatActivity {
                     ratingsRef.setValue(ratingsList);
 
                 //finds the new average rating now that the ratings list is updated to include the user's rating
-                double newOverallRating = calculateNewOverallRating(rating, intRating, ratingsList.size());
+                float newOverallRating = calculateNewOverallRating(ratingsList);
 
 
                 ratingRef.setValue(newOverallRating)  .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -252,10 +252,15 @@ public class FeedbackStudent extends AppCompatActivity {
     }
 
 
-    private double calculateNewOverallRating(double currentRating, float userRating, int size) {
+    private float calculateNewOverallRating(List<Integer> ratingsList) {
+        float sumOfRatings = 0;
+        int count = 0;
+        for (int i = 0; i < 5; i++){
+            sumOfRatings += ratingsList.get(i)*(i+1);
+            count += ratingsList.get(i);
+        }
         // Your logic to calculate the new overall rating (e.g., taking the average)
-        double sumOfRatings = currentRating * size + userRating;
-        return sumOfRatings / (size + 1);
+        return sumOfRatings / count;
     }
 
     public void onStudentFeedbackButtonClickBackButtonClick(View view) {

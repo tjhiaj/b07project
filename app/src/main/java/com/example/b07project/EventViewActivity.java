@@ -134,8 +134,8 @@ public class EventViewActivity extends AppCompatActivity {
                                 Log.i("imageResourceId", "no child");
                             }
                             //averageRating
-                            if (eventSnapshot.hasChild("averageRating")) {
-                                Float averageRating = eventSnapshot.child("averageRating").getValue(Float.class);
+                            if (eventSnapshot.hasChild("rating")) {
+                                Float averageRating = eventSnapshot.child("rating").getValue(Float.class);
                                 if (averageRating != null) {
                                     event.setAverageRating(averageRating);
                                     Log.i("averageRating", averageRating.toString());
