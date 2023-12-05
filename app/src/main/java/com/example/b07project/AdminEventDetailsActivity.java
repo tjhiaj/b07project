@@ -28,6 +28,11 @@ public class AdminEventDetailsActivity extends AppCompatActivity {
         RatingBar ratingBar = findViewById(R.id.eventDetailsRatingBar);
         TextView ratingCountsTextView = findViewById(R.id.ratingCountsTextView);
         LinearLayout commentsLinearLayout = findViewById(R.id.eventDetailsCommentsLinearLayout);
+        String participants = "Participant limit:" + event.getParticipantLimit();
+        TextView eventDetailsParticipantLimitTextView = findViewById(R.id.eventDetailsParticipantLimitTextView);
+        eventDetailsParticipantLimitTextView.setText(participants);
+        TextView eventDetailsDateTimeTextView = findViewById(R.id.eventDetailsDateTimeTextView);
+        eventDetailsDateTimeTextView.setText(event.getLocalDateTime());
 
         eventImageView.setImageResource(event.getImageResourceId());
         titleTextView.setText(event.getEventName());

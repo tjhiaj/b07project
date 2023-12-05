@@ -49,13 +49,13 @@
             app:layout_constraintTop_toBottomOf="@+id/do_I_qualify_CS_heading" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical" >
 
             <TextView
@@ -144,7 +144,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom">
 
                 <Button
                     android:id="@+id/go_back_button2"
@@ -154,7 +155,7 @@
                     android:layout_marginBottom="15dp"
                     android:backgroundTint="@color/teal"
                     android:onClick="onCSReqGoBackClick"
-                    android:text="@string/go_back_button_text"
+                    android:text="@string/back"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -172,5 +173,5 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
-    </ScrollView>
+<!--    </ScrollView>-->
 </LinearLayout>
