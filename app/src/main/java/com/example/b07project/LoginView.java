@@ -51,6 +51,7 @@ public class LoginView extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 String email = getEmail();
                 String password = getPassword();
+
                 loginPresenter.onLoginButtonClicked(email, password);
 
             }
@@ -139,6 +140,7 @@ public class LoginView extends AppCompatActivity {
         Intent intent = new Intent(this, AdminOrStudentActivity.class);
         startActivity(intent);
     }
+
 
     public void showToast(int msgId) {
         Toast.makeText(this, msgId, Toast.LENGTH_SHORT).show();
