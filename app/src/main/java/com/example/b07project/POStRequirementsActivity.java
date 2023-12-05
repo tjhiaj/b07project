@@ -27,19 +27,4 @@ public class POStRequirementsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CSMinorRequirementsActivity.class);
         startActivity(intent);
     }
-    /*
-    public void onMathMajorRequirementsClick(View view) {
-        Intent intent = new Intent(this, StudentAnnouncementsActivity.class);
-        startActivity(intent);
-    }
-    public void onMathSpecialistRequirementsClick(View view) {
-        Intent intent = new Intent(this, StudentAnnouncementsActivity.class);
-        startActivity(intent);
-    }
-
-    public void onStatisticsRequirementsClick(View view) {
-        Intent intent = new Intent(this, StudentAnnouncementsActivity.class);
-        startActivity(intent);
-    }
-     */
 }

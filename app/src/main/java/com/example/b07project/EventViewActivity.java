@@ -17,20 +17,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.Firebase;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.time.LocalDateTime;
-import java.time.Month;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+
 
 public class EventViewActivity extends AppCompatActivity {
     EventAdapter adapter;
@@ -77,15 +74,15 @@ public class EventViewActivity extends AppCompatActivity {
         eventList.add(new Event("Event 2", "This is the description for event 2.", R.drawable.default_event, 2, L1, L2, "id2", 110, L3, specificDate));
         eventList.add(new Event("Event 3", "This is the description for event 3.", R.drawable.default_event, 4, L1, L2, "id3", 100, L3, specificDate));*/
 
-        Log.i("doubt it", "sad");
+
         DatabaseReference ref = database.getReference("events");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.i("CONRAD", "SEEING IF EXISTS");
+
                 if (dataSnapshot.exists()) {
                     for(DataSnapshot eventSnapshot:dataSnapshot.getChildren()){
-                        Log.i("CONRAD", eventSnapshot.toString() + "getting events snapshot");
+
                         Event event = eventSnapshot.getValue(Event.class);
                         if(event!= null){
                             Log.i("event",event.toString());
@@ -245,7 +242,9 @@ public class EventViewActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle cancellation
+                String errorMessage = databaseError.getMessage();
+                int errorCode = databaseError.getCode();
+                Log.e("Firebase Database Error", "Error Code: " + errorCode + ", Message: " + errorMessage);
             }
         });
     }

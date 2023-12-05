@@ -1,34 +1,44 @@
 package com.example.b07project;
 
-import android.content.Intent;
-import android.view.View;
+import android.app.Activity;
 
-public class LoginPresenter {
+public class LoginPresenter extends Activity {
     private LoginModel loginModel;
     private LoginView loginView;
 
-    public LoginPresenter(LoginView loginView) {
-        this.loginModel = new LoginModel();
+    public LoginPresenter() {
+    }
+
+    public LoginPresenter(LoginView loginView, LoginModel loginModel) {
+        this.loginModel = loginModel;
         this.loginView = loginView;
     }
 
     public void onLoginButtonClicked(String email, String password) {
         loginView.showProgressBar();
-
-        loginModel.signInWithEmailAndPassword(email, password, task -> {
-            loginView.hideProgressBar();
-
-            if (task.isSuccessful()) {
-                // Sign in success, update UI with the signed-in user's information
-                if (UserInfo.getInstance().getRole() == UserInfo.RoleType.Student) {
-                    loginView.navigateToStudentHome();
-                } else if (UserInfo.getInstance().getRole() == UserInfo.RoleType.Admin) {
-                    loginView.navigateToAdminHome();
-                }
-            } else {
-                // If sign in fails, display a message to the user.
-                loginView.showErrorMessage();
-            }
-        });
+        if (checkUser(email, password)) {
+            loginModel.signInWithEmailAndPassword(this, email, password);
+        }
     }
+
+    public boolean isValidEmail(String email) {
+        // Add your email validation logic here
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public boolean checkUser(String email, String password) {
+        if (loginView.validEmail(email) && loginView.validPassword(password)) {
+            return true;
+        } else
+            return false;
+    }
+
+    public void onSuccessful() {
+        loginView.navigateOnSuccess();
+    }
+
+    public void onFail() {
+        loginView.onLoginFailed();
+    }
+
 }

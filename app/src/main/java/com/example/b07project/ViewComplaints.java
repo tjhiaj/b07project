@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,22 +27,15 @@ public class ViewComplaints extends AppCompatActivity{
     FirebaseDatabase database;
     List<Complaints> complaints;
     ComplaintsAdapter complaintAdapter;
-    LinearLayout viewLayout;
     ArrayList<Map<String,String>> viewModels;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
 
-        //        detailedText = findViewById(R.id.complaints1);
-//        viewLayout = findViewById(R.id.viewComplaintLayout);
-        //LayoutTransition layoutTransition = new LayoutTransition();
-        //layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
-        //database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
         complaints = new ArrayList<>();
-        //setupViewModel();
-        //if (database == null) return;
 
 //        // Dummy data for testing
 //
@@ -55,8 +46,9 @@ public class ViewComplaints extends AppCompatActivity{
         // Set up RecyclerView
         RecyclerView activityView = findViewById(R.id.complaintsRecyclerView);
         complaintAdapter = new ComplaintsAdapter(this, complaints);
-        activityView.setAdapter(complaintAdapter);
         activityView.setLayoutManager(new LinearLayoutManager(this));
+        activityView.setAdapter(complaintAdapter);
+
 
         //setupViewModel();
 
@@ -65,14 +57,12 @@ public class ViewComplaints extends AppCompatActivity{
         setupViewModel();
 
     }
+
     public void onStudentComplaintsButtonClickBackClick(View view) {
         Intent intent = new Intent(this, AdminHomeActivity.class);
         startActivity(intent);
     }
-    //    public void onExpandClick(View view) {
-//        Intent intent = new Intent(this, ComplaintsExpand.class);
-//        startActivity(intent);
-//    }
+
     private void setupViewModel() {
         DatabaseReference ref = database.getReference("complaints");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -111,45 +101,10 @@ public class ViewComplaints extends AppCompatActivity{
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle cancellation
+                String errorMessage = databaseError.getMessage();
+                int errorCode = databaseError.getCode();
+                Log.e("Firebase Database Error", "Error Code: " + errorCode + ", Message: " + errorMessage);
             }
         });
     }
-
-    //    public class ComplaintsExpand extends AppCompatActivity {
-//        ImageView expand;
-//        LinearLayout hiddenView;
-//        CardView cardView;
-//
-//        @Override
-//        protected void onCreate(Bundle savedInstanceState) {
-//            super.onCreate(savedInstanceState);
-//            setContentView(R.layout.card_item);
-//
-//            cardView = findViewById(R.id.card3);
-//            this.expand = findViewById(R.id.expand);
-//            hiddenView = findViewById(R.id.hidden_view);
-//
-//            expand.setOnClickListener(view -> {
-//                if (hiddenView.getVisibility() == View.VISIBLE) {
-//                    TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
-//                    hiddenView.setVisibility(View.GONE);
-//                    expand.setImageResource(R.drawable.expand_arrow);
-//                } else {
-//                    TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
-//                    hiddenView.setVisibility(View.VISIBLE);
-//                    expand.setImageResource(R.drawable.expand_arrow);
-//                }
-//            });
-//        }
-//    }
-//
-//    public void expand(View view){
-//        TextView complaintDisplay = findViewById(R.id.text1);
-//        LinearLayout verticalLayout = findViewById(R.id.verticalLayout);
-//        int visible = complaintDisplay.getVisibility();
-//        if (visible == View.GONE) visible = View.VISIBLE;
-//        else visible = View.GONE;
-//        complaintDisplay.setVisibility(visible);
-//    }
 }

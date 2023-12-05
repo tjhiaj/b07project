@@ -31,11 +31,16 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
     private Button rsvpButton;
     private TextView eventDetailsTitleTextView;
 
+    private TextView eventDetailsDescriptionTextView;
+
     private TextView top_header_events;
 
     private String eventId;
     private int participantLimit;
 
+    String eventName;
+
+    String description;
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser currentUser = auth.getCurrentUser();
@@ -63,31 +68,79 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
         TextView eventDetailsDateTimeTextView = findViewById(R.id.eventDetailsDateTimeTextView);
         eventDetailsDateTimeTextView.setText(event.getLocalDateTime());
 
-        database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
-
-        rsvpButton = findViewById(R.id.RsvpButton);
-
-        if (database == null) return;
-
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("EVENT")) {
             event = intent.getParcelableExtra("EVENT");
         }
         assert event != null;
         eventId = event.getEventID();
-        participantLimit = event.getParticipantLimit();
 
-//
+        database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
+        DatabaseReference eventsIDRef = database.getReference("events").child(eventId);
+        DatabaseReference participantLimitRef = eventsIDRef.child("participantLimit");
+        DatabaseReference eventNameRef = eventsIDRef.child("eventName");
+        DatabaseReference descriptionRef = eventsIDRef.child("description");
 
-        if(eventId == null)
-            Log.i("pretty", "AAAAANULL");
-        Log.i("pretty2", event.toString());
 
-        String eventName = event.getEventName();
+
+
+        rsvpButton = findViewById(R.id.RsvpButton);
+
+        if (database == null) return;
+
+
+        eventNameRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String eventNameValue = dataSnapshot.getValue(String.class);
+                // Assign eventNameValue to the eventName variable
+                eventName = eventNameValue;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
+
+        descriptionRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String descriptionValue = dataSnapshot.getValue(String.class);
+                // Assign descriptionValue to the description variable
+                description = descriptionValue;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
+
+
+        participantLimitRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Integer participantLimitValue = dataSnapshot.getValue(Integer.class);
+                // Assign participantLimitValue to the participantLimit variable
+                participantLimit = participantLimitValue != null ? participantLimitValue : 0; // Default to 0 if null
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
+
+
+
 
         eventDetailsTitleTextView.setText(eventName);
-
+        eventDetailsDescriptionTextView.setText(description);
         top_header_events.setText(eventName);
+
+
 
 
         rsvpButton.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +167,9 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
                     Log.i("CONRAD", "DOING NOW");
                     List<String> participantsList = new ArrayList<>();
                     for (DataSnapshot participantSnapshot : dataSnapshot.getChildren()) {
-                        String participantUID = participantSnapshot.getKey();
+                        String participantUID = participantSnapshot.getValue(String.class);
+                        Log.i("CONRAD", "participant"+participantSnapshot.getKey());
+
                         participantsList.add(participantUID);
                     }
                     Log.i("CONRAD", "DONE FILLING IT UP");
@@ -122,27 +177,31 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
 
                     // Add the current user's UID to the list
                     participantsList.add(currentUser.getUid());
+                    Log.i("CONRAD", participantsList.toString() + " new ARRAY HERE");
 
-                    if (participantsList.size() -1 > participantLimit){
+                    if (participantsList.size() - 1 <= participantLimit){
+                        // Update the participantsRef with the modified list
+                        Log.i("CONRAD", participantsList.toString() + "adding to database");
+                        participantsRef.setValue(participantsList)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(StudentEventRsvpActivity.this, "RSVP successful", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(StudentEventRsvpActivity.this, EventViewActivity.class);
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(StudentEventRsvpActivity.this, "RSVP failed", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
 
                     }else{
                         Toast.makeText(StudentEventRsvpActivity.this, "Participant limit reached. Can not rsvp.", Toast.LENGTH_SHORT).show();
-                        return;
+
                     }
-                    // Update the participantsRef with the modified list
-                    participantsRef.setValue(participantsList)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(StudentEventRsvpActivity.this, "RSVP successful", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(StudentEventRsvpActivity.this, EventViewActivity.class);
-                                        startActivity(intent);
-                                    } else {
-                                        Toast.makeText(StudentEventRsvpActivity.this, "RSVP failed", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
+
+
                 } else {
                     // Handle the case where participantsRef does not exist
                     Toast.makeText(StudentEventRsvpActivity.this, "Participants not available", Toast.LENGTH_SHORT).show();

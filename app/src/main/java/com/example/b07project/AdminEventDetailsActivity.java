@@ -37,9 +37,9 @@ public class AdminEventDetailsActivity extends AppCompatActivity {
         eventImageView.setImageResource(event.getImageResourceId());
         titleTextView.setText(event.getEventName());
         descriptionTextView.setText(event.getEventDescription());
-        ratingBar.setRating(event.getRating());
+        ratingBar.setRating(event.getRating()); //put the average rating in here
 
-        //Cheryl changed this part
+
         List<Integer> ratings = event.getRatings();
         String ratingCount = "| ";
         for (int i = 0; i < 5; i++){

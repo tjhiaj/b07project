@@ -15,15 +15,25 @@ public class NotificationHelper {
     private static final String CHANNEL_NAME = "Andy Channel";
     private static final String CHANNEL_DESCRIPTION = "I DONT KNOW WHAT IM DOING";
 
-    public static void showNotification(Context context, String title, String message) {
-        NotificationManager notificationManager = (NotificationManager)
-                context.getSystemService(Context.NOTIFICATION_SERVICE);
+    public static void showNotification(Context context, String title, String message, int notificationId) {
+        createNotificationChannel(context);
 
-        if (notificationManager == null) {
-            return;
+        NotificationCompat.Builder builder = buildNotification(context, title, message);
+
+        Intent intent = getIntentForNotificationId(context, notificationId);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, notificationId, intent,
+                PendingIntent.FLAG_IMMUTABLE);
+        builder.setContentIntent(pendingIntent);
+
+        NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+        if (notificationManager != null) {
+            notificationManager.notify(notificationId, builder.build());
         }
 
-        // Create a Notification Channel for devices running Android Oreo (API 26) or higher
+        startForegroundServiceForNotification(context, title, message);
+    }
+
+    private static void createNotificationChannel(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID,
@@ -31,22 +41,41 @@ public class NotificationHelper {
                     NotificationManager.IMPORTANCE_DEFAULT
             );
             channel.setDescription(CHANNEL_DESCRIPTION);
-            notificationManager.createNotificationChannel(channel);
-        }
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.pixel_kirby) // Set your notification icon here
+            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            if (notificationManager != null) {
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
+    }
+
+    private static NotificationCompat.Builder buildNotification(Context context, String title, String message) {
+        return new NotificationCompat.Builder(context, CHANNEL_ID)
+                .setSmallIcon(R.drawable.pixel_kirby)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+    }
 
-        Intent intent = new Intent(context, StudentAnnouncementsActivity.class);
+    private static Intent getIntentForNotificationId(Context context, int notificationId) {
+        Intent intent;
+
+        if (NotificationType.checkNotificationType(notificationId) == "Announcement") {
+            intent = new Intent(context, StudentAnnouncementsActivity.class);
+        } else if (NotificationType.checkNotificationType(notificationId) == "Event") {
+            intent = new Intent(context, EventViewActivity.class);
+        } else {
+            intent = new Intent(context, AdminOrStudentActivity.class);
+        }
+
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent,
-                PendingIntent.FLAG_IMMUTABLE);
-        builder.setContentIntent(pendingIntent);
+        return intent;
+    }
 
-        // Display the notification
-        notificationManager.notify(0, builder.build());
+    private static void startForegroundServiceForNotification(Context context, String title, String message) {
+        Intent serviceIntent = new Intent(context, NotificationPersistor.class);
+        serviceIntent.putExtra("notificationTitle", title);
+        serviceIntent.putExtra("notificationMessage", message);
+        context.startForegroundService(serviceIntent);
     }
 }

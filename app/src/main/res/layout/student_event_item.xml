@@ -83,7 +83,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RSVP"
-        android:onClick="OnRsvpButtonClick"
         app:layout_constraintTop_toBottomOf="@id/eventDetailsDescriptionTextView"
         app:layout_constraintBottom_toTopOf="@id/bottom_header_events"
         app:layout_constraintEnd_toEndOf="parent"
