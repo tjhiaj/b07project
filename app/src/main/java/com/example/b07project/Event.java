@@ -191,7 +191,7 @@ public class Event implements Parcelable {
         dest.writeFloat(averageRating);
         dest.writeStringList(comments);
         dest.writeString(eventID);
-        dest.writeList(ratings);
+        dest.writeIntArray(ratings.stream().mapToInt(i->i).toArray());
         dest.writeStringList(participants);
         dest.writeString(localDateTime);
         dest.writeInt(participantLimit);

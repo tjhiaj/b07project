@@ -55,7 +55,13 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
 
         eventDetailsTitleTextView = findViewById(R.id.eventDetailsTitleTextView);
         top_header_events = findViewById(R.id.top_header_events);
-
+        String participants = "Participant limit:" + event.getParticipantLimit();
+        TextView eventDetailsParticipantLimitTextView = findViewById(R.id.eventDetailsParticipantLimitTextView);
+        eventDetailsParticipantLimitTextView.setText(participants);
+        TextView eventDetailsDescriptionTextView = findViewById(R.id.eventDetailsDescriptionTextView);
+        eventDetailsDescriptionTextView.setText(event.getEventDescription());
+        TextView eventDetailsDateTimeTextView = findViewById(R.id.eventDetailsDateTimeTextView);
+        eventDetailsDateTimeTextView.setText(event.getLocalDateTime());
 
         database = FirebaseDatabase.getInstance("https://b07project-7eb3d-default-rtdb.firebaseio.com/");
 
