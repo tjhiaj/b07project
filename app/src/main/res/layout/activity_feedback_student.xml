@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:id="@+id/activity_student_feedback"
-    android:background="@color/lightBlue"
+    android:background="@color/beige"
     tools:context=".FeedbackStudent">
 
     <TextView
@@ -14,13 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:layout_marginBottom="16dp"
-        android:background="@color/navyBlue"
+        android:background="@color/teal"
         android:gravity="center"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:text="Event Feedback"
         android:textStyle="bold"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             android:paddingEnd="0dp"
             android:text="@string/feedback"
             android:textColor="@color/textBlue"
-            android:textSize="23sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintBottom_toTopOf="@id/textInputLayout"
@@ -67,7 +67,7 @@
                 android:layout_marginStart="45dp"
                 android:layout_marginEnd="45dp"
                 android:layout_marginBottom="40dp"
-                android:background="@drawable/rounded_edittext"
+                android:background="@drawable/rounded_edittext_background"
                 android:hint="Enter your comment"
                 android:paddingStart="15dp"
                 android:paddingEnd="0dp"
@@ -90,7 +90,7 @@
             android:paddingEnd="0dp"
             android:text="@string/rating"
             android:textColor="@color/textBlue"
-            android:textSize="23sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintBottom_toTopOf="@id/ratingBar"
@@ -109,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/navyBlue"
+            android:backgroundTint="@color/teal"
             android:text="Submit" />
     </LinearLayout>
 
@@ -131,16 +131,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
-            android:layout_height="62dp"
-            android:background="@drawable/back_button_arrow"
-            android:gravity="center_vertical"
-            android:onClick="onStudentFeedbackButtonClickBackButtonClick"
-            android:text=""
-            android:tint="@color/white"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="@color/blue"
+            android:text="@string/back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_centerVertical="true"
+            android:onClick="onStudentFeedbackButtonClickBackButtonClick"/>
+
     </RelativeLayout>
 
 
