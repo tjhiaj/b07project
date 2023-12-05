@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/complaintHeader"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="top"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -35,10 +35,11 @@
     <LinearLayout
         android:id="@+id/complaintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:gravity="center|center_vertical|center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/relativeBottom"
+        app:layout_constraintTop_toBottomOf="@id/complaintHeader"
         app:layout_constraintStart_toEndOf="@id/complaintHeader">
 
         <TextView
@@ -52,7 +53,7 @@
             android:textColor="@color/textBlue"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
             app:layout_constraintBottom_toTopOf="@id/subjects"
             app:layout_constraintHorizontal_bias="0.516">
 
@@ -83,6 +84,7 @@
                 android:layout_marginEnd="50dp"
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/rounded_edittext_background"
+                android:textColorHint="@color/white"
                 android:hint="@string/insert_text_here"
                 android:paddingStart="15dp"
                 android:paddingEnd="0dp"
@@ -148,7 +150,6 @@
             android:id="@+id/submitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="52dp"
             android:backgroundTint="@color/teal"
             android:text="@string/submit"
             android:textColor="@color/white"

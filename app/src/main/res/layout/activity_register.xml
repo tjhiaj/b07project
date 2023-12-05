@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightBlue"
+    android:background="@color/beige"
     android:orientation="vertical"
     tools:context=".Register">
 
@@ -12,7 +12,7 @@
         android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="123dp"
-        android:background="@color/navyBlue">
+        android:background="@color/teal">
 
         <TextView
             android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:layout_marginTop="60dp"
             android:layout_marginEnd="30sp"
             android:gravity="start"
-            android:text="@string/register_heading"
+            android:text="Register"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
@@ -104,8 +104,8 @@
                     android:layout_marginStart="75dp"
                     android:layout_marginTop="19dp"
                     android:layout_marginEnd="75dp"
-                    android:backgroundTint="@color/navyBlue"
-                    android:text="@string/Register"
+                    android:backgroundTint="@color/teal"
+                    android:text="Register"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -119,7 +119,7 @@
                 android:gravity="center"
                 android:paddingTop="10sp"
                 android:text="@string/click_to_login"
-                android:textColor="@color/navyBlue"
+                android:textColor="@color/teal"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

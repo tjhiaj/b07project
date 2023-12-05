@@ -202,7 +202,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="15dp"
-                android:backgroundTint="@color/navyBlue"
+                android:backgroundTint="@color/teal"
                 android:text="@string/schedule_event_button" />
 
             <Button
@@ -212,7 +212,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="30dp"
-                android:backgroundTint="@color/navyBlue"
+                android:backgroundTint="@color/teal"
                 android:onClick="onAdminEventsBackButtonClick"
                 android:text="@string/go_back_button_text" />
 
