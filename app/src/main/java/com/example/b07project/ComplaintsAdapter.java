@@ -49,7 +49,6 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Co
         TextView subjectView, title;
         TextView complaintText;
         LinearLayout expandableView;
-        ImageView expandButton;
 
         public ComplaintsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -58,20 +57,6 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Co
             subjectView = itemView.findViewById(R.id.subject1);
             expandableView = itemView.findViewById(R.id.expandableView);
             complaintText = itemView.findViewById(R.id.complaintText);
-//            expandButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    if(complaints.get(getAdapterPosition()).isVisibility()){
-//                        complaints.get(getAdapterPosition()).setVisibility(true);
-//                        expandButton.setImageResource(R.drawable.contract_button);
-//                    }
-//                    else {
-//                        complaints.get(getAdapterPosition()).setVisibility(false);
-//                        expandButton.setImageResource(R.drawable.expand_arrow);
-//                    }
-//                    notifyItemChanged(getAdapterPosition());
-//                }
-//            });
         }
 
     }

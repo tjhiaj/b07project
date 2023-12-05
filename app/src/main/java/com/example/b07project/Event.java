@@ -5,8 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,16 +35,6 @@ public class Event implements Parcelable {
         return averageRating;
     }
 
-//    public LocalDateTime getLocalDateTime() {
-//        return localDateTime;
-//    }
-//
-//    public void setLocalDateTime(LocalDateTime localDateTime) {
-//        this.localDateTime = localDateTime;
-//    }
-//
-//    private LocalDateTime localDateTime;
-    //try dealing with view events problem
     private String localDateTime;
     public void setLocalDateTime(String localDateTime) {
         this.localDateTime = localDateTime;
@@ -101,20 +90,6 @@ public class Event implements Parcelable {
         this.localDateTime = localDateTime;
     }
 
-   /* protected Event(Parcel in) {
-        eventName = in.readString();
-        eventDescription = in.readString();
-        imageResourceId = in.readInt();
-        averageRating = in.readFloat();
-        comments = in.createStringArrayList();
-        int[] intArray = in.createIntArray();
-        if (intArray != null){
-            ratings = new ArrayList<>();
-            for (int value : intArray){
-                ratings.add(value);
-            }
-        }
-    }*/
    protected Event(Parcel in) {
        eventName = in.readString();
        eventDescription = in.readString();
@@ -172,17 +147,6 @@ public class Event implements Parcelable {
         return 0;
     }
 
-    /*@Override
-    public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(eventName);
-        dest.writeString(eventDescription);
-        dest.writeInt(imageResourceId);
-        dest.writeFloat(averageRating);
-        dest.writeStringList(comments);
-        dest.writeList(ratings != null ? new ArrayList<>(ratings) : null);
-        dest.writeStringList(participants);
-        dest.writeString(localDateTime);
-    }*/
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(eventName);

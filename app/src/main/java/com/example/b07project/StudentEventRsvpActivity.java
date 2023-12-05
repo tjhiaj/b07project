@@ -1,10 +1,7 @@
 package com.example.b07project;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -156,16 +153,12 @@ public class StudentEventRsvpActivity extends AppCompatActivity {
                         String participantUID = participantSnapshot.getValue(String.class);
                         participantsList.add(participantUID);
                     }
-                    Log.i("CONRAD", "DONE FILLING IT UP");
-
 
                     // Add the current user's UID to the list
                     participantsList.add(currentUser.getUid());
-                    Log.i("CONRAD", participantsList.toString() + " new ARRAY HERE");
 
                     if (participantsList.size() - 1 <= participantLimit){
                         // Update the participantsRef with the modified list
-                        Log.i("CONRAD", participantsList.toString() + "adding to database");
                         participantsRef.setValue(participantsList)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override

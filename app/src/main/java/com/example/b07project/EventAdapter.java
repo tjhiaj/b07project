@@ -2,7 +2,6 @@ package com.example.b07project;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +55,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                     intent = new Intent(context, FeedbackStudent.class);
                 }
 
-                Log.i("pretty", event.toString());
                 intent.putExtra("EVENT", event);
                 context.startActivity(intent);
             }
