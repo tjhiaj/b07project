@@ -40,7 +40,6 @@ public class MyEvents extends AppCompatActivity {
         startActivity(intent);
     }
 
-
         @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -203,7 +202,6 @@ public class MyEvents extends AppCompatActivity {
                                     eventList.add(event);
                                 }
                                 }
-
                         }
 
                         if (!eventList.isEmpty()) {

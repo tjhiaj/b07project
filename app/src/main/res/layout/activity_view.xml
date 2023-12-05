@@ -66,6 +66,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/verticalLayout"
         android:orientation="vertical">
 
         <TextView
@@ -85,7 +86,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/complaintsRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="593dp"
+            android:layout_height="700dp"
             android:padding="16dp" />
 
         <TextView
@@ -96,8 +97,8 @@
 
     </LinearLayout>
 
-
     <RelativeLayout
+        android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

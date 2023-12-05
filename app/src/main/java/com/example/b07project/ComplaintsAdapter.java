@@ -9,20 +9,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.ComplaintsViewHolder> {
 
-    List<Complaints> Complaints;
+    List<Complaints> complaints;
     Context context;
-    LinearLayout verticalLayout, horizontalLayout;
+
 
     public ComplaintsAdapter(Context context, List<Complaints> Complaints) {
         this.context = context;
-        this.Complaints = Complaints;
+        this.complaints = Complaints;
     }
 
     @NonNull
@@ -32,36 +31,49 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Co
         return new ComplaintsViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull ComplaintsViewHolder holder, int position) {
-        Complaints complaint = Complaints.get(position);
-
+        Complaints complaint = complaints.get(position);
         holder.subjectView.setText(complaint.getSubject());
-//        holder.messageView.setText(complaint.getComplaints().toString());
+        holder.complaintText.setText(complaint.getComplaints());
     }
 
     @Override
     public int getItemCount() {
-        return Complaints.size();
+        return complaints.size();
     }
 
-    public static class ComplaintsViewHolder extends RecyclerView.ViewHolder {
+    public class ComplaintsViewHolder extends RecyclerView.ViewHolder {
         ImageView messageBottleIcon;
-        TextView subjectView;
-        TextView messageView;
-        CardView cardDisplay;
-        TextView title;
-        TextView expand;
+        TextView subjectView, title;
+        TextView complaintText;
+        LinearLayout expandableView;
+        ImageView expandButton;
 
         public ComplaintsViewHolder(@NonNull View itemView) {
             super(itemView);
-            //expand = itemView.findViewById(R.id.expand);
-            title = itemView.findViewById(R.id.title);
-            cardDisplay = itemView.findViewById(R.id.card3);
+            title = itemView.findViewById(R.id.anonymous);
             messageBottleIcon = itemView.findViewById(R.id.message_Icon);
             subjectView = itemView.findViewById(R.id.subject1);
-            //messageView = itemView.findViewById(R.id.messageTextView);
+            expandableView = itemView.findViewById(R.id.expandableView);
+            complaintText = itemView.findViewById(R.id.complaintText);
+//            expandButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if(complaints.get(getAdapterPosition()).isVisibility()){
+//                        complaints.get(getAdapterPosition()).setVisibility(true);
+//                        expandButton.setImageResource(R.drawable.contract_button);
+//                    }
+//                    else {
+//                        complaints.get(getAdapterPosition()).setVisibility(false);
+//                        expandButton.setImageResource(R.drawable.expand_arrow);
+//                    }
+//                    notifyItemChanged(getAdapterPosition());
+//                }
+//            });
         }
+
     }
 }
 

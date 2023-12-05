@@ -80,6 +80,28 @@ public class ScheduleEvents extends AppCompatActivity {
                 String participantLimitStr = participantLimitEditText.getText().toString().trim();
                 String description = descriptionEditText.getText().toString().trim();
 
+                if(month > 12 || month < 1){
+                    Toast.makeText(ScheduleEvents.this, "Invalid month", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (day >31){
+                    Toast.makeText(ScheduleEvents.this, "Invalid day", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (hour >24 || hour < 0){
+                    Toast.makeText(ScheduleEvents.this, "Invalid day", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (minute > 60 || minute < 0){
+                    Toast.makeText(ScheduleEvents.this, "Invalid minute", Toast.LENGTH_SHORT).show();
+                    return;
+
+                }
+
+
                 if (eventsRef == null || eventName.isEmpty() || participantLimitStr.isEmpty()) {
                     return;
                 }
@@ -108,6 +130,9 @@ public class ScheduleEvents extends AppCompatActivity {
                 eventsRef.child(eventKey).setValue(newEvent, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@NonNull DatabaseError error, @NonNull DatabaseReference ref) {
+
+                        NotificationHelper.showNotification(ScheduleEvents.this, "New Event!", eventName + " - " + description, 2);
+
                         if (error == null) {
                             Log.i("pretty", "after push");
 //                            Log.i("pretty", newEvent.getComments().get(0));

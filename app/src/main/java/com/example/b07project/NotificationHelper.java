@@ -15,7 +15,7 @@ public class NotificationHelper {
     private static final String CHANNEL_NAME = "Andy Channel";
     private static final String CHANNEL_DESCRIPTION = "I DONT KNOW WHAT IM DOING";
 
-    public static void showNotification(Context context, String title, String message) {
+    public static void showNotification(Context context, String title, String message, int notificationId) {
         NotificationManager notificationManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -23,7 +23,6 @@ public class NotificationHelper {
             return;
         }
 
-        // Create a Notification Channel for devices running Android Oreo (API 26) or higher
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID,
@@ -35,18 +34,25 @@ public class NotificationHelper {
         }
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.pixel_kirby) // Set your notification icon here
+                .setSmallIcon(R.drawable.pixel_kirby)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-        Intent intent = new Intent(context, StudentAnnouncementsActivity.class);
+        Intent intent;
+        if (notificationId == 1) {
+            intent = new Intent(context, StudentAnnouncementsActivity.class);
+        } else if (notificationId == 2) {
+            intent = new Intent(context, EventViewActivity.class);
+        } else {
+            intent = new Intent(context, AdminOrStudentActivity.class);
+        }
+
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent,
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, notificationId, intent,
                 PendingIntent.FLAG_IMMUTABLE);
         builder.setContentIntent(pendingIntent);
 
-        // Display the notification
-        notificationManager.notify(0, builder.build());
+        notificationManager.notify(notificationId, builder.build());
     }
 }
