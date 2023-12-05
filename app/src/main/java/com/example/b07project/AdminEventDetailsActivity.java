@@ -2,6 +2,7 @@ package com.example.b07project;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,16 +29,16 @@ public class AdminEventDetailsActivity extends AppCompatActivity {
         RatingBar ratingBar = findViewById(R.id.eventDetailsRatingBar);
         TextView ratingCountsTextView = findViewById(R.id.ratingCountsTextView);
         LinearLayout commentsLinearLayout = findViewById(R.id.eventDetailsCommentsLinearLayout);
-        String participants = "Participant limit:" + event.getParticipantLimit();
+        String participants = "Date & Time: " + event.getLocalDateTime() + " Participant limit: " + event.getParticipantLimit();
         TextView eventDetailsParticipantLimitTextView = findViewById(R.id.eventDetailsParticipantLimitTextView);
         eventDetailsParticipantLimitTextView.setText(participants);
-        TextView eventDetailsDateTimeTextView = findViewById(R.id.eventDetailsDateTimeTextView);
-        eventDetailsDateTimeTextView.setText(event.getLocalDateTime());
-
+//        TextView eventDetailsDateTimeTextView = findViewById(R.id.eventDetailsDateTimeTextView);
+//        eventDetailsDateTimeTextView.setText(event.getLocalDateTime());
         eventImageView.setImageResource(event.getImageResourceId());
         titleTextView.setText(event.getEventName());
         descriptionTextView.setText(event.getEventDescription());
-        ratingBar.setRating(event.getRating()); //put the average rating in here
+        Log.e("CHERYL", ""+event.getRating());
+        ratingBar.setRating(event.getAverageRating()); //put the average rating in here event.getRating()
 
 
         List<Integer> ratings = event.getRatings();
