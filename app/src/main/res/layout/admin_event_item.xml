@@ -25,118 +25,103 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toBottomOf="@id/top_header_events"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintDimensionRatio="w,1:1"
         android:src="@drawable/default_event"
-    />
-
-    <TextView
-        android:id="@+id/eventDetailsTitleTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Event Title"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailsImageView"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp"
-        />
-
-    <TextView
-        android:id="@+id/eventDetailsDateTimeTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Date Time"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailsTitleTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp"
-        />
+        app:layout_constraintTop_toBottomOf="@id/top_header_events" />
 
-    <TextView
-        android:id="@+id/eventDetailsParticipantLimitTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Participant Limit"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailsDateTimeTextView"
-        app:layout_constraintStart_toStartOf="parent"
+    <Space
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp"
-        />
-
-    <TextView
-        android:id="@+id/eventDetailsDescriptionTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Event Description"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailsParticipantLimitTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp"
-        />
-
-    <RatingBar
-        android:id="@+id/eventDetailsRatingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailsDescriptionTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:numStars="5"
-        android:rating="4.5"
-        android:stepSize="0.1"
-        android:isIndicator="true"
-    />
-
-    <TextView
-        android:id="@+id/ratingCountsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="5 stars: 10 | 4 stars: 5 | 3 stars: 3 | 2 stars: 1 | 1 star: 2"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailsRatingBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="14sp"
-        android:textColor="#555555"
-        android:padding="16dp"
-        />
-
-    <TextView
-        android:id="@+id/eventDetailsCommentsHeaderTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/comments"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/ratingCountsTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/eventDetailsImageView" />
 
     <ScrollView
-        android:id="@+id/commentsScrollView"
-        android:layout_width="0dp"
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/eventDetailsCommentsHeaderTextView"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_header_events"
+        app:layout_constraintTop_toBottomOf="@+id/space"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottom_header_events"
-        >
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
-            android:id="@+id/eventDetailsCommentsLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            />
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/eventDetailsTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Event Title"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/eventDetailsDateTimeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Date Time" />
+
+            <TextView
+                android:id="@+id/eventDetailsParticipantLimitTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Participant Limit" />
+
+            <TextView
+                android:id="@+id/eventDetailsDescriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Event Description" />
+
+            <RatingBar
+                android:id="@+id/eventDetailsRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:rating="4.5"
+                android:stepSize="0.1" />
+
+            <TextView
+                android:id="@+id/ratingCountsTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="16dp"
+                android:text="5 stars: 10 | 4 stars: 5 | 3 stars: 3 | 2 stars: 1 | 1 star: 2"
+                android:textColor="#555555"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/eventDetailsCommentsHeaderTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@string/comments"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/eventDetailsCommentsLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp" />
+
+        </LinearLayout>
     </ScrollView>
 
     <View

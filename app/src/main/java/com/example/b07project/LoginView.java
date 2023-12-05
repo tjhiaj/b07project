@@ -68,16 +68,6 @@ public class LoginView extends AppCompatActivity {
         return String.valueOf(editTextPassword.getText());
     }
 
-    public String getEmail() {
-        TextInputEditText editTextEmail = findViewById(R.id.email);
-        return String.valueOf(editTextEmail.getText());
-    }
-
-    public String getPassword() {
-        TextInputEditText editTextPassword = findViewById(R.id.password);
-        return String.valueOf(editTextPassword.getText());
-    }
-
     public void showProgressBar() {
         progressBar.setVisibility(View.VISIBLE);
     }
